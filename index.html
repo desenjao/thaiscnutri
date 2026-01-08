@@ -18,355 +18,568 @@
   --cinza: #7A7A7A;     /* Texto secundário */
 }
 
-        
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-        
-        html {
-            scroll-behavior: smooth;
-        }
-        
-        body {
-            font-family: 'Inter', sans-serif;
-            background: var(--creme);
-            color: var(--preto);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
-        
-        /* BARRA LATERAL FIXA */
-        .sidebar-accent {
-            position: fixed;
-            left: 0;
-            top: 0;
-            width: 8px;
-            height: 100vh;
-            background: linear-gradient(180deg, var(--laranja), var(--amarelo));
-            z-index: 1000;
-        }
-        
-        /* GRID ASSIMÉTRICO */
-        .container {
-            max-width: 1400px;
-            margin: 0 auto;
-            padding: 0 4rem 0 6rem;
-        }
-        
-        /* HEADER BRUTAL */
-        header {
-            padding: 8rem 0 4rem;
-        }
-        
-        .marca {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            text-transform: uppercase;
-            color: var(--laranja);
-            margin-bottom: 6rem;
-        }
-        
-        .hero-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(4rem, 12vw, 8rem);
-            font-weight: 700;
-            line-height: 0.95;
-            letter-spacing: -0.02em;
-            margin-bottom: 4rem;
-            color: var(--preto);
-        }
-        
-        .hero-subtitle {
-            font-size: clamp(1.5rem, 3vw, 2.5rem);
-            font-weight: 300;
-            max-width: 900px;
-            margin-bottom: 8rem;
-            color: var(--cinza);
-        }
-        
-        /* PALAVRA COM GLOW */
-        .glow-word {
-            position: relative;
-            display: inline-block;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-        
-       .glow-word.active {
-    color: var(--laranja);
-    text-shadow: 
-        0 0 12px rgba(76, 175, 80, 0.6),
-        0 0 24px rgba(165, 214, 167, 0.4),
-        0 0 36px rgba(165, 214, 167, 0.25);
-    transform: scale(1.02);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
 }
 
-        
-        /* SEÇÃO GRID */
-        .section {
-            padding: 8rem 0;
-        }
-        
-        .section-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            font-weight: 700;
-            letter-spacing: 0.2em;
-            color: var(--laranja);
-            margin-bottom: 2rem;
-            display: block;
-        }
-        
-        .section-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(3rem, 8vw, 6rem);
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 4rem;
-            letter-spacing: -0.02em;
-        }
-        
-        .text-block {
-            font-size: clamp(1.2rem, 2vw, 1.8rem);
-            line-height: 1.7;
-            max-width: 900px;
-            margin-bottom: 3rem;
-            font-weight: 300;
-        }
-        
-        /* CARDS ASSIMÉTRICOS */
-        .cards-grid {
-            display: grid;
-            grid-template-columns: repeat(12, 1fr);
-            gap: 2rem;
-            margin: 6rem 0;
-        }
-        
-        .card {
-            background: white;
-            padding: 3rem;
-            border: 3px solid var(--preto);
-            transition: all 0.3s ease;
-        }
-        
-        .card:hover {
-            transform: translate(-4px, -4px);
-            box-shadow: 8px 8px 0 var(--preto);
-        }
-        
-        .card-1 {
-            grid-column: 1 / 6;
-            grid-row: 1;
-        }
-        
-        .card-2 {
-            grid-column: 6 / 13;
-            grid-row: 1;
-            background: var(--amarelo);
-        }
-        
-        .card-3 {
-            grid-column: 1 / 8;
-            grid-row: 2;
-        }
-        
-        .card-4 {
-            grid-column: 8 / 13;
-            grid-row: 2;
-            background: var(--laranja);
-            color: white;
-        }
-        
-        .card-5 {
-            grid-column: 1 / 7;
-            grid-row: 3;
-            background: var(--preto);
-            color: white;
-        }
-        
-        .card-6 {
-            grid-column: 7 / 13;
-            grid-row: 3;
-        }
-        
-        .card-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 4rem;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 1.5rem;
-            opacity: 0.3;
-        }
-        
-        .card-title {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 2rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            line-height: 1.2;
-        }
-        
-        .card-text {
-            font-size: 1.1rem;
-            line-height: 1.6;
-            opacity: 0.9;
-        }
-        
-        /* BLOCO CITAÇÃO BRUTAL */
-        .quote-block {
-            background: var(--preto);
-            color: white;
-            padding: 6rem 4rem;
-            margin: 8rem 0;
-            border-left: 12px solid var(--amarelo);
-            position: relative;
-        }
-        
-        .quote-mark {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 15rem;
-            font-weight: 700;
-            position: absolute;
-            top: -4rem;
-            right: 4rem;
-            opacity: 0.1;
-            line-height: 1;
-        }
-        
-        .quote-text {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: clamp(2rem, 4vw, 3.5rem);
-            font-weight: 500;
-            line-height: 1.3;
-            position: relative;
-            z-index: 1;
-        }
-        
-        /* LISTA BRUTAL */
-        .brutal-list {
-            list-style: none;
-            margin: 4rem 0;
-        }
-        
-        .brutal-list li {
-            font-size: 1.5rem;
-            padding: 2rem 0;
-            border-bottom: 2px solid rgba(0,0,0,0.1);
-            position: relative;
-            padding-left: 4rem;
-            transition: all 0.3s ease;
-        }
-        
-        .brutal-list li:hover {
-            padding-left: 5rem;
-            border-bottom-color: var(--laranja);
-        }
-        
-        .brutal-list li::before {
-            content: "→";
-            position: absolute;
-            left: 0;
-            font-size: 2rem;
-            color: var(--laranja);
-            font-weight: 700;
-        }
-        
-        /* STATS BRUTAL */
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 0;
-            margin: 6rem 0;
-            border: 3px solid var(--preto);
-        }
-        
-        .stat {
-            padding: 4rem 2rem;
-            text-align: center;
-            border-right: 3px solid var(--preto);
-            transition: all 0.3s ease;
-        }
-        
-        .stat:last-child {
-            border-right: none;
-        }
-        
-        .stat:hover {
-            background: var(--amarelo);
-        }
-        
-        .stat-number {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 5rem;
-            font-weight: 700;
-            line-height: 1;
-            margin-bottom: 1rem;
-            color: var(--laranja);
-        }
-        
-        .stat-label {
-            font-size: 1.2rem;
-            font-weight: 500;
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-        
-        /* FOOTER BRUTAL */
-        footer {
-            padding: 6rem 0 4rem;
-            border-top: 3px solid var(--preto);
-            margin-top: 8rem;
-        }
-        
-        .footer-text {
-            font-family: 'Space Grotesk', sans-serif;
-            font-size: 1rem;
-            text-transform: uppercase;
-            letter-spacing: 0.2em;
-            text-align: center;
-            color: var(--cinza);
-        }
-        
-        /* RESPONSIVO */
-        @media (max-width: 968px) {
-            .container {
-                padding: 0 2rem;
-            }
-            
-            .cards-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .card {
-                grid-column: 1 !important;
-                grid-row: auto !important;
-            }
-            
-            .stats-grid {
-                grid-template-columns: 1fr;
-            }
-            
-            .stat {
-                border-right: none;
-                border-bottom: 3px solid var(--preto);
-            }
-            
-            .stat:last-child {
-                border-bottom: none;
-            }
-            
-            .quote-block {
-                padding: 4rem 2rem;
-            }
-            
-            .quote-mark {
-                font-size: 8rem;
-                right: 2rem;
-            }
-        }
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  background: var(--creme);
+  color: var(--preto);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-width: 320px;
+}
+
+/* BARRA LATERAL FIXA - Responsiva */
+.sidebar-accent {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 8px;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--laranja), var(--amarelo));
+  z-index: 1000;
+}
+
+/* GRID ASSIMÉTRICO - Responsivo */
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding-left: 6rem;
+  padding-right: 4rem;
+  width: 100%;
+}
+
+/* HEADER BRUTAL - Responsivo */
+header {
+  padding: 6rem 0 3rem;
+}
+
+.marca {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--laranja);
+  margin-bottom: 4rem;
+}
+
+.hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 8vw, 8rem);
+  font-weight: 700;
+  line-height: 0.95;
+  letter-spacing: -0.02em;
+  margin-bottom: 2rem;
+  color: var(--preto);
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+}
+
+.hero-subtitle {
+  font-size: clamp(1.125rem, 3vw, 2.5rem);
+  font-weight: 300;
+  max-width: min(900px, 100%);
+  margin-bottom: 6rem;
+  color: var(--cinza);
+}
+
+/* PALAVRA COM GLOW */
+.glow-word {
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.glow-word.active {
+  color: var(--laranja);
+  text-shadow: 
+    0 0 12px rgba(76, 175, 80, 0.6),
+    0 0 24px rgba(165, 214, 167, 0.4),
+    0 0 36px rgba(165, 214, 167, 0.25);
+  transform: scale(1.02);
+}
+
+/* SEÇÃO GRID - Responsivo */
+.section {
+  padding: 6rem 0;
+}
+
+.section-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: var(--laranja);
+  margin-bottom: 1.5rem;
+  display: block;
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2rem, 6vw, 6rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 3rem;
+  letter-spacing: -0.02em;
+  word-wrap: break-word;
+}
+
+.text-block {
+  font-size: clamp(1rem, 2vw, 1.8rem);
+  line-height: 1.7;
+  max-width: min(900px, 100%);
+  margin-bottom: 2rem;
+  font-weight: 300;
+}
+
+/* CARDS ASSIMÉTRICOS - Responsivo */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  margin: 4rem 0;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border: 3px solid var(--preto);
+  transition: all 0.3s ease;
+}
+
+.card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 var(--preto);
+}
+
+/* Layout desktop padrão */
+.card-1 {
+  grid-column: 1 / 6;
+  grid-row: 1;
+}
+
+.card-2 {
+  grid-column: 6 / 13;
+  grid-row: 1;
+  background: var(--amarelo);
+}
+
+.card-3 {
+  grid-column: 1 / 8;
+  grid-row: 2;
+}
+
+.card-4 {
+  grid-column: 8 / 13;
+  grid-row: 2;
+  background: var(--laranja);
+  color: white;
+}
+
+.card-5 {
+  grid-column: 1 / 7;
+  grid-row: 3;
+  background: var(--preto);
+  color: white;
+}
+
+.card-6 {
+  grid-column: 7 / 13;
+  grid-row: 3;
+}
+
+.card-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 1rem;
+  opacity: 0.3;
+}
+
+.card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.5rem, 3vw, 2rem);
+  font-weight: 700;
+  margin-bottom: 0.75rem;
+  line-height: 1.2;
+}
+
+.card-text {
+  font-size: clamp(0.875rem, 1.5vw, 1.1rem);
+  line-height: 1.6;
+  opacity: 0.9;
+}
+
+/* BLOCO CITAÇÃO BRUTAL - Responsivo */
+.quote-block {
+  background: var(--preto);
+  color: white;
+  padding: 4rem 2rem;
+  margin: 6rem 0;
+  border-left: 8px solid var(--amarelo);
+  position: relative;
+}
+
+.quote-mark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(5rem, 10vw, 15rem);
+  font-weight: 700;
+  position: absolute;
+  top: -2rem;
+  right: 1rem;
+  opacity: 0.1;
+  line-height: 1;
+}
+
+.quote-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-weight: 500;
+  line-height: 1.3;
+  position: relative;
+  z-index: 1;
+}
+
+/* LISTA BRUTAL - Responsivo */
+.brutal-list {
+  list-style: none;
+  margin: 3rem 0;
+}
+
+.brutal-list li {
+  font-size: clamp(1rem, 2vw, 1.5rem);
+  padding: 1.5rem 0;
+  border-bottom: 2px solid rgba(0,0,0,0.1);
+  position: relative;
+  padding-left: 3rem;
+  transition: all 0.3s ease;
+}
+
+.brutal-list li:hover {
+  padding-left: 4rem;
+  border-bottom-color: var(--laranja);
+}
+
+.brutal-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  font-size: clamp(1.5rem, 2vw, 2rem);
+  color: var(--laranja);
+  font-weight: 700;
+}
+
+/* STATS BRUTAL - Responsivo */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 4rem 0;
+  border: 3px solid var(--preto);
+}
+
+.stat {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  border-right: 3px solid var(--preto);
+  transition: all 0.3s ease;
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat:hover {
+  background: var(--amarelo);
+}
+
+.stat-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  color: var(--laranja);
+}
+
+.stat-label {
+  font-size: clamp(0.875rem, 1.5vw, 1.2rem);
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+/* FOOTER BRUTAL - Responsivo */
+footer {
+  padding: 4rem 0 3rem;
+  border-top: 3px solid var(--preto);
+  margin-top: 6rem;
+}
+
+.footer-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.875rem;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  text-align: center;
+  color: var(--cinza);
+}
+
+/* ====== RESPONSIVIDADE POR DISPOSITIVO ====== */
+
+/* Tablets (768px - 1024px) */
+@media (max-width: 1024px) {
+  .container {
+    padding-left: 4rem;
+    padding-right: 3rem;
+  }
+  
+  .sidebar-accent {
+    width: 6px;
+  }
+  
+  .cards-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  .card-1, .card-3, .card-5 {
+    grid-column: 1 / 5;
+  }
+  
+  .card-2, .card-4, .card-6 {
+    grid-column: 5 / 9;
+  }
+  
+  .card-1 { grid-row: 1; }
+  .card-2 { grid-row: 1; }
+  .card-3 { grid-row: 2; }
+  .card-4 { grid-row: 2; }
+  .card-5 { grid-row: 3; }
+  .card-6 { grid-row: 3; }
+  
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .stat:nth-child(2) {
+    border-right: none;
+    border-bottom: 3px solid var(--preto);
+  }
+  
+  .stat:nth-child(3) {
+    grid-column: span 2;
+    border-bottom: none;
+  }
+}
+
+/* Tablets Pequenos (600px - 768px) */
+@media (max-width: 768px) {
+  .container {
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+  
+  header {
+    padding: 4rem 0 2rem;
+  }
+  
+  .marca {
+    margin-bottom: 3rem;
+  }
+  
+  .hero-subtitle {
+    margin-bottom: 4rem;
+  }
+  
+  .section {
+    padding: 4rem 0;
+  }
+  
+  .cards-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .card {
+    grid-column: 1 !important;
+    grid-row: auto !important;
+    margin-bottom: 1.5rem;
+  }
+  
+  .card:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 4px 4px 0 var(--preto);
+  }
+  
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat {
+    border-right: none;
+    border-bottom: 3px solid var(--preto);
+    padding: 2rem 1rem;
+  }
+  
+  .stat:last-child {
+    border-bottom: none;
+  }
+  
+  .quote-block {
+    margin: 4rem 0;
+    padding: 3rem 1.5rem;
+    border-left: 6px solid var(--amarelo);
+  }
+  
+  .quote-mark {
+    font-size: 4rem;
+    top: -1rem;
+    right: 1rem;
+  }
+  
+  footer {
+    padding: 3rem 0 2rem;
+    margin-top: 4rem;
+  }
+}
+
+/* Celulares (480px - 600px) */
+@media (max-width: 600px) {
+  .container {
+    padding-left: 2.5rem;
+    padding-right: 1.5rem;
+  }
+  
+  .sidebar-accent {
+    width: 4px;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 6vw, 3rem);
+    line-height: 1.1;
+  }
+  
+  .card {
+    padding: 1.5rem 1rem;
+  }
+  
+  .card-number {
+    font-size: 2rem;
+  }
+  
+  .brutal-list li {
+    padding-left: 2.5rem;
+  }
+  
+  .brutal-list li:hover {
+    padding-left: 3rem;
+  }
+  
+  .brutal-list li::before {
+    font-size: 1.5rem;
+  }
+  
+  .footer-text {
+    font-size: 0.75rem;
+  }
+}
+
+/* Celulares Pequenos (até 480px) */
+@media (max-width: 480px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 1rem;
+  }
+  
+  .sidebar-accent {
+    display: none; /* Opcional: removemos em telas muito pequenas */
+  }
+  
+  header {
+    padding: 3rem 0 1.5rem;
+  }
+  
+  .marca {
+    font-size: 0.75rem;
+    margin-bottom: 2rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+    margin-bottom: 3rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .section-title {
+    font-size: clamp(1.5rem, 6vw, 2.5rem);
+  }
+  
+  .card {
+    padding: 1.25rem;
+    border-width: 2px;
+  }
+  
+  .quote-block {
+    padding: 2rem 1rem;
+    margin: 3rem 0;
+  }
+  
+  .quote-mark {
+    font-size: 3rem;
+    top: -0.5rem;
+  }
+  
+  .stats-grid {
+    border-width: 2px;
+  }
+  
+  .stat {
+    border-width: 2px;
+    padding: 1.5rem 1rem;
+  }
+}
+
+/* Ajustes para orientação paisagem em celulares */
+@media (max-height: 600px) and (orientation: landscape) {
+  .sidebar-accent {
+    height: 150vh;
+  }
+  
+  header {
+    padding: 4rem 0 2rem;
+  }
+  
+  .hero-title {
+    font-size: clamp(2rem, 5vw, 4rem);
+  }
+  
+  .hero-subtitle {
+    margin-bottom: 3rem;
+  }
+}
+
+
     </style>
 </head>
 <body>
