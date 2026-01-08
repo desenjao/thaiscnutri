@@ -1,0 +1,647 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulher Que Carrega o Mundo</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+:root {
+  --laranja: #4CAF50;   /* Verde saúde – CTA e destaques */
+  --amarelo: #A5D6A7;   /* Verde claro – apoio visual */
+  --creme: #F6F8F5;     /* Fundo claro e leve */
+  --preto: #2E2E2E;     /* Texto principal */
+  --cinza: #7A7A7A;     /* Texto secundário */
+}
+
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--creme);
+            color: var(--preto);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        /* BARRA LATERAL FIXA */
+        .sidebar-accent {
+            position: fixed;
+            left: 0;
+            top: 0;
+            width: 8px;
+            height: 100vh;
+            background: linear-gradient(180deg, var(--laranja), var(--amarelo));
+            z-index: 1000;
+        }
+        
+        /* GRID ASSIMÉTRICO */
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 4rem 0 6rem;
+        }
+        
+        /* HEADER BRUTAL */
+        header {
+            padding: 8rem 0 4rem;
+        }
+        
+        .marca {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            text-transform: uppercase;
+            color: var(--laranja);
+            margin-bottom: 6rem;
+        }
+        
+        .hero-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(4rem, 12vw, 8rem);
+            font-weight: 700;
+            line-height: 0.95;
+            letter-spacing: -0.02em;
+            margin-bottom: 4rem;
+            color: var(--preto);
+        }
+        
+        .hero-subtitle {
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-weight: 300;
+            max-width: 900px;
+            margin-bottom: 8rem;
+            color: var(--cinza);
+        }
+        
+        /* PALAVRA COM GLOW */
+        .glow-word {
+            position: relative;
+            display: inline-block;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+       .glow-word.active {
+    color: var(--laranja);
+    text-shadow: 
+        0 0 12px rgba(76, 175, 80, 0.6),
+        0 0 24px rgba(165, 214, 167, 0.4),
+        0 0 36px rgba(165, 214, 167, 0.25);
+    transform: scale(1.02);
+}
+
+        
+        /* SEÇÃO GRID */
+        .section {
+            padding: 8rem 0;
+        }
+        
+        .section-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            letter-spacing: 0.2em;
+            color: var(--laranja);
+            margin-bottom: 2rem;
+            display: block;
+        }
+        
+        .section-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(3rem, 8vw, 6rem);
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 4rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .text-block {
+            font-size: clamp(1.2rem, 2vw, 1.8rem);
+            line-height: 1.7;
+            max-width: 900px;
+            margin-bottom: 3rem;
+            font-weight: 300;
+        }
+        
+        /* CARDS ASSIMÉTRICOS */
+        .cards-grid {
+            display: grid;
+            grid-template-columns: repeat(12, 1fr);
+            gap: 2rem;
+            margin: 6rem 0;
+        }
+        
+        .card {
+            background: white;
+            padding: 3rem;
+            border: 3px solid var(--preto);
+            transition: all 0.3s ease;
+        }
+        
+        .card:hover {
+            transform: translate(-4px, -4px);
+            box-shadow: 8px 8px 0 var(--preto);
+        }
+        
+        .card-1 {
+            grid-column: 1 / 6;
+            grid-row: 1;
+        }
+        
+        .card-2 {
+            grid-column: 6 / 13;
+            grid-row: 1;
+            background: var(--amarelo);
+        }
+        
+        .card-3 {
+            grid-column: 1 / 8;
+            grid-row: 2;
+        }
+        
+        .card-4 {
+            grid-column: 8 / 13;
+            grid-row: 2;
+            background: var(--laranja);
+            color: white;
+        }
+        
+        .card-5 {
+            grid-column: 1 / 7;
+            grid-row: 3;
+            background: var(--preto);
+            color: white;
+        }
+        
+        .card-6 {
+            grid-column: 7 / 13;
+            grid-row: 3;
+        }
+        
+        .card-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 4rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1.5rem;
+            opacity: 0.3;
+        }
+        
+        .card-title {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .card-text {
+            font-size: 1.1rem;
+            line-height: 1.6;
+            opacity: 0.9;
+        }
+        
+        /* BLOCO CITAÇÃO BRUTAL */
+        .quote-block {
+            background: var(--preto);
+            color: white;
+            padding: 6rem 4rem;
+            margin: 8rem 0;
+            border-left: 12px solid var(--amarelo);
+            position: relative;
+        }
+        
+        .quote-mark {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 15rem;
+            font-weight: 700;
+            position: absolute;
+            top: -4rem;
+            right: 4rem;
+            opacity: 0.1;
+            line-height: 1;
+        }
+        
+        .quote-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 500;
+            line-height: 1.3;
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* LISTA BRUTAL */
+        .brutal-list {
+            list-style: none;
+            margin: 4rem 0;
+        }
+        
+        .brutal-list li {
+            font-size: 1.5rem;
+            padding: 2rem 0;
+            border-bottom: 2px solid rgba(0,0,0,0.1);
+            position: relative;
+            padding-left: 4rem;
+            transition: all 0.3s ease;
+        }
+        
+        .brutal-list li:hover {
+            padding-left: 5rem;
+            border-bottom-color: var(--laranja);
+        }
+        
+        .brutal-list li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            font-size: 2rem;
+            color: var(--laranja);
+            font-weight: 700;
+        }
+        
+        /* STATS BRUTAL */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 0;
+            margin: 6rem 0;
+            border: 3px solid var(--preto);
+        }
+        
+        .stat {
+            padding: 4rem 2rem;
+            text-align: center;
+            border-right: 3px solid var(--preto);
+            transition: all 0.3s ease;
+        }
+        
+        .stat:last-child {
+            border-right: none;
+        }
+        
+        .stat:hover {
+            background: var(--amarelo);
+        }
+        
+        .stat-number {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 5rem;
+            font-weight: 700;
+            line-height: 1;
+            margin-bottom: 1rem;
+            color: var(--laranja);
+        }
+        
+        .stat-label {
+            font-size: 1.2rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.1em;
+        }
+        
+        /* FOOTER BRUTAL */
+        footer {
+            padding: 6rem 0 4rem;
+            border-top: 3px solid var(--preto);
+            margin-top: 8rem;
+        }
+        
+        .footer-text {
+            font-family: 'Space Grotesk', sans-serif;
+            font-size: 1rem;
+            text-transform: uppercase;
+            letter-spacing: 0.2em;
+            text-align: center;
+            color: var(--cinza);
+        }
+        
+        /* RESPONSIVO */
+        @media (max-width: 968px) {
+            .container {
+                padding: 0 2rem;
+            }
+            
+            .cards-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .card {
+                grid-column: 1 !important;
+                grid-row: auto !important;
+            }
+            
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+            
+            .stat {
+                border-right: none;
+                border-bottom: 3px solid var(--preto);
+            }
+            
+            .stat:last-child {
+                border-bottom: none;
+            }
+            
+            .quote-block {
+                padding: 4rem 2rem;
+            }
+            
+            .quote-mark {
+                font-size: 8rem;
+                right: 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Barra lateral de acento -->
+    <div class="sidebar-accent"></div>
+    
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="marca">THAIS CARVALHO NUTRI</div>
+            
+            <h1 class="hero-title">
+                Para a <span class="glow-word">Mulher</span> Que 
+                <span class="glow-word">Carrega</span> o <span class="glow-word">Mundo</span>
+            </h1>
+            
+            <p class="hero-subtitle">
+                E ainda assim busca <span class="glow-word">tempo</span> para si mesma. 
+                Este é o <span class="glow-word">espaço</span> onde você finalmente <span class="glow-word">respira</span>, 
+                organiza seus <span class="glow-word">pensamentos</span> e redescobre sua <span class="glow-word">essência</span>.
+            </p>
+        </header>
+        
+        <!-- Seção 01: Reconhecimento -->
+        <section class="section">
+            <span class="section-number">01 / RECONHECIMENTO</span>
+            <h2 class="section-title">Você <span class="glow-word">Reconhece</span> Esses Momentos?</h2>
+            
+            <p class="text-block">
+                Você não está <span class="glow-word">sozinha</span>. Cada mulher carrega um 
+                <span class="glow-word">universo</span> dentro de si. Entre as 
+                <span class="glow-word">responsabilidades</span>, os <span class="glow-word">sonhos</span> 
+                adiados e as <span class="glow-word">expectativas</span> dos outros, 
+                você se <span class="glow-word">perdeu</span> no caminho.
+            </p>
+            
+            <div class="cards-grid">
+                <div class="card card-1">
+                    <div class="card-number">01</div>
+                    <h3 class="card-title">A Mente Acelerada</h3>
+                    <p class="card-text">
+                        Milhares de tarefas, compromissos, pessoas dependendo de você. 
+                        A cabeça não para, nem mesmo na hora de dormir.
+                    </p>
+                </div>
+                
+                <div class="card card-2">
+                    <div class="card-number">02</div>
+                    <h3 class="card-title">Tempo? Que Tempo?</h3>
+                    <p class="card-text">
+                        O dia tem 24 horas, mas parece que você precisa de 48. 
+                        Entre família, trabalho e mil obrigações, você desaparece.
+                    </p>
+                </div>
+                
+                <div class="card card-3">
+                    <div class="card-number">03</div>
+                    <h3 class="card-title">Cansaço Invisível</h3>
+                    <p class="card-text">
+                        Por fora, você sorri e diz "está tudo bem". 
+                        Por dentro, uma exaustão profunda que ninguém vê.
+                    </p>
+                </div>
+                
+                <div class="card card-4">
+                    <div class="card-number">04</div>
+                    <h3 class="card-title">Culpa Constante</h3>
+                    <p class="card-text">
+                        Se para, sente culpa. Se continua, se esgota. 
+                        Um ciclo que parece não ter fim.
+                    </p>
+                </div>
+                
+                <div class="card card-5">
+                    <div class="card-number">05</div>
+                    <h3 class="card-title">Sonhos no Armário</h3>
+                    <p class="card-text">
+                        Aqueles planos que você tinha para si mesma? 
+                        Estão guardados, esperando um "momento melhor".
+                    </p>
+                </div>
+                
+                <div class="card card-6">
+                    <div class="card-number">06</div>
+                    <h3 class="card-title">Identidade Diluída</h3>
+                    <p class="card-text">
+                        Você é mãe, esposa, profissional, amiga... 
+                        Mas quem é VOCÊ quando ninguém está olhando?
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Citação Brutal -->
+        <div class="quote-block">
+            <div class="quote-mark">"</div>
+            <p class="quote-text">
+                Você não precisa ser <span class="glow-word">perfeita</span>. 
+                Você precisa ser <span class="glow-word">real</span>, 
+                <span class="glow-word">presente</span> e 
+                gentil consigo mesma.
+            </p>
+        </div>
+        
+        <!-- Seção 02: O Caminho -->
+        <section class="section">
+            <span class="section-number">02 / TRANSFORMAÇÃO</span>
+            <h2 class="section-title">O <span class="glow-word">Caminho</span> de Volta Para Si</h2>
+            
+            <p class="text-block">
+                Não é sobre adicionar mais <span class="glow-word">tarefas</span> à sua lista. 
+                É sobre criar <span class="glow-word">rituais</span> simples que reconectam você 
+                com aquilo que realmente <span class="glow-word">importa</span>. 
+                É sobre encontrar <span class="glow-word">clareza</span> no meio do caos.
+            </p>
+            
+            <ul class="brutal-list">
+                <li>Reconheça suas <span class="glow-word">emoções</span> sem julgamento</li>
+                <li>Identifique o que realmente <span class="glow-word">consome</span> sua energia</li>
+                <li>Descubra seus <span class="glow-word">valores</span> essenciais</li>
+                <li>Estabeleça <span class="glow-word">limites</span> saudáveis</li>
+                <li>Crie <span class="glow-word">espaço</span> para o que te nutre</li>
+                <li>Reconecte com seus <span class="glow-word">sonhos</span> adormecidos</li>
+            </ul>
+        </section>
+        
+        <!-- Stats Brutal -->
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-number">7</div>
+                <div class="stat-label">Dias para Clareza</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Min por Dia</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">∞</div>
+                <div class="stat-label">Possibilidades</div>
+            </div>
+        </div>
+        
+        <!-- Seção 03: Jornada -->
+        <section class="section">
+            <span class="section-number">03 / SUA JORNADA</span>
+            <h2 class="section-title">Uma <span class="glow-word">Semana</span> Que <span class="glow-word">Transforma</span></h2>
+            
+            <p class="text-block">
+                Sete dias estruturados para você <span class="glow-word">pausar</span>, 
+                <span class="glow-word">refletir</span> e <span class="glow-word">reorganizar</span> 
+                suas prioridades. Não é mágica—é <span class="glow-word">consciência</span>.
+            </p>
+            
+            <div class="cards-grid">
+                <div class="card card-1">
+                    <div class="card-number">DIA 1</div>
+                    <h3 class="card-title">Mapeamento Mental</h3>
+                    <p class="card-text">
+                        Identifique todas as áreas da sua vida e reconheça 
+                        onde você está investindo sua energia.
+                    </p>
+                </div>
+                
+                <div class="card card-2">
+                    <div class="card-number">DIA 2</div>
+                    <h3 class="card-title">Emoções em Foco</h3>
+                    <p class="card-text">
+                        Nomeie o que você está sentindo. Medo? Frustração? 
+                        Culpa? O primeiro passo é reconhecer.
+                    </p>
+                </div>
+                
+                <div class="card card-3">
+                    <div class="card-number">DIA 3</div>
+                    <h3 class="card-title">Valores Essenciais</h3>
+                    <p class="card-text">
+                        O que realmente importa para você? Descubra seus 
+                        valores fundamentais e veja onde há desalinhamento.
+                    </p>
+                </div>
+                
+                <div class="card card-4">
+                    <div class="card-number">DIA 4</div>
+                    <h3 class="card-title">Energia & Limites</h3>
+                    <p class="card-text">
+                        Identifique o que drena e o que renova sua energia. 
+                        Aprenda a dizer não sem culpa.
+                    </p>
+                </div>
+                
+                <div class="card card-5">
+                    <div class="card-number">DIA 5</div>
+                    <h3 class="card-title">Sonhos Adormecidos</h3>
+                    <p class="card-text">
+                        Reconecte com aquilo que você sempre quis fazer. 
+                        É hora de tirar do armário e dar pequenos passos.
+                    </p>
+                </div>
+                
+                <div class="card card-6">
+                    <div class="card-number">DIA 6</div>
+                    <h3 class="card-title">Rituais Diários</h3>
+                    <p class="card-text">
+                        Crie micro-momentos de autocuidado que cabem na 
+                        sua rotina real, não na rotina ideal.
+                    </p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Bloco Final -->
+        <div class="quote-block">
+            <div class="quote-mark">"</div>
+            <p class="quote-text">
+                Este não é mais um <span class="glow-word">Diário</span> esquecido na gaveta. 
+                É o <span class="glow-word">mapa</span> de volta para você mesma.
+            </p>
+        </div>
+        
+        <!-- Seção Final -->
+        <section class="section">
+            <span class="section-number">04 / PRÓXIMOS PASSOS</span>
+            <h2 class="section-title">Você <span class="glow-word">Merece</span> Este <span class="glow-word">Espaço</span></h2>
+            
+            <p class="text-block">
+                Não é <span class="glow-word">egoísmo</span> cuidar de si mesma. 
+                É <span class="glow-word">necessidade</span>. Quando você está bem, 
+                todos ao seu redor se <span class="glow-word">beneficiam</span>. 
+                Mas principalmente: VOCÊ se beneficia. E isso já é <span class="glow-word">suficiente</span>.
+            </p>
+            
+            <ul class="brutal-list">
+                <li>Você não precisa fazer tudo <span class="glow-word">perfeitamente</span></li>
+                <li>Você não precisa ter todas as <span class="glow-word">respostas</span></li>
+                <li>Você não precisa se sentir <span class="glow-word">culpada</span> por pausar</li>
+                <li>Você não precisa esperar o "momento <span class="glow-word">certo</span>"</li>
+                <li>Você só precisa <span class="glow-word">começar</span></li>
+            </ul>
+        </section>
+        
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">Diário da Transformação • 2026</p>
+            <p class="footer-text">>Desenvolvido por <a href="https://www.instagram.com/eitadevis/">Eita Devis</a></p>
+        </footer>
+    </div>
+    
+    <script>
+        // Scroll-driven glow effect nas palavras-chave
+        function updateGlowWords() {
+            const glowWords = document.querySelectorAll('.glow-word');
+            const windowHeight = window.innerHeight;
+            const centerY = windowHeight / 2;
+            const activationRange = 150; // pixels de distância do centro
+            
+            glowWords.forEach(word => {
+                const rect = word.getBoundingClientRect();
+                const wordCenterY = rect.top + (rect.height / 2);
+                const distanceFromCenter = Math.abs(wordCenterY - centerY);
+                
+                // Ativa se estiver próximo do centro
+                if (distanceFromCenter < activationRange) {
+                    word.classList.add('active');
+                } else {
+                    word.classList.remove('active');
+                }
+            });
+        }
+        
+        // Atualiza no scroll
+        window.addEventListener('scroll', updateGlowWords);
+        // Atualiza no carregamento
+        window.addEventListener('load', updateGlowWords);
+        // Atualiza ao redimensionar
+        window.addEventListener('resize', updateGlowWords);
+    </script>
+</body>
+</html>
