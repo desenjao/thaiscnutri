@@ -5,17 +5,19 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Mulher Que Carrega o Mundo</title>
     
+    <!-- Fontes otimizadas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
     
     <style>
 :root {
-  --laranja: #4CAF50;   /* Verde saúde – CTA e destaques */
-  --amarelo: #A5D6A7;   /* Verde claro – apoio visual */
-  --creme: #F6F8F5;     /* Fundo claro e leve */
-  --preto: #2E2E2E;     /* Texto principal */
-  --cinza: #7A7A7A;     /* Texto secundário */
+  --verde-principal: #4CAF50;
+  --verde-claro: #A5D6A7;
+  --creme: #F6F8F5;
+  --preto: #2E2E2E;
+  --cinza: #7A7A7A;
+  --cinza-claro: #B0B0B0;
 }
 
 * {
@@ -26,122 +28,241 @@
 
 html {
   scroll-behavior: smooth;
+  font-size: 16px;
 }
 
 body {
-  font-family: 'Inter', sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   background: var(--creme);
   color: var(--preto);
   line-height: 1.6;
   overflow-x: hidden;
-  min-width: 320px;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
-/* BARRA LATERAL FIXA - Responsiva */
+/* BARRA LATERAL REFINADA */
 .sidebar-accent {
   position: fixed;
   left: 0;
   top: 0;
-  width: 8px;
+  width: 4px;
   height: 100vh;
-  background: linear-gradient(180deg, var(--laranja), var(--amarelo));
+  background: linear-gradient(180deg, var(--verde-principal), var(--verde-claro));
   z-index: 1000;
 }
 
-/* GRID ASSIMÉTRICO - Responsivo */
+/* CONTAINER ELEGANTE */
 .container {
-  max-width: 1400px;
+  max-width: 1200px;
   margin: 0 auto;
-  padding-left: 6rem;
+  padding-left: 5rem;
   padding-right: 4rem;
   width: 100%;
 }
 
-/* HEADER BRUTAL - Responsivo */
-header {
-  padding: 6rem 0 3rem;
-}
-
+/* MARCA DISCRETA */
 .marca {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--laranja);
+  color: var(--verde-principal);
   margin-bottom: 4rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(76, 175, 80, 0.05);
+  border-radius: 3px;
+  border: 1px solid rgba(76, 175, 80, 0.1);
 }
 
+/* HEADER REFINADO */
+header {
+  padding: 6rem 0 3rem;
+  position: relative;
+}
+
+/* LAYOUT HEADER COM FOTO */
+.hero-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  margin-bottom: 5rem;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 0;
+  padding-right: 2rem;
+}
+
+.hero-image-container {
+  flex-shrink: 0;
+  width: 320px;
+  position: relative;
+}
+
+/* TÍTULO PRINCIPAL ELEGANTE */
 .hero-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.5rem, 8vw, 8rem);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 3.5rem;
   font-weight: 700;
-  line-height: 0.95;
-  letter-spacing: -0.02em;
-  margin-bottom: 2rem;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
   color: var(--preto);
-  word-wrap: break-word;
-  overflow-wrap: break-word;
+  max-width: 700px;
 }
 
 .hero-subtitle {
-  font-size: clamp(1.125rem, 3vw, 2.5rem);
-  font-weight: 300;
-  max-width: min(900px, 100%);
-  margin-bottom: 6rem;
+  font-size: 1.25rem;
+  font-weight: 350;
+  max-width: 700px;
   color: var(--cinza);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
 }
 
-/* PALAVRA COM GLOW */
+/* GLOW WORD SUTIL */
 .glow-word {
   position: relative;
   display: inline-block;
-  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  transition: all 0.3s ease;
+  padding: 0 0.1rem;
 }
 
 .glow-word.active {
-  color: var(--laranja);
+  color: var(--verde-principal);
   text-shadow: 
-    0 0 12px rgba(76, 175, 80, 0.6),
-    0 0 24px rgba(165, 214, 167, 0.4),
-    0 0 36px rgba(165, 214, 167, 0.25);
-  transform: scale(1.02);
+    0 0 8px rgba(76, 175, 80, 0.3),
+    0 0 16px rgba(165, 214, 167, 0.1);
+  background: linear-gradient(45deg, transparent, rgba(76, 175, 80, 0.02), transparent);
 }
 
-/* SEÇÃO GRID - Responsivo */
+/* FOTO DA NUTRI REFINADA */
+.profile-frame {
+  width: 100%;
+  padding-top: 130%;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--preto);
+  border-radius: 3px;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.08);
+  background: var(--verde-claro);
+  transform: rotate(1deg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-frame:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.profile-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(10%) contrast(105%);
+  transition: filter 0.3s ease;
+}
+
+.profile-frame:hover .profile-image {
+  filter: grayscale(0%) contrast(110%);
+}
+
+.profile-decoration {
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  width: 60px;
+  height: 60px;
+  background: var(--verde-principal);
+  border: 2px solid var(--preto);
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.profile-caption {
+  margin-top: 1.25rem;
+  padding: 0.875rem;
+  background: rgba(76, 175, 80, 0.04);
+  border-left: 2px solid var(--verde-principal);
+  border-radius: 0 3px 3px 0;
+}
+
+.profile-name {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--preto);
+  margin-bottom: 0.125rem;
+  letter-spacing: 0.02em;
+}
+
+.profile-title {
+  font-size: 0.75rem;
+  color: var(--cinza);
+  font-weight: 350;
+  line-height: 1.4;
+}
+
+/* SEÇÕES ELEGANTES */
 .section {
-  padding: 6rem 0;
+  padding: 5rem 0;
+  position: relative;
 }
 
 .section-number {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.875rem;
-  font-weight: 700;
-  letter-spacing: 0.2em;
-  color: var(--laranja);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--verde-principal);
   margin-bottom: 1.5rem;
   display: block;
+  position: relative;
+  padding-left: 2rem;
+  text-transform: uppercase;
+}
+
+.section-number::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--verde-principal);
+  transform: translateY(-50%);
 }
 
 .section-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2rem, 6vw, 6rem);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 2.5rem;
   font-weight: 700;
-  line-height: 1;
-  margin-bottom: 3rem;
-  letter-spacing: -0.02em;
-  word-wrap: break-word;
+  line-height: 1.1;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.01em;
+  max-width: 800px;
 }
 
 .text-block {
-  font-size: clamp(1rem, 2vw, 1.8rem);
+  font-size: 1.125rem;
   line-height: 1.7;
-  max-width: min(900px, 100%);
-  margin-bottom: 2rem;
-  font-weight: 300;
+  max-width: 700px;
+  margin-bottom: 2.5rem;
+  font-weight: 350;
+  color: var(--preto);
+  letter-spacing: 0.01em;
 }
 
-/* CARDS ASSIMÉTRICOS - Responsivo */
+/* CARDS REFINADOS - CORREÇÃO PRINCIPAL */
 .cards-grid {
   display: grid;
   grid-template-columns: repeat(12, 1fr);
@@ -152,147 +273,180 @@ header {
 .card {
   background: white;
   padding: 2rem;
-  border: 3px solid var(--preto);
-  transition: all 0.3s ease;
+  border: 2px solid var(--preto);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--verde-principal);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
 }
 
 .card:hover {
   transform: translate(-4px, -4px);
-  box-shadow: 8px 8px 0 var(--preto);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  border-color: var(--verde-principal);
 }
 
-/* Layout desktop padrão */
-.card-1 {
-  grid-column: 1 / 6;
-  grid-row: 1;
+.card:hover::before {
+  transform: scaleX(1);
 }
 
-.card-2 {
-  grid-column: 6 / 13;
-  grid-row: 1;
-  background: var(--amarelo);
-}
-
-.card-3 {
-  grid-column: 1 / 8;
-  grid-row: 2;
-}
-
-.card-4 {
-  grid-column: 8 / 13;
-  grid-row: 2;
-  background: var(--laranja);
-  color: white;
-}
-
-.card-5 {
-  grid-column: 1 / 7;
-  grid-row: 3;
-  background: var(--preto);
-  color: white;
-}
-
-.card-6 {
-  grid-column: 7 / 13;
-  grid-row: 3;
-}
+/* POSICIONAMENTO DOS CARDS (12 COLUNAS) - DESKTOP COMPLETO */
+.card-1 { grid-column: 1 / 5; grid-row: 1; }
+.card-2 { grid-column: 5 / 9; grid-row: 1; background: rgba(165, 214, 167, 0.2); }
+.card-3 { grid-column: 9 / 13; grid-row: 1; }
+.card-4 { grid-column: 1 / 5; grid-row: 2; background: var(--verde-principal); color: white; }
+.card-5 { grid-column: 5 / 9; grid-row: 2; background: var(--preto); color: white; }
+.card-6 { grid-column: 9 / 13; grid-row: 2; }
 
 .card-number {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 2rem;
   font-weight: 700;
   line-height: 1;
   margin-bottom: 1rem;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-number {
   opacity: 0.3;
 }
 
 .card-title {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.5rem, 3vw, 2rem);
-  font-weight: 700;
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
   margin-bottom: 0.75rem;
-  line-height: 1.2;
+  line-height: 1.3;
 }
 
 .card-text {
-  font-size: clamp(0.875rem, 1.5vw, 1.1rem);
+  font-size: 0.9375rem;
   line-height: 1.6;
-  opacity: 0.9;
+  color: var(--cinza);
+  font-weight: 350;
 }
 
-/* BLOCO CITAÇÃO BRUTAL - Responsivo */
+/* QUOTE BLOCK ELEGANTE */
 .quote-block {
-  background: var(--preto);
+  background: linear-gradient(135deg, rgba(46, 46, 46, 0.98), var(--preto));
   color: white;
-  padding: 4rem 2rem;
-  margin: 6rem 0;
-  border-left: 8px solid var(--amarelo);
+  padding: 4rem 3rem;
+  margin: 5rem 0;
+  border-left: 4px solid var(--verde-claro);
   position: relative;
+  border-radius: 0 4px 4px 0;
 }
 
 .quote-mark {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(5rem, 10vw, 15rem);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 8rem;
   font-weight: 700;
   position: absolute;
   top: -2rem;
-  right: 1rem;
-  opacity: 0.1;
+  right: 2rem;
+  opacity: 0.05;
   line-height: 1;
 }
 
 .quote-text {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(1.5rem, 4vw, 3.5rem);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.75rem;
   font-weight: 500;
-  line-height: 1.3;
+  line-height: 1.4;
   position: relative;
   z-index: 1;
+  max-width: 800px;
+  letter-spacing: 0.01em;
 }
 
-/* LISTA BRUTAL - Responsivo */
+/* LISTA REFINADA */
 .brutal-list {
   list-style: none;
   margin: 3rem 0;
 }
 
 .brutal-list li {
-  font-size: clamp(1rem, 2vw, 1.5rem);
-  padding: 1.5rem 0;
-  border-bottom: 2px solid rgba(0,0,0,0.1);
+  font-size: 1.125rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
   position: relative;
-  padding-left: 3rem;
+  padding-left: 2.5rem;
   transition: all 0.3s ease;
+  max-width: 700px;
+  color: var(--preto);
 }
 
 .brutal-list li:hover {
-  padding-left: 4rem;
-  border-bottom-color: var(--laranja);
+  padding-left: 3rem;
+  border-bottom-color: var(--verde-principal);
+  background: linear-gradient(90deg, rgba(76, 175, 80, 0.03), transparent);
 }
 
 .brutal-list li::before {
   content: "→";
   position: absolute;
   left: 0;
-  font-size: clamp(1.5rem, 2vw, 2rem);
-  color: var(--laranja);
-  font-weight: 700;
+  font-size: 1.25rem;
+  color: var(--verde-principal);
+  font-weight: 600;
+  transition: transform 0.3s ease;
+  opacity: 0.8;
 }
 
-/* STATS BRUTAL - Responsivo */
+.brutal-list li:hover::before {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* STATS ELEGANTES */
 .stats-grid {
   display: grid;
   grid-template-columns: repeat(3, 1fr);
   gap: 0;
   margin: 4rem 0;
-  border: 3px solid var(--preto);
+  border: 2px solid var(--preto);
+  border-radius: 4px;
+  overflow: hidden;
+  background: white;
 }
 
 .stat {
   padding: 3rem 1.5rem;
   text-align: center;
-  border-right: 3px solid var(--preto);
+  border-right: 2px solid var(--preto);
   transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--verde-principal);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.stat:hover::before {
+  opacity: 0.03;
 }
 
 .stat:last-child {
@@ -300,56 +454,206 @@ header {
 }
 
 .stat:hover {
-  background: var(--amarelo);
+  transform: translateY(-2px);
+}
+
+.stat-content {
+  position: relative;
+  z-index: 1;
 }
 
 .stat-number {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: clamp(2.5rem, 6vw, 5rem);
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 3rem;
   font-weight: 700;
   line-height: 1;
   margin-bottom: 0.75rem;
-  color: var(--laranja);
+  color: var(--verde-principal);
 }
 
 .stat-label {
-  font-size: clamp(0.875rem, 1.5vw, 1.2rem);
+  font-size: 0.875rem;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.1em;
-}
-
-/* FOOTER BRUTAL - Responsivo */
-footer {
-  padding: 4rem 0 3rem;
-  border-top: 3px solid var(--preto);
-  margin-top: 6rem;
-}
-
-.footer-text {
-  font-family: 'Space Grotesk', sans-serif;
-  font-size: 0.875rem;
-  text-transform: uppercase;
-  letter-spacing: 0.2em;
-  text-align: center;
   color: var(--cinza);
 }
 
-/* ====== RESPONSIVIDADE POR DISPOSITIVO ====== */
+/* FOOTER ELEGANTE */
+footer {
+  padding: 4rem 0 3rem;
+  border-top: 2px solid rgba(0,0,0,0.08);
+  margin-top: 5rem;
+}
 
-/* Tablets (768px - 1024px) */
-@media (max-width: 1024px) {
+.footer-text {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-align: center;
+  color: var(--cinza-claro);
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.01);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.footer-text a {
+  color: var(--verde-principal);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 600;
+}
+
+.footer-text a:hover {
+  color: var(--verde-claro);
+  text-decoration: underline;
+}
+
+/* ANIMAÇÕES SUAVES */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section, .card, .stat {
+  animation: fadeInUp 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.section { animation-delay: 0.1s; }
+.card { animation-delay: 0.2s; }
+.stat { animation-delay: 0.3s; }
+
+/* SCROLLBAR REFINADA */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--creme);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--verde-claro);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--verde-principal);
+}
+
+/* RESPONSIVIDADE COM LAYOUT CORRETO */
+
+/* DESKTOP MÉDIO (1024px - 1399px) */
+@media (max-width: 1399px) {
   .container {
+    max-width: 1100px;
     padding-left: 4rem;
     padding-right: 3rem;
   }
   
-  .sidebar-accent {
-    width: 6px;
+  .hero-title {
+    font-size: 3rem;
   }
   
+  .section-title {
+    font-size: 2.25rem;
+  }
+  
+  .hero-image-container {
+    width: 300px;
+  }
+  
+  /* Cards mantêm layout de 12 colunas */
+  .cards-grid {
+    gap: 1.25rem;
+  }
+  
+  .card {
+    padding: 1.75rem;
+  }
+}
+
+/* DESKTOP PEQUENO / TABLET GRANDE (768px - 1023px) */
+@media (max-width: 1023px) {
+  .container {
+    max-width: 100%;
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .hero-image-container {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .hero-text {
+    padding-right: 0;
+  }
+  
+  /* CARDS EM 8 COLUNAS (2 CARDS POR LINHA) */
   .cards-grid {
     grid-template-columns: repeat(8, 1fr);
+    gap: 1.25rem;
+  }
+  
+  /* Reposicionamento para 2 cards por linha */
+  .card-1 { grid-column: 1 / 5; grid-row: 1; }
+  .card-2 { grid-column: 5 / 9; grid-row: 1; }
+  .card-3 { grid-column: 1 / 5; grid-row: 2; }
+  .card-4 { grid-column: 5 / 9; grid-row: 2; }
+  .card-5 { grid-column: 1 / 5; grid-row: 3; }
+  .card-6 { grid-column: 5 / 9; grid-row: 3; }
+}
+
+/* TABLET (600px - 767px) */
+@media (max-width: 767px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+  }
+  
+  .sidebar-accent {
+    width: 3px;
+  }
+  
+  header {
+    padding: 4rem 0 2rem;
+  }
+  
+  .marca {
+    margin-bottom: 3rem;
+  }
+  
+  .hero-title {
+    font-size: 2.25rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  /* CARDS EM 6 COLUNAS (ainda 2 cards por linha mas mais estreitos) */
+  .cards-grid {
+    grid-template-columns: repeat(6, 1fr);
     gap: 1rem;
   }
   
@@ -357,250 +661,145 @@ footer {
     padding: 1.5rem;
   }
   
-  .card-1, .card-3, .card-5 {
-    grid-column: 1 / 5;
+  /* Reposicionamento mantendo 2 cards por linha */
+  .card-1 { grid-column: 1 / 4; grid-row: 1; }
+  .card-2 { grid-column: 4 / 7; grid-row: 1; }
+  .card-3 { grid-column: 1 / 4; grid-row: 2; }
+  .card-4 { grid-column: 4 / 7; grid-row: 2; }
+  .card-5 { grid-column: 1 / 4; grid-row: 3; }
+  .card-6 { grid-column: 4 / 7; grid-row: 3; }
+  
+  .quote-block {
+    padding: 3rem 1.5rem;
+    margin: 3rem 0;
   }
   
-  .card-2, .card-4, .card-6 {
-    grid-column: 5 / 9;
+  .quote-mark {
+    font-size: 5rem;
+    top: -1rem;
+    right: 1rem;
   }
   
-  .card-1 { grid-row: 1; }
-  .card-2 { grid-row: 1; }
-  .card-3 { grid-row: 2; }
-  .card-4 { grid-row: 2; }
-  .card-5 { grid-row: 3; }
-  .card-6 { grid-row: 3; }
-  
-  .stats-grid {
-    grid-template-columns: repeat(2, 1fr);
+  .quote-text {
+    font-size: 1.5rem;
   }
   
-  .stat:nth-child(2) {
-    border-right: none;
-    border-bottom: 3px solid var(--preto);
-  }
-  
-  .stat:nth-child(3) {
-    grid-column: span 2;
-    border-bottom: none;
-  }
-}
-
-/* Tablets Pequenos (600px - 768px) */
-@media (max-width: 768px) {
-  .container {
-    padding-left: 3rem;
-    padding-right: 2rem;
-  }
-  
-  header {
-    padding: 4rem 0 2rem;
-  }
-  
-  .marca {
-    margin-bottom: 3rem;
-  }
-  
-  .hero-subtitle {
-    margin-bottom: 4rem;
-  }
-  
-  .section {
-    padding: 4rem 0;
-  }
-  
-  .cards-grid {
-    grid-template-columns: 1fr;
-  }
-  
-  .card {
-    grid-column: 1 !important;
-    grid-row: auto !important;
-    margin-bottom: 1.5rem;
-  }
-  
-  .card:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 4px 4px 0 var(--preto);
-  }
-  
+  /* Stats em coluna única */
   .stats-grid {
     grid-template-columns: 1fr;
   }
   
   .stat {
     border-right: none;
-    border-bottom: 3px solid var(--preto);
-    padding: 2rem 1rem;
+    border-bottom: 2px solid var(--preto);
   }
   
   .stat:last-child {
     border-bottom: none;
   }
-  
-  .quote-block {
-    margin: 4rem 0;
-    padding: 3rem 1.5rem;
-    border-left: 6px solid var(--amarelo);
-  }
-  
-  .quote-mark {
-    font-size: 4rem;
-    top: -1rem;
-    right: 1rem;
-  }
-  
-  footer {
-    padding: 3rem 0 2rem;
-    margin-top: 4rem;
-  }
 }
 
-/* Celulares (480px - 600px) */
-@media (max-width: 600px) {
+/* MOBILE (abaixo de 600px) */
+@media (max-width: 599px) {
   .container {
-    padding-left: 2.5rem;
-    padding-right: 1.5rem;
-  }
-  
-  .sidebar-accent {
-    width: 4px;
-  }
-  
-  .hero-title {
-    font-size: clamp(2rem, 6vw, 3rem);
-    line-height: 1.1;
-  }
-  
-  .card {
-    padding: 1.5rem 1rem;
-  }
-  
-  .card-number {
-    font-size: 2rem;
-  }
-  
-  .brutal-list li {
-    padding-left: 2.5rem;
-  }
-  
-  .brutal-list li:hover {
-    padding-left: 3rem;
-  }
-  
-  .brutal-list li::before {
-    font-size: 1.5rem;
-  }
-  
-  .footer-text {
-    font-size: 0.75rem;
-  }
-}
-
-/* Celulares Pequenos (até 480px) */
-@media (max-width: 480px) {
-  .container {
-    padding-left: 2rem;
+    padding-left: 1.5rem;
     padding-right: 1rem;
   }
   
-  .sidebar-accent {
-    display: none; /* Opcional: removemos em telas muito pequenas */
-  }
-  
-  header {
-    padding: 3rem 0 1.5rem;
-  }
-  
-  .marca {
-    font-size: 0.75rem;
-    margin-bottom: 2rem;
-  }
-  
   .hero-title {
-    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    font-size: 1.75rem;
   }
   
-  .hero-subtitle {
+  .profile-decoration {
+    display: none;
+  }
+  
+  /* CARDS EM COLUNA ÚNICA */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Todos os cards ocupam a coluna completa */
+  .card-1, .card-2, .card-3, .card-4, .card-5, .card-6 {
+    grid-column: 1;
+    grid-row: auto !important;
+  }
+  
+  .card-title {
     font-size: 1.125rem;
-    margin-bottom: 3rem;
   }
   
-  .section {
-    padding: 3rem 0;
+  .card-text {
+    font-size: 0.875rem;
   }
   
   .section-title {
-    font-size: clamp(1.5rem, 6vw, 2.5rem);
+    font-size: 1.75rem;
+  }
+  
+  .text-block {
+    font-size: 1rem;
+  }
+}
+
+/* MOBILE MUITO PEQUENO (abaixo de 375px) */
+@media (max-width: 374px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem;
   }
   
   .card {
     padding: 1.25rem;
-    border-width: 2px;
   }
   
-  .quote-block {
-    padding: 2rem 1rem;
-    margin: 3rem 0;
-  }
-  
-  .quote-mark {
-    font-size: 3rem;
-    top: -0.5rem;
-  }
-  
-  .stats-grid {
-    border-width: 2px;
-  }
-  
-  .stat {
-    border-width: 2px;
-    padding: 1.5rem 1rem;
+  .card-number {
+    font-size: 1.5rem;
   }
 }
-
-/* Ajustes para orientação paisagem em celulares */
-@media (max-height: 600px) and (orientation: landscape) {
-  .sidebar-accent {
-    height: 150vh;
-  }
-  
-  header {
-    padding: 4rem 0 2rem;
-  }
-  
-  .hero-title {
-    font-size: clamp(2rem, 5vw, 4rem);
-  }
-  
-  .hero-subtitle {
-    margin-bottom: 3rem;
-  }
-}
-
-
-    </style>
+</style>
 </head>
 <body>
-    <!-- Barra lateral de acento -->
     <div class="sidebar-accent"></div>
     
     <div class="container">
-        <!-- Header -->
         <header>
             <div class="marca">THAIS CARVALHO NUTRI</div>
             
-            <h1 class="hero-title">
-                Para a <span class="glow-word">Mulher</span> Que 
-                <span class="glow-word">Carrega</span> o <span class="glow-word">Mundo</span>
-            </h1>
-            
-            <p class="hero-subtitle">
-                E ainda assim busca <span class="glow-word">tempo</span> para si mesma. 
-                Este é o <span class="glow-word">espaço</span> onde você finalmente <span class="glow-word">respira</span>, 
-                organiza seus <span class="glow-word">pensamentos</span> e redescobre sua <span class="glow-word">essência</span>.
-            </p>
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Para a <span class="glow-word">Mulher</span> Que 
+                        <span class="glow-word">Carrega</span> o <span class="glow-word">Mundo</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        E ainda assim busca <span class="glow-word">tempo</span> para si mesma. 
+                        Este é o <span class="glow-word">espaço</span> onde você finalmente <span class="glow-word">respira</span>, 
+                        organiza seus <span class="glow-word">pensamentos</span> e redescobre sua <span class="glow-word">essência</span>.
+                    </p>
+                </div>
+                
+                <div class="hero-image-container">
+                    <div class="profile-frame">
+                        <img 
+                            src="thais.png" 
+                            alt="Thais Carvalho - Nutricionista"
+                            class="profile-image"
+                            onerror="this.style.display='none'; this.parentElement.style.background='var(--amarelo)';"
+                        />
+                    </div>
+                    
+                    <div class="profile-decoration"></div>
+                    
+                  
+                </div>
+            </div>
         </header>
         
         <!-- Seção 01: Reconhecimento -->
@@ -823,38 +1022,41 @@ footer {
         <!-- Footer -->
         <footer>
             <p class="footer-text">Diário da Transformação • 2026</p>
-            <p class="footer-text">>Desenvolvido por <a href="https://www.instagram.com/eitadevis/">Eita Devis</a></p>
+            <p class="footer-text">Desenvolvido por <a href="https://www.instagram.com/eitadevis/">Eita Devis</a></p>
         </footer>
     </div>
     
     <script>
-        // Scroll-driven glow effect nas palavras-chave
+        // Função otimizada para efeito glow nas palavras
         function updateGlowWords() {
             const glowWords = document.querySelectorAll('.glow-word');
             const windowHeight = window.innerHeight;
-            const centerY = windowHeight / 2;
-            const activationRange = 150; // pixels de distância do centro
+            const centerY = windowHeight * 0.4; // 40% da altura para melhor UX
             
             glowWords.forEach(word => {
                 const rect = word.getBoundingClientRect();
                 const wordCenterY = rect.top + (rect.height / 2);
                 const distanceFromCenter = Math.abs(wordCenterY - centerY);
+                const activationRange = 200;
                 
-                // Ativa se estiver próximo do centro
-                if (distanceFromCenter < activationRange) {
-                    word.classList.add('active');
-                } else {
-                    word.classList.remove('active');
-                }
+                word.classList.toggle('active', distanceFromCenter < activationRange);
             });
         }
         
-        // Atualiza no scroll
-        window.addEventListener('scroll', updateGlowWords);
-        // Atualiza no carregamento
+        // Debounce para performance
+        let scrollTimeout;
+        function debouncedUpdate() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateGlowWords, 16); // ~60fps
+        }
+        
+        // Event listeners
+        window.addEventListener('scroll', debouncedUpdate, { passive: true });
         window.addEventListener('load', updateGlowWords);
-        // Atualiza ao redimensionar
-        window.addEventListener('resize', updateGlowWords);
+        window.addEventListener('resize', debouncedUpdate);
+        
+        // Inicializa o efeito
+        updateGlowWords();
     </script>
 </body>
 </html>
