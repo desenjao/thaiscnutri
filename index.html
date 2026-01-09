@@ -762,45 +762,210 @@ footer {
     font-size: 1.5rem;
   }
 }
+/* ESTILOS DO FORMULÁRIO */
+.lead-form-container {
+    margin-top: 3rem;
+    max-width: 400px;
+    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.lead-form {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1.5px solid rgba(76, 175, 80, 0.2);
+    border-radius: 8px;
+    padding: 1.75rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.form-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--preto);
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    font-size: 0.875rem;
+    color: var(--cinza);
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--verde-principal);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.form-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--verde-principal);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.form-submit:hover {
+    background: #43A047;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.form-submit svg {
+    transition: transform 0.3s ease;
+}
+
+.form-submit:hover svg {
+    transform: translateX(4px);
+}
+
+.form-note {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--cinza-claro);
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* ANIMAÇÃO */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1023px) {
+    .lead-form-container {
+        margin-left: auto;
+        margin-right: auto;
+    }
+}
+
+@media (max-width: 767px) {
+    .lead-form {
+        padding: 1.5rem;
+    }
+    
+    .lead-form-container {
+        max-width: 100%;
+    }
+}
 </style>
 </head>
 <body>
     <div class="sidebar-accent"></div>
     
     <div class="container">
-        <header>
-            <div class="marca">THAIS CARVALHO NUTRI</div>
+      <header>
+    <div class="marca">THAIS CARVALHO NUTRI</div>
+    
+    <div class="hero-content">
+        <div class="hero-text">
+            <h1 class="hero-title">
+                Para a <span class="glow-word">Mulher</span> Que 
+                <span class="glow-word">Carrega</span> o <span class="glow-word">Mundo</span>
+            </h1>
             
-            <div class="hero-content">
-                <div class="hero-text">
-                    <h1 class="hero-title">
-                        Para a <span class="glow-word">Mulher</span> Que 
-                        <span class="glow-word">Carrega</span> o <span class="glow-word">Mundo</span>
-                    </h1>
-                    
-                    <p class="hero-subtitle">
-                        E ainda assim busca <span class="glow-word">tempo</span> para si mesma. 
-                        Este é o <span class="glow-word">espaço</span> onde você finalmente <span class="glow-word">respira</span>, 
-                        organiza seus <span class="glow-word">pensamentos</span> e redescobre sua <span class="glow-word">essência</span>.
-                    </p>
-                </div>
-                
-                <div class="hero-image-container">
-                    <div class="profile-frame">
-                        <img 
-                            src="thais.png" 
-                            alt="Thais Carvalho - Nutricionista"
-                            class="profile-image"
-                            onerror="this.style.display='none'; this.parentElement.style.background='var(--amarelo)';"
-                        />
+            <p class="hero-subtitle">
+                E ainda assim busca <span class="glow-word">tempo</span> para si mesma. 
+                Este é o <span class="glow-word">espaço</span> onde você finalmente <span class="glow-word">respira</span>, 
+                organiza seus <span class="glow-word">pensamentos</span> e redescobre sua <span class="glow-word">essência</span>.
+            </p>
+
+            <!-- FORMULÁRIO DE CAPTAÇÃO DISCRETO -->
+            <div class="lead-form-container">
+                <form id="leadForm" class="lead-form">
+                    <div class="form-header">
+                        <span class="form-icon">✉️</span>
+                        <h3 class="form-title">Comece sua transformação</h3>
+                        <p class="form-subtitle">Receba conteúdo exclusivo e dicas práticas</p>
                     </div>
                     
-                    <div class="profile-decoration"></div>
+                    <div class="form-group">
+                        <input type="text" name="nome" placeholder="Seu nome" required>
+                    </div>
                     
-                  
-                </div>
+                    <div class="form-group">
+                        <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+                    </div>
+                    
+                    <button type="submit" class="form-submit">
+                        <span>Quero me reconectar</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                    
+                    <p class="form-note">Respeitamos sua privacidade. Sem spam.</p>
+                </form>
             </div>
-        </header>
+        </div>
+        
+        <div class="hero-image-container">
+            <div class="profile-frame">
+                <img 
+                    src="thais.webp" 
+                    alt="Thais Carvalho - Nutricionista"
+                    class="profile-image"
+                    onerror="this.style.display='none'; this.parentElement.style.background='var(--amarelo)';"
+                />
+            </div>
+            
+            <div class="profile-decoration"></div>
+            
+            <div class="profile-caption">
+                <div class="profile-name">Thais Carvalho</div>
+                <div class="profile-title">Nutricionista & Mentora de Autocuidado</div>
+            </div>
+        </div>
+    </div>
+</header>
         
         <!-- Seção 01: Reconhecimento -->
         <section class="section">
@@ -1057,6 +1222,77 @@ footer {
         
         // Inicializa o efeito
         updateGlowWords();
+        // Script apenas para o formulário
+document.addEventListener('DOMContentLoaded', function() {
+    const form = document.getElementById('leadForm');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            const submitBtn = form.querySelector('.form-submit');
+            const originalText = submitBtn.innerHTML;
+            
+            // Simulação de envio
+            submitBtn.innerHTML = '<span>Enviando...</span>';
+            submitBtn.disabled = true;
+            
+            // Aqui você integraria com seu serviço de captação (Mailchimp, Google Sheets, etc.)
+            setTimeout(() => {
+                // Mensagem de sucesso
+                form.innerHTML = `
+                    <div class="form-success">
+                        <div class="success-icon">✅</div>
+                        <h3 class="success-title">Pronto! Você está dentro</h3>
+                        <p class="success-text">Em breve você receberá conteúdo exclusivo para sua jornada de autocuidado.</p>
+                        <button onclick="location.reload()" class="success-btn">Enviar outro e-mail</button>
+                    </div>
+                `;
+                
+                // Estilos para mensagem de sucesso
+                const style = document.createElement('style');
+                style.textContent = `
+                    .form-success {
+                        text-align: center;
+                        padding: 1rem;
+                    }
+                    .success-icon {
+                        font-size: 3rem;
+                        margin-bottom: 1rem;
+                        opacity: 0.9;
+                    }
+                    .success-title {
+                        font-family: 'Space Grotesk', sans-serif;
+                        font-size: 1.25rem;
+                        color: var(--verde-principal);
+                        margin-bottom: 0.75rem;
+                    }
+                    .success-text {
+                        color: var(--cinza);
+                        line-height: 1.6;
+                        margin-bottom: 1.5rem;
+                    }
+                    .success-btn {
+                        background: transparent;
+                        border: 1.5px solid var(--verde-principal);
+                        color: var(--verde-principal);
+                        padding: 0.75rem 1.5rem;
+                        border-radius: 6px;
+                        font-family: 'Inter', sans-serif;
+                        font-weight: 500;
+                        cursor: pointer;
+                        transition: all 0.3s ease;
+                    }
+                    .success-btn:hover {
+                        background: rgba(76, 175, 80, 0.1);
+                    }
+                `;
+                document.head.appendChild(style);
+                
+            }, 1500);
+        });
+    }
+});
     </script>
 </body>
 </html>
