@@ -921,33 +921,36 @@ footer {
             </p>
 
             <!-- FORMULÁRIO DE CAPTAÇÃO DISCRETO -->
-            <div class="lead-form-container" id="form">
-                <form id="leadForm" class="lead-form">
-                    <div class="form-header">
-                        <span class="form-icon">✉️</span>
-                        <h3 class="form-title">Comece sua transformação</h3>
-                        <p class="form-subtitle">Receba conteúdo exclusivo e dicas práticas</p>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="text" name="nome" placeholder="Seu nome" required>
-                    </div>
-                    
-                    <div class="form-group">
-                        <input type="email" name="email" placeholder="Seu melhor e-mail" required>
-                    </div>
-                    
-                    <button type="submit" class="form-submit">
-                        <span>Quero me reconectar</span>
-                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
-                        </svg>
-                    </button>
-                    
-                    <p class="form-note">Respeitamos sua privacidade. Sem spam.</p>
-                </form>
-            </div>
-        </div>
+<div class="lead-form-container" id="form">
+  <form id="leadForm" class="lead-form">
+    
+    <div class="form-header">
+      <span class="form-icon">✉️</span>
+      <h3 class="form-title">Comece sua transformação</h3>
+      <p class="form-subtitle">Receba conteúdo exclusivo e dicas práticas</p>
+    </div>
+
+    <div class="form-group">
+      <input type="text" name="nome" placeholder="Seu nome" required>
+    </div>
+
+    <div class="form-group">
+      <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+    </div>
+
+    <button type="submit" class="form-submit">
+      <span>Quero me reconectar</span>
+      <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+        <path d="M5 12H19M19 12L12 5M19 12L12 19"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"/>
+      </svg>
+    </button>
+
+    <p class="form-note">Respeitamos sua privacidade. Sem spam.</p>
+  </form>
+</div>
         
         <div class="hero-image-container" >
             <div class="profile-frame">
@@ -1069,7 +1072,7 @@ footer {
         <!-- Stats Brutal -->
         <div class="stats-grid">
             <div class="stat">
-                <div class="stat-number">7</div>
+                <div class="stat-number">6</div>
                 <div class="stat-label">Dias de Direcionameto</div>
             </div>
             <div class="stat">
@@ -1209,6 +1212,20 @@ footer {
   <a href="https://eitadevis.vercel.app/" style="text-decoration: none ; " > <p class="footer-text" style="color: rgb(255, 106, 0);"><span style="color:#7A7A7A;">produzido por: </span>EITA DEVIS</p></a>
   </footer>
     <script>
+      document.getElementById('leadForm').addEventListener('submit', function(e) {
+  e.preventDefault();
+
+  const nome = this.nome.value.trim();
+  const email = this.email.value.trim();
+
+  const telefone = '5589981287260'; // <-- TROQUE PELO SEU WHATSAPP
+  const mensagem = `Oi! Meu nome é ${nome}. Meu e-mail é ${email}. Quero saber mais sobre o desafio: RECOMEÇAR MAIS LEVE 🙂`;
+
+  const url = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
+
+  window.location.href = url;
+});
+</script>
         // Função otimizada para efeito glow nas palavras
         function updateGlowWords() {
             const glowWords = document.querySelectorAll('.glow-word');
