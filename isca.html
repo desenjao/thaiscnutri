@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mulher Que Carrega o Mundo</title>
+    <title>Thais Carvalho Nutri | Para a mulher que cuida de todos e quer voltar a cuidar de si</title>
     
     <!-- Fontes otimizadas -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -107,7 +107,7 @@ header {
 /* TÍTULO PRINCIPAL ELEGANTE */
 .hero-title {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 3.5rem;
+  font-size: 2.75rem;
   font-weight: 700;
   line-height: 1.1;
   letter-spacing: -0.01em;
@@ -117,12 +117,13 @@ header {
 }
 
 .hero-subtitle {
-  font-size: 1.25rem;
+  font-size: 1.2rem;
   font-weight: 350;
   max-width: 700px;
   color: var(--cinza);
   line-height: 1.7;
   letter-spacing: 0.01em;
+  margin-bottom: 1.5rem;
 }
 
 /* GLOW WORD SUTIL */
@@ -210,6 +211,16 @@ header {
   color: var(--cinza);
   font-weight: 350;
   line-height: 1.4;
+  margin-bottom: 0.25rem;
+}
+
+.profile-description {
+  font-size: 0.7rem;
+  color: var(--cinza-claro);
+  font-weight: 350;
+  line-height: 1.4;
+  font-style: italic;
+  margin-top: 0.5rem;
 }
 
 /* SEÇÕES ELEGANTES */
@@ -312,7 +323,7 @@ header {
 
 .card-number {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 2rem;
+  font-size: 1.8rem;
   font-weight: 700;
   line-height: 1;
   margin-bottom: 1rem;
@@ -343,8 +354,8 @@ header {
 .quote-block {
   background: linear-gradient(135deg, rgba(46, 46, 46, 0.98), var(--preto));
   color: white;
-  padding: 4rem 3rem;
-  margin: 5rem 0;
+  padding: 3rem 2.5rem;
+  margin: 4rem 0;
   border-left: 4px solid var(--verde-claro);
   position: relative;
   border-radius: 0 4px 4px 0;
@@ -352,10 +363,10 @@ header {
 
 .quote-mark {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 8rem;
+  font-size: 6rem;
   font-weight: 700;
   position: absolute;
-  top: -2rem;
+  top: -1.5rem;
   right: 2rem;
   opacity: 0.05;
   line-height: 1;
@@ -363,7 +374,7 @@ header {
 
 .quote-text {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 1.75rem;
+  font-size: 1.5rem;
   font-weight: 500;
   line-height: 1.4;
   position: relative;
@@ -409,6 +420,28 @@ header {
 .brutal-list li:hover::before {
   transform: translateX(4px);
   opacity: 1;
+}
+
+/* LAYOUT DE DUAS COLUNAS */
+.two-columns {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 3rem;
+  margin: 3rem 0;
+}
+
+.column-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1.5rem;
+  color: var(--verde-principal);
+}
+
+.column ul.brutal-list li {
+  font-size: 1rem;
+  padding: 1rem 0;
+  padding-left: 2rem;
 }
 
 /* STATS ELEGANTES */
@@ -462,12 +495,18 @@ header {
   z-index: 1;
 }
 
+.stat-icon {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  display: block;
+}
+
 .stat-number {
   font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
-  font-size: 3rem;
+  font-size: 2.5rem;
   font-weight: 700;
   line-height: 1;
-  margin-bottom: 0.75rem;
+  margin-bottom: 0.5rem;
   color: var(--verde-principal);
 }
 
@@ -477,6 +516,46 @@ header {
   text-transform: uppercase;
   letter-spacing: 0.1em;
   color: var(--cinza);
+  line-height: 1.3;
+}
+
+/* NOTE DA JORNADA */
+.journey-note {
+  margin: 3rem 0;
+  padding: 2rem;
+  background: rgba(165, 214, 167, 0.1);
+  border-left: 3px solid var(--verde-principal);
+  border-radius: 0 4px 4px 0;
+}
+
+.note-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.2rem;
+  font-weight: 500;
+  line-height: 1.5;
+  color: var(--preto);
+}
+
+/* MENSAGEM FINAL */
+.final-message {
+  font-size: 1.3rem;
+  font-weight: 500;
+  text-align: center;
+  margin: 2.5rem 0;
+  padding: 1.5rem;
+  background: rgba(76, 175, 80, 0.05);
+  border-radius: 4px;
+}
+
+/* CTA FINAL */
+.final-cta {
+  margin: 3rem 0;
+  text-align: center;
+}
+
+.cta-button {
+  display: inline-block;
+  text-decoration: none;
 }
 
 /* FOOTER ELEGANTE */
@@ -552,7 +631,7 @@ footer {
 
 /* ESTILOS DO FORMULÁRIO */
 .lead-form-container {
-    margin-top: 3rem;
+    margin-top: 2rem;
     max-width: 400px;
     animation: fadeInUp 0.6s ease-out 0.4s forwards;
     opacity: 0;
@@ -655,30 +734,6 @@ footer {
     line-height: 1.5;
 }
 
-/* Botão CTA */
-.cta-button {
-    background: var(--verde-principal);
-    color: white;
-    border: 1.5px solid var(--preto);
-    padding: 1rem 2.5rem;
-    font-family: 'Space Grotesk', sans-serif;
-    font-size: 1rem;
-    font-weight: 600;
-    border-radius: 2px;
-    cursor: pointer;
-    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
-    letter-spacing: 0.02em;
-    text-transform: uppercase;
-    position: relative;
-    overflow: hidden;
-}
-
-.cta-button:hover {
-    transform: translate(-2px, -2px);
-    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
-}
-
 /* RESPONSIVIDADE COM LAYOUT CORRETO */
 
 /* DESKTOP MÉDIO (1024px - 1399px) */
@@ -690,7 +745,7 @@ footer {
   }
   
   .hero-title {
-    font-size: 3rem;
+    font-size: 2.5rem;
   }
   
   .section-title {
@@ -708,6 +763,10 @@ footer {
   
   .card {
     padding: 1.75rem;
+  }
+  
+  .two-columns {
+    gap: 2rem;
   }
 }
 
@@ -734,11 +793,6 @@ footer {
     padding-right: 0;
   }
   
-  .lead-form-container {
-    margin-left: auto;
-    margin-right: auto;
-  }
-  
   /* CARDS EM 8 COLUNAS (2 CARDS POR LINHA) */
   .cards-grid {
     grid-template-columns: repeat(8, 1fr);
@@ -752,6 +806,11 @@ footer {
   .card-4 { grid-column: 5 / 9; grid-row: 2; }
   .card-5 { grid-column: 1 / 5; grid-row: 3; }
   .card-6 { grid-column: 5 / 9; grid-row: 3; }
+  
+  .two-columns {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
 }
 
 /* TABLET (600px - 767px) */
@@ -774,23 +833,15 @@ footer {
   }
   
   .hero-title {
-    font-size: 2.25rem;
+    font-size: 2rem;
   }
   
   .hero-subtitle {
-    font-size: 1.125rem;
+    font-size: 1.1rem;
   }
   
   .section {
     padding: 3rem 0;
-  }
-  
-  .lead-form {
-    padding: 1.5rem;
-  }
-  
-  .lead-form-container {
-    max-width: 100%;
   }
   
   /* CARDS EM 6 COLUNAS (ainda 2 cards por linha mas mais estreitos) */
@@ -812,18 +863,18 @@ footer {
   .card-6 { grid-column: 4 / 7; grid-row: 3; }
   
   .quote-block {
-    padding: 3rem 1.5rem;
+    padding: 2.5rem 1.5rem;
     margin: 3rem 0;
   }
   
   .quote-mark {
-    font-size: 5rem;
+    font-size: 4rem;
     top: -1rem;
     right: 1rem;
   }
   
   .quote-text {
-    font-size: 1.5rem;
+    font-size: 1.3rem;
   }
   
   /* Stats em coluna única */
@@ -883,6 +934,10 @@ footer {
   .text-block {
     font-size: 1rem;
   }
+  
+  .lead-form-container {
+    max-width: 100%;
+  }
 }
 
 /* MOBILE MUITO PEQUENO (abaixo de 375px) */
@@ -917,42 +972,39 @@ footer {
                 <div class="hero-text">
                     <h1 class="hero-title">
                         Para a <span class="glow-word">Mulher</span> Que 
-                        <span class="glow-word">Cuida</span> de <span class="glow-word">Todos </span> e quer voltar a <span class="glow-word">Cuidar de si</span>
+                        Cuida de Todos e Quer Voltar a <span class="glow-word">Cuidar</span> de Si
                     </h1>
                     
                     <p class="hero-subtitle">
-                        Se você vive cansada <span class="glow-word">sobrecarregada</span> e sente que se perdeu no meio de tantas responsabilidades 
-                        Este <span class="glow-word">espaço</span>é pra você. <span class="glow-word">Aqui, você aprende</span>, 
-                        a se reconectar <span class="glow-word"> com você mesma</span> de forma simples <span class="glow-word">, possível e real</span>.
+                        Se você vive cansada, sobrecarregada e sente que se perdeu no meio de tantas responsabilidades, 
+                        este espaço é para você. Aqui, você aprende a se reconectar com você mesma de forma simples, 
+                        possível e real.
                     </p>
 
-                    <!-- FORMULÁRIO DE CAPTAÇÃO DISCRETO -->
+                    <!-- FORMULÁRIO DE CAPTAÇÃO -->
                     <div class="lead-form-container" id="form">
                         <form id="leadForm" class="lead-form">
                             <div class="form-header">
                                 <span class="form-icon">✉️</span>
                                 <h3 class="form-title">Comece sua transformação</h3>
-                                <p class="form-subtitle">Receba conteúdo exclusivo e dicas práticas</p>
+                                <p class="form-subtitle">Receba conteúdos práticos sobre autocuidado, alimentação consciente e organização emocional para a vida real.</p>
                             </div>
-
+                            
                             <div class="form-group">
                                 <input type="text" name="nome" placeholder="Seu nome" required>
                             </div>
-
+                            
                             <div class="form-group">
                                 <input type="email" name="email" placeholder="Seu melhor e-mail" required>
                             </div>
-
+                            
                             <button type="submit" class="form-submit">
                                 <span>Quero me reconectar</span>
                                 <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
-                                    <path d="M5 12H19M19 12L12 5M19 12L12 19"
-                                        stroke="currentColor"
-                                        stroke-width="2"
-                                        stroke-linecap="round"/>
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
                                 </svg>
                             </button>
-
+                            
                             <p class="form-note">Respeitamos sua privacidade. Sem spam.</p>
                         </form>
                     </div>
@@ -971,246 +1023,263 @@ footer {
                     <div class="profile-decoration"></div>
                     
                     <div class="profile-caption">
-                        <div class="profile-name">Thais Carvalho</div>
+                        <div class="profile-name">Thais Coelho Carvalho</div>
                         <div class="profile-title">Nutricionista & Mentora de Autocuidado</div>
+                        <div class="profile-description">
+                            Ajudo mulheres a retomarem o controle da própria rotina, da saúde e da relação consigo mesmas, 
+                            começando pelo básico que funciona.
+                        </div>
                     </div>
                 </div>
             </div>
         </header>
         
-        <p class="text-block">
-            Você não está <span class="glow-word">sozinha</span>. Muitas mulheres chegam até aqui sentindo:
-        </p>
-
-        <div class="cards-grid">
-            <div class="card card-1">
-                <div class="card-number">01</div>
-                <h3 class="card-title">Mente Acelerada</h3>
-                <p class="card-text">
-                    Pensamentos que não param, mesmo na hora de dormir.
-                </p>
-            </div>
+        <!-- Seção 01: IDENTIFICAÇÃO -->
+        <section class="section">
+            <span class="section-number">01 / IDENTIFICAÇÃO</span>
+            <h2 class="section-title">Você Se <span class="glow-word">Identifica</span> Com Isso?</h2>
             
-            <div class="card card-2">
-                <div class="card-number">02</div>
-                <h3 class="card-title">Falta de Tempo Para Si</h3>
-                <p class="card-text">
-                    Você cuida de tudo e de todos, mas nunca sobra tempo para você.
-                </p>
-            </div>
+            <p class="text-block">
+                Você não está sozinha. Muitas mulheres chegam até aqui sentindo:
+            </p>
             
-            <div class="card card-3">
-                <div class="card-number">03</div>
-                <h3 class="card-title">Cansaço Constante</h3>
-                <p class="card-text">
-                    Um cansaço que não é só físico, é emocional, e muitas vezes também nutricional.
-                </p>
+            <div class="cards-grid">
+                <div class="card card-1">
+                    <div class="card-number">✔</div>
+                    <h3 class="card-title">Mente acelerada</h3>
+                    <p class="card-text">
+                        Pensamentos que não param, mesmo na hora de dormir. A cabeça é uma lista infinita que nunca descansa.
+                    </p>
+                </div>
+                
+                <div class="card card-2">
+                    <div class="card-number">✔</div>
+                    <h3 class="card-title">Falta de tempo para si</h3>
+                    <p class="card-text">
+                        Você cuida de tudo e de todos, mas nunca sobra tempo para você. O seu nome sempre fica por último.
+                    </p>
+                </div>
+                
+                <div class="card card-3">
+                    <div class="card-number">✔</div>
+                    <h3 class="card-title">Cansaço constante</h3>
+                    <p class="card-text">
+                        Um cansaço que não é só físico, é emocional, e muitas vezes também nutricional. O corpo pede descanso.
+                    </p>
+                </div>
+                
+                <div class="card card-4">
+                    <div class="card-number">✔</div>
+                    <h3 class="card-title">Culpa ao tentar e parar</h3>
+                    <p class="card-text">
+                        Quando descansa, sente culpa. Quando continua, se esgota. Um ciclo que parece não ter saída.
+                    </p>
+                </div>
+                
+                <div class="card card-5">
+                    <div class="card-number">✔</div>
+                    <h3 class="card-title">Alimentação no automático</h3>
+                    <p class="card-text">
+                        Dias passando à base de massas, açúcar e gordura, sem água suficiente — não por falta de vontade, mas por falta de orientação simples.
+                    </p>
+                </div>
+                
+                <div class="card card-6">
+                    <div class="card-number">✔</div>
+                    <h3 class="card-title">Identidade perdida</h3>
+                    <p class="card-text">
+                        Você exerce muitos papéis, mas não sabe mais quem é de verdade quando tira todos os "chapéus".
+                    </p>
+                </div>
             </div>
-            
-            <div class="card card-4">
-                <div class="card-number">04</div>
-                <h3 class="card-title">Culpa ao Tentar e Parar</h3>
-                <p class="card-text" style="color: white;">
-                    Quando descansa, sente culpa. Quando continua, se esgota.
-                </p>
-            </div>
-            
-            <div class="card card-5">
-                <div class="card-number">05</div>
-                <h3 class="card-title">Alimentação no Automático</h3>
-                <p class="card-text">
-                    Dias passando à base de massas, açúcar e gordura, sem água suficiente, sem uma fruta, sem uma salada — não por falta de vontade, mas por falta de orientação simples.
-                </p>
-            </div>
-            
-            <div class="card card-6">
-                <div class="card-number">06</div>
-                <h3 class="card-title">Identidade Perdida</h3>
-                <p class="card-text">
-                    Você exerce muitos papéis, mas não sabe mais quem é de verdade.
-                </p>
-            </div>
-        </div>
+        </section>
         
-        <!-- Citação Brutal -->
+        <!-- Citação Central -->
         <div class="quote-block">
             <div class="quote-mark">"</div>
             <p class="quote-text">
-                Você não precisa de uma <span class="glow-word">dieta perfeita</span>.
+                Você não precisa de uma <span class="glow-word">dieta perfeita</span>.<br>
                 Você precisa do <span class="glow-word">básico bem feito</span>.
             </p>
         </div>
         
-        <!-- Seção 02: O Caminho -->
+        <!-- Seção 02: APRENDIZADO -->
         <section class="section">
-            <span class="section-number">02 / TRANSFORMAÇÃO</span>
-            <h2 class="section-title">O que você vai <span class="glow-word">aprender</span> aqui</h2>
+            <span class="section-number">02 / APRENDIZADO</span>
+            <h2 class="section-title">O Que Você Vai <span class="glow-word">Aprender</span> Aqui</h2>
             
             <p class="text-block">
-                Antes de qualquer <span class="glow-word">método complicado</span>, 
-                vem o <span class="glow-word">essencial</span> e ele funciona.
+                Antes de qualquer método complicado, vem o essencial e ele funciona.
             </p>
             
-            <p class="text-block">
-                Muitas vezes, o que está <span class="glow-word">faltando</span> é:
-            </p>
+            <div class="two-columns">
+                <div class="column">
+                    <h3 class="column-title">Muitas vezes, o que está faltando é:</h3>
+                    <ul class="brutal-list">
+                        <li>Beber <span class="glow-word">água</span> na quantidade certa</li>
+                        <li>Comer ao menos uma <span class="glow-word">fruta</span> por dia</li>
+                        <li>Ter uma <span class="glow-word">salada</span> no almoço</li>
+                        <li>Fazer <span class="glow-word">refeições de verdade</span>, não só beliscos</li>
+                        <li>Diminuir o excesso de <span class="glow-word">massas, açúcar e gordura</span></li>
+                    </ul>
+                </div>
+                
+                <div class="column">
+                    <h3 class="column-title">Aqui, você vai aprender a:</h3>
+                    <ul class="brutal-list">
+                        <li>Organizar sua <span class="glow-word">rotina alimentar</span> sem radicalismo</li>
+                        <li>Cuidar da sua <span class="glow-word">saúde emocional</span> junto com a alimentação</li>
+                        <li>Entender que <span class="glow-word">constância</span> vale mais do que perfeição</li>
+                        <li>Criar <span class="glow-word">hábitos simples</span> que cabem na sua vida real</li>
+                    </ul>
+                </div>
+            </div>
             
-            <ul class="brutal-list">
-                <li>Beber <span class="glow-word">água</span> na quantidade certa</li>
-                <li>Comer ao menos uma <span class="glow-word">fruta</span> por dia</li>
-                <li>Ter uma <span class="glow-word">salada</span> no almoço</li>
-                <li>Fazer <span class="glow-word">refeições</span> de verdade, não só beliscos</li>
-                <li>Diminuir o excesso de <span class="glow-word">massas, açúcar e gordura</span></li>
-            </ul>
-            
-            <p class="text-block">
-                Aqui, você vai <span class="glow-word">aprender</span> a:
-            </p>
-            
-            <ul class="brutal-list">
-                <li>Organizar sua <span class="glow-word">rotina alimentar</span> sem radicalismo</li>
-                <li>Cuidar da sua <span class="glow-word">saúde emocional</span> junto com a alimentação</li>
-                <li>Entender que <span class="glow-word">constância</span> vale mais do que perfeição</li>
-                <li>Criar <span class="glow-word">hábitos simples</span> que cabem na sua vida real</li>
-            </ul>
+            <!-- Stats Concretas -->
+            <div class="stats-grid">
+                <div class="stat">
+                    <div class="stat-icon">⏱</div>
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">minutos por dia</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-icon">📅</div>
+                    <div class="stat-number">7</div>
+                    <div class="stat-label">dias de direcionamento</div>
+                </div>
+                <div class="stat">
+                    <div class="stat-icon">🌱</div>
+                    <div class="stat-number"></div>
+                    <div class="stat-label">mudanças simples e possíveis</div>
+                </div>
+            </div>
         </section>
         
-        <!-- Stats Brutal -->
-        <div class="stats-grid">
-            <div class="stat">
-                <div class="stat-number">6</div>
-                <div class="stat-label">Dias de Direcionameto</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">15</div>
-                <div class="stat-label">Min por Dia</div>
-            </div>
-            <div class="stat">
-                <div class="stat-number">🌱</div>
-                <div class="stat-label">Mudanças simples</div>
-            </div>
-        </div>
-        
-        <!-- Seção 03: Jornada -->
+        <!-- Seção 03: JORNADA -->
         <section class="section">
-            <span class="section-number">03 / SUA JORNADA</span>
-            <h2 class="section-title">Uma jornada <span class="glow-word">prática</span> de <span class="glow-word">7 dias</span></h2>
+            <span class="section-number">03 / JORNADA</span>
+            <h2 class="section-title">Uma <span class="glow-word">Jornada</span> Prática de 7 Dias</h2>
             
             <p class="text-block">
-                Um processo <span class="glow-word">simples</span> para te ajudar a se reorganizar 
-                <span class="glow-word">por dentro</span> e <span class="glow-word">por fora</span> — 
-                começando pelo <span class="glow-word">básico</span>.
+                Um processo simples para te ajudar a se reorganizar por dentro e por fora — começando pelo básico.
             </p>
             
             <div class="cards-grid">
                 <div class="card card-1">
                     <div class="card-number">DIA 1</div>
-                    <h3 class="card-title">Organização Mental e Alimentar</h3>
+                    <h3 class="card-title">Organização mental e alimentar</h3>
                     <p class="card-text">
-                        Entenda onde está sua energia e como está sua alimentação hoje.
+                        Entenda onde está sua energia e como está sua alimentação hoje. Primeiro passo: reconhecer.
                     </p>
                 </div>
                 
                 <div class="card card-2">
                     <div class="card-number">DIA 2</div>
-                    <h3 class="card-title">Emoções e Fome Emocional</h3>
+                    <h3 class="card-title">Emoções e fome emocional</h3>
                     <p class="card-text">
-                        Aprenda a diferenciar fome física de emocional.
+                        Aprenda a diferenciar fome física de emocional. O que você está realmente sentindo?
                     </p>
                 </div>
                 
                 <div class="card card-3">
                     <div class="card-number">DIA 3</div>
-                    <h3 class="card-title">Valores e Escolhas</h3>
+                    <h3 class="card-title">Valores e escolhas</h3>
                     <p class="card-text">
-                        O que guia suas decisões, inclusive à mesa?
+                        O que guia suas decisões, inclusive à mesa? Seus valores influenciam cada escolha.
                     </p>
                 </div>
                 
                 <div class="card card-4">
                     <div class="card-number">DIA 4</div>
-                    <h3 class="card-title">Limites e Rotina</h3>
-                    <p class="card-text" style="color: white;">
-                        Identifique o que te drena e aprenda a se respeitar.
+                    <h3 class="card-title">Limites e rotina</h3>
+                    <p class="card-text">
+                        Identifique o que te drena e aprenda a se respeitar. Limites são atos de amor próprio.
                     </p>
                 </div>
                 
                 <div class="card card-5">
                     <div class="card-number">DIA 5</div>
-                    <h3 class="card-title">Reconexão com Você</h3>
+                    <h3 class="card-title">Reconexão com você</h3>
                     <p class="card-text">
-                        Resgate desejos, vontades e autocuidado.
+                        Resgate desejos, vontades e autocuidado. Quem é você quando ninguém está olhando?
                     </p>
                 </div>
                 
                 <div class="card card-6">
                     <div class="card-number">DIA 6</div>
-                    <h3 class="card-title">Autocuidado Possível</h3>
+                    <h3 class="card-title">Autocuidado possível</h3>
                     <p class="card-text">
-                        Crie pequenos rituais — beber água, comer melhor, pausar — sem culpa.
+                        Crie pequenos rituais — beber água, comer melhor, pausar — sem culpa. A simplicidade funciona.
                     </p>
                 </div>
             </div>
             
-            <p class="text-block" style="margin-top: 3rem; text-align: center;">
-                Não é sobre fazer tudo ao mesmo tempo.<br>
-                É sobre fazer o <span class="glow-word">básico</span> todos os dias.
-            </p>
-        </section>
-
-        <!-- Bloco Final -->
-        <div class="quote-block">
-            <div class="quote-mark">"</div>
-            <p class="quote-text">
-                Um caminho <span class="glow-word">simples</span>, 
-                <span class="glow-word">possível</span> e 
-                <span class="glow-word">real</span> de volta para você.
-            </p>
-        </div>
-
-        <!-- Seção Final -->
-        <section class="section">
-            <span class="section-number">04 / PRÓXIMOS PASSOS</span>
-            <h2 class="section-title">Você <span class="glow-word">merece</span> esse cuidado</h2>
-            
-            <p class="text-block">
-                Cuidar de você não é <span class="glow-word">egoísmo</span>. 
-                É <span class="glow-word">necessidade</span>.
-            </p>
-            
-            <ul class="brutal-list">
-                <li>Você não precisa <span class="glow-word">cortar tudo</span> o que gosta</li>
-                <li>Você não precisa seguir <span class="glow-word">dietas mirabolantes</span></li>
-                <li>Você não precisa ser <span class="glow-word">perfeita</span></li>
-                <li>Você só precisa <span class="glow-word">começar pelo básico e manter</span></li>
-            </ul>
-            
-            <div style="text-align: center; margin-top: 3rem;">
-                <a href="#form" style="text-decoration: none; display: inline-block;">
-                    <button class="cta-button">
-                        Começar Minha Transformação
-                    </button>
-                </a>
+            <div class="journey-note">
+                <p class="note-text">
+                    <span class="glow-word">Não é sobre fazer tudo ao mesmo tempo.</span><br>
+                    <span class="glow-word">É sobre fazer o básico todos os dias.</span>
+                </p>
             </div>
         </section>
-
+        
+        <!-- Seção Final: CUIDADO -->
+        <section class="section">
+            <span class="section-number">04 / CUIDADO</span>
+            <h2 class="section-title">Você <span class="glow-word">Merece</span> Este Cuidado</h2>
+            
+            <div class="quote-block" style="margin: 2rem 0;">
+                <div class="quote-mark">"</div>
+                <p class="quote-text">
+                    Cuidar de você não é <span class="glow-word">egoísmo</span>.<br>
+                    É <span class="glow-word">necessidade</span>.
+                </p>
+            </div>
+            
+            <p class="text-block">
+                Você não precisa:
+            </p>
+            
+            <ul class="brutal-list final-list">
+                <li>Cortar tudo o que <span class="glow-word">gosta</span></li>
+                <li>Seguir <span class="glow-word">dietas mirabolantes</span></li>
+                <li>Ser <span class="glow-word">perfeita</span></li>
+            </ul>
+            
+            <p class="final-message">
+                Você só precisa <span class="glow-word">começar</span> pelo básico e 
+                <span class="glow-word">manter</span>.
+            </p>
+            
+            <!-- CTA Forte e Direto -->
+            <div class="final-cta">
+                <a href="#form" class="cta-button">
+                    <button class="form-submit" style="max-width: 350px; margin: 0 auto;">
+                        <span>Começar Minha Jornada Agora</span>
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                            <path d="M5 12H19M19 12L12 5M19 12L12 19" stroke="currentColor" stroke-width="2" stroke-linecap="round"/>
+                        </svg>
+                    </button>
+                </a>
+                <p style="margin-top: 1rem; font-size: 0.875rem; color: var(--cinza);">
+                    Seu primeiro passo para voltar a cuidar de si mesma
+                </p>
+            </div>
+        </section>
+        
         <!-- Footer -->
         <footer>
             <p class="footer-text">Diário da Transformação • 2026</p>
-            <a href="https://eitadevis.vercel.app/" style="text-decoration: none;">
-                <p class="footer-text" style="color: rgb(255, 106, 0);">
-                    <span style="color:#7A7A7A;">produzido por: </span>EITA DEVIS
-                </p>
-            </a>
+            <p class="footer-text">Um caminho simples, possível e real de volta para você.</p>
+            <p class="footer-text">Desenvolvido por <a href="https://www.instagram.com/eitadevis/">Eita Devis</a></p>
         </footer>
     </div>
-
+    
     <script>
-        // Script para o efeito glow nas palavras
+        // Função otimizada para efeito glow nas palavras
         function updateGlowWords() {
             const glowWords = document.querySelectorAll('.glow-word');
             const windowHeight = window.innerHeight;
-            const centerY = windowHeight * 0.4; // 40% da altura para melhor UX
+            const centerY = windowHeight * 0.4;
             
             glowWords.forEach(word => {
                 const rect = word.getBoundingClientRect();
@@ -1226,10 +1295,10 @@ footer {
         let scrollTimeout;
         function debouncedUpdate() {
             clearTimeout(scrollTimeout);
-            scrollTimeout = setTimeout(updateGlowWords, 16); // ~60fps
+            scrollTimeout = setTimeout(updateGlowWords, 16);
         }
         
-        // Event listeners para o efeito glow
+        // Event listeners
         window.addEventListener('scroll', debouncedUpdate, { passive: true });
         window.addEventListener('load', updateGlowWords);
         window.addEventListener('resize', debouncedUpdate);
@@ -1237,7 +1306,7 @@ footer {
         // Inicializa o efeito
         updateGlowWords();
         
-        // Script para o formulário
+        // Script apenas para o formulário
         document.addEventListener('DOMContentLoaded', function() {
             const form = document.getElementById('leadForm');
             
@@ -1245,49 +1314,66 @@ footer {
                 form.addEventListener('submit', function(e) {
                     e.preventDefault();
                     
-                    const nome = this.nome.value.trim();
-                    const email = this.email.value.trim();
-                    
-                    // Aqui você pode integrar com seu serviço de captação
-                    // Exemplo com WhatsApp:
-                    const telefone = '5589981287260'; // Substitua pelo seu WhatsApp
-                    const mensagem = `Oi! Meu nome é ${nome}. Meu e-mail é ${email}. Quero saber mais sobre o desafio: RECOMEÇAR MAIS LEVE 🙂`;
-                    
-                    // Redireciona para WhatsApp
-                    window.location.href = `https://wa.me/${telefone}?text=${encodeURIComponent(mensagem)}`;
-                    
-                    // Ou use esta alternativa para mostrar mensagem de sucesso:
-                    /*
                     const submitBtn = form.querySelector('.form-submit');
                     const originalText = submitBtn.innerHTML;
                     
+                    // Simulação de envio
                     submitBtn.innerHTML = '<span>Enviando...</span>';
                     submitBtn.disabled = true;
                     
+                    // Aqui você integraria com seu serviço de captação
                     setTimeout(() => {
+                        // Mensagem de sucesso
                         form.innerHTML = `
-                            <div style="text-align: center; padding: 2rem;">
-                                <div style="font-size: 3rem; margin-bottom: 1rem;">✅</div>
-                                <h3 style="color: var(--verde-principal); margin-bottom: 1rem;">Pronto! Você está dentro</h3>
-                                <p style="color: var(--cinza);">Em breve você receberá conteúdo exclusivo para sua jornada de autocuidado.</p>
+                            <div class="form-success">
+                                <div class="success-icon">✅</div>
+                                <h3 class="success-title">Pronto! Você está dentro</h3>
+                                <p class="success-text">Em breve você receberá o primeiro conteúdo para sua jornada de autocuidado.</p>
+                                <button onclick="location.reload()" class="success-btn">Enviar outro e-mail</button>
                             </div>
                         `;
+                        
+                        // Estilos para mensagem de sucesso
+                        const style = document.createElement('style');
+                        style.textContent = `
+                            .form-success {
+                                text-align: center;
+                                padding: 1rem;
+                            }
+                            .success-icon {
+                                font-size: 3rem;
+                                margin-bottom: 1rem;
+                                opacity: 0.9;
+                            }
+                            .success-title {
+                                font-family: 'Space Grotesk', sans-serif;
+                                font-size: 1.25rem;
+                                color: var(--verde-principal);
+                                margin-bottom: 0.75rem;
+                            }
+                            .success-text {
+                                color: var(--cinza);
+                                line-height: 1.6;
+                                margin-bottom: 1.5rem;
+                            }
+                            .success-btn {
+                                background: transparent;
+                                border: 1.5px solid var(--verde-principal);
+                                color: var(--verde-principal);
+                                padding: 0.75rem 1.5rem;
+                                border-radius: 6px;
+                                font-family: 'Inter', sans-serif;
+                                font-weight: 500;
+                                cursor: pointer;
+                                transition: all 0.3s ease;
+                            }
+                            .success-btn:hover {
+                                background: rgba(76, 175, 80, 0.1);
+                            }
+                        `;
+                        document.head.appendChild(style);
+                        
                     }, 1500);
-                    */
-                });
-            }
-            
-            // Efeito hover no botão CTA
-            const ctaButton = document.querySelector('.cta-button');
-            if (ctaButton) {
-                ctaButton.addEventListener('mouseover', function() {
-                    this.style.transform = 'translate(-2px, -2px)';
-                    this.style.boxShadow = '6px 6px 0 rgba(0, 0, 0, 0.15)';
-                });
-                
-                ctaButton.addEventListener('mouseout', function() {
-                    this.style.transform = 'translate(0, 0)';
-                    this.style.boxShadow = '4px 4px 0 rgba(0, 0, 0, 0.1)';
                 });
             }
         });
