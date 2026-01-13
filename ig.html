@@ -1,0 +1,1911 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulher Que Carrega o Mundo | Thais Carvalho Nutri</title>
+    
+    <!-- Fontes otimizadas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+:root {
+  --verde-principal: #4CAF50;
+  --verde-claro: #A5D6A7;
+  --verde-escuro: #388E3C;
+  --creme: #F6F8F5;
+  --preto: #2E2E2E;
+  --cinza: #7A7A7A;
+  --cinza-claro: #B0B0B0;
+  --branco: #FFFFFF;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--creme);
+  color: var(--preto);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  position: relative;
+}
+
+/* CANVAS DE PARTÍCULAS */
+#particles-canvas {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 0;
+  pointer-events: none;
+  opacity: 0.4;
+}
+
+/* BARRA LATERAL COM GRADIENTE ANIMADO */
+.sidebar-accent {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--verde-principal), var(--verde-claro), var(--verde-escuro));
+  background-size: 100% 200%;
+  animation: gradientFlow 8s ease infinite;
+  z-index: 1000;
+  box-shadow: 0 0 20px rgba(76, 175, 80, 0.3);
+}
+
+@keyframes gradientFlow {
+  0%, 100% { background-position: 0% 0%; }
+  50% { background-position: 0% 100%; }
+}
+
+/* CONTAINER */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 5rem;
+  padding-right: 4rem;
+  width: 100%;
+  position: relative;
+  z-index: 1;
+}
+
+/* MARCA COM ÍCONE */
+.marca {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--verde-principal);
+  margin-bottom: 4rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.75rem 1.25rem;
+  background: rgba(76, 175, 80, 0.08);
+  border-radius: 4px;
+  border: 1.5px solid rgba(76, 175, 80, 0.2);
+  transition: all 0.3s ease;
+}
+
+.marca:hover {
+  background: rgba(76, 175, 80, 0.12);
+  border-color: rgba(76, 175, 80, 0.4);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(76, 175, 80, 0.15);
+}
+
+.marca-icon {
+  color: var(--verde-principal);
+}
+
+/* HEADER */
+header {
+  padding: 6rem 0 3rem;
+  position: relative;
+}
+
+/* HERO CONTENT */
+.hero-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  margin-bottom: 5rem;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 0;
+  padding-right: 2rem;
+}
+
+.hero-image-container {
+  flex-shrink: 0;
+  width: 320px;
+  position: relative;
+}
+
+/* TÍTULO COM EFEITO DE BRILHO MELHORADO */
+.hero-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  color: var(--preto);
+  max-width: 700px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 400;
+  max-width: 700px;
+  color: var(--cinza);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* GLOW WORD - EFEITO ACENDER MELHORADO */
+.glow-word {
+  position: relative;
+  display: inline-block;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: 0 0.2rem;
+  color: var(--cinza);
+}
+
+.glow-word.active {
+  color: var(--verde-principal);
+  text-shadow: 
+    0 0 10px rgba(76, 175, 80, 0.6),
+    0 0 20px rgba(165, 214, 167, 0.4),
+    0 0 30px rgba(76, 175, 80, 0.2);
+  background: linear-gradient(120deg, 
+    transparent, 
+    rgba(76, 175, 80, 0.08), 
+    transparent);
+  transform: scale(1.02);
+  font-weight: 600;
+}
+
+/* FOTO DA NUTRI */
+.profile-frame {
+  width: 100%;
+  padding-top: 130%;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--preto);
+  border-radius: 4px;
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.08);
+  background: var(--verde-claro);
+  transform: rotate(1.5deg);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-frame:hover {
+  transform: rotate(0deg) translateY(-6px);
+  box-shadow: 16px 16px 0 rgba(0, 0, 0, 0.12);
+  border-color: var(--verde-principal);
+}
+
+.profile-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(10%) contrast(105%);
+  transition: filter 0.4s ease;
+}
+
+.profile-frame:hover .profile-image {
+  filter: grayscale(0%) contrast(110%);
+}
+
+.profile-decoration {
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  width: 60px;
+  height: 60px;
+  background: var(--verde-principal);
+  border: 2px solid var(--preto);
+  z-index: -1;
+  opacity: 0.9;
+  animation: pulse 3s ease-in-out infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); opacity: 0.9; }
+  50% { transform: scale(1.1); opacity: 1; }
+}
+
+.profile-caption {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(76, 175, 80, 0.06);
+  border-left: 3px solid var(--verde-principal);
+  border-radius: 0 4px 4px 0;
+  transition: all 0.3s ease;
+}
+
+.profile-caption:hover {
+  background: rgba(76, 175, 80, 0.1);
+  padding-left: 1.25rem;
+}
+
+.profile-name {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.9375rem;
+  font-weight: 600;
+  color: var(--preto);
+  margin-bottom: 0.25rem;
+  letter-spacing: 0.02em;
+}
+
+.profile-title {
+  font-size: 0.8125rem;
+  color: var(--cinza);
+  line-height: 1.4;
+}
+
+/* SEÇÕES */
+.section {
+  padding: 5rem 0;
+  position: relative;
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.section.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.section-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--verde-principal);
+  margin-bottom: 1.5rem;
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  text-transform: uppercase;
+}
+
+.section-number::before {
+  content: '';
+  width: 2rem;
+  height: 2px;
+  background: var(--verde-principal);
+  animation: expandLine 1s ease-out;
+}
+
+@keyframes expandLine {
+  from { width: 0; }
+  to { width: 2rem; }
+}
+
+.section-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.01em;
+  max-width: 800px;
+}
+
+.text-block {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-bottom: 2.5rem;
+  color: var(--preto);
+  letter-spacing: 0.01em;
+}
+
+/* CARDS COM ÍCONES */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  margin: 4rem 0;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border: 2px solid var(--preto);
+  border-radius: 4px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.card.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--verde-principal), var(--verde-claro));
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 rgba(76, 175, 80, 0.2);
+  border-color: var(--verde-principal);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* POSICIONAMENTO DOS CARDS */
+.card-1 { grid-column: 1 / 5; }
+.card-2 { grid-column: 5 / 9; background: rgba(165, 214, 167, 0.15); }
+.card-3 { grid-column: 9 / 13; }
+.card-4 { grid-column: 1 / 5; background: var(--verde-principal); color: white; }
+.card-5 { grid-column: 5 / 9; background: var(--preto); color: white; }
+.card-6 { grid-column: 9 / 13; }
+
+.card-icon {
+  width: 48px;
+  height: 48px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1.5rem;
+  transition: all 0.3s ease;
+}
+
+.card:hover .card-icon {
+  background: rgba(76, 175, 80, 0.2);
+  transform: scale(1.1) rotate(5deg);
+}
+
+.card-4 .card-icon,
+.card-5 .card-icon {
+  background: rgba(255, 255, 255, 0.15);
+}
+
+.card-4:hover .card-icon,
+.card-5:hover .card-icon {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+.card-icon svg {
+  color: var(--verde-principal);
+}
+
+.card-4 .card-icon svg,
+.card-5 .card-icon svg {
+  color: white;
+}
+
+.card-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  opacity: 0.15;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-number {
+  opacity: 0.25;
+}
+
+.card-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.card-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cinza);
+}
+
+.card-4 .card-text,
+.card-5 .card-text {
+  color: rgba(255, 255, 255, 0.9);
+}
+
+/* QUOTE BLOCK MELHORADO */
+.quote-block {
+  background: linear-gradient(135deg, var(--preto), #1a1a1a);
+  color: white;
+  padding: 4rem 3rem;
+  margin: 5rem 0;
+  border-left: 4px solid var(--verde-claro);
+  position: relative;
+  border-radius: 0 8px 8px 0;
+  overflow: hidden;
+}
+
+.quote-block::after {
+  content: '';
+  position: absolute;
+  top: -50%;
+  right: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+  animation: rotateGlow 20s linear infinite;
+}
+
+@keyframes rotateGlow {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.quote-mark {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 8rem;
+  font-weight: 700;
+  position: absolute;
+  top: -2rem;
+  right: 2rem;
+  opacity: 0.05;
+  line-height: 1;
+  z-index: 0;
+}
+
+.quote-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  letter-spacing: 0.01em;
+}
+
+.quote-icon {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: rgba(76, 175, 80, 0.2);
+  border-radius: 50%;
+  margin-bottom: 1.5rem;
+}
+
+/* LISTA COM ÍCONES */
+.brutal-list {
+  list-style: none;
+  margin: 3rem 0;
+}
+
+.brutal-list li {
+  font-size: 1.125rem;
+  padding: 1.5rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative;
+  padding-left: 3rem;
+  transition: all 0.3s ease;
+  max-width: 700px;
+  color: var(--preto);
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.brutal-list li:hover {
+  padding-left: 3.5rem;
+  border-bottom-color: var(--verde-principal);
+  background: linear-gradient(90deg, rgba(76, 175, 80, 0.05), transparent);
+}
+
+.list-icon {
+  position: absolute;
+  left: 0;
+  top: 1.5rem;
+  color: var(--verde-principal);
+  transition: transform 0.3s ease;
+  flex-shrink: 0;
+}
+
+.brutal-list li:hover .list-icon {
+  transform: translateX(6px) scale(1.1);
+}
+
+/* STATS COM ÍCONES */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 4rem 0;
+  border: 2px solid var(--preto);
+  border-radius: 8px;
+  overflow: hidden;
+  background: white;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.06);
+}
+
+.stat {
+  padding: 3rem 2rem;
+  text-align: center;
+  border-right: 2px solid var(--preto);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(135deg, var(--verde-principal), var(--verde-claro));
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  z-index: 0;
+}
+
+.stat:hover::before {
+  opacity: 0.08;
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat:hover {
+  transform: translateY(-4px);
+}
+
+.stat-content {
+  position: relative;
+  z-index: 1;
+}
+
+.stat-icon {
+  margin: 0 auto 1.5rem;
+  width: 64px;
+  height: 64px;
+  background: rgba(76, 175, 80, 0.1);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.4s ease;
+}
+
+.stat:hover .stat-icon {
+  background: rgba(76, 175, 80, 0.2);
+  transform: rotate(360deg) scale(1.1);
+}
+
+.stat-icon svg {
+  color: var(--verde-principal);
+}
+
+.stat-number {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  color: var(--verde-principal);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cinza);
+}
+
+/* FORMULÁRIO COM ÍCONES */
+.lead-form-container {
+  margin-top: 3rem;
+  max-width: 420px;
+  opacity: 0;
+  transform: translateY(20px);
+  transition: all 0.6s ease;
+}
+
+.lead-form-container.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.lead-form {
+  background: white;
+  border: 2px solid var(--preto);
+  border-radius: 8px;
+  padding: 2.5rem;
+  box-shadow: 12px 12px 0 rgba(76, 175, 80, 0.1);
+  transition: all 0.4s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.lead-form::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: linear-gradient(90deg, var(--verde-principal), var(--verde-claro));
+}
+
+.lead-form:hover {
+  box-shadow: 16px 16px 0 rgba(76, 175, 80, 0.15);
+  transform: translate(-2px, -2px);
+}
+
+.form-header {
+  margin-bottom: 2rem;
+  text-align: center;
+}
+
+.form-icon-container {
+  width: 80px;
+  height: 80px;
+  margin: 0 auto 1.5rem;
+  background: linear-gradient(135deg, var(--verde-principal), var(--verde-claro));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  animation: float 3s ease-in-out infinite;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.form-icon-container svg {
+  color: white;
+  width: 40px;
+  height: 40px;
+}
+
+.form-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--preto);
+  margin-bottom: 0.75rem;
+}
+
+.form-subtitle {
+  font-size: 0.9375rem;
+  color: var(--cinza);
+  line-height: 1.5;
+}
+
+.form-group {
+  margin-bottom: 1.25rem;
+  position: relative;
+}
+
+.input-icon {
+  position: absolute;
+  left: 1rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--cinza-claro);
+  pointer-events: none;
+  transition: color 0.3s ease;
+}
+
+.form-group input:focus + .input-icon {
+  color: var(--verde-principal);
+}
+
+.form-group input {
+  width: 100%;
+  padding: 1rem 1.25rem 1rem 3rem;
+  border: 2px solid rgba(0, 0, 0, 0.15);
+  border-radius: 6px;
+  font-family: 'Inter', sans-serif;
+  font-size: 1rem;
+  background: white;
+  transition: all 0.3s ease;
+  color: var(--preto);
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: var(--verde-principal);
+  box-shadow: 0 0 0 4px rgba(76, 175, 80, 0.1);
+}
+
+.form-group input::placeholder {
+  color: var(--cinza-claro);
+}
+
+.form-submit {
+  width: 100%;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, var(--verde-principal), var(--verde-escuro));
+  color: white;
+  border: 2px solid var(--preto);
+  border-radius: 6px;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+}
+
+.form-submit::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.form-submit:hover::before {
+  width: 300px;
+  height: 300px;
+}
+
+.form-submit:hover:not(:disabled) {
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form-submit:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.form-submit span {
+  position: relative;
+  z-index: 1;
+}
+
+.form-submit svg {
+  position: relative;
+  z-index: 1;
+  transition: transform 0.3s ease;
+}
+
+.form-submit:hover:not(:disabled) svg {
+  transform: translateX(4px);
+}
+
+.form-note {
+  margin-top: 1.25rem;
+  font-size: 0.75rem;
+  color: var(--cinza-claro);
+  text-align: center;
+  line-height: 1.5;
+  padding: 0.875rem;
+  background: rgba(0,0,0,0.02);
+  border-radius: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.form-note svg {
+  flex-shrink: 0;
+  color: var(--cinza);
+}
+
+/* MENSAGEM DE SUCESSO */
+.success-message {
+  background: linear-gradient(135deg, rgba(76, 175, 80, 0.1), rgba(165, 214, 167, 0.15));
+  border: 2px solid var(--verde-principal);
+  border-radius: 8px;
+  padding: 3rem 2.5rem;
+  text-align: center;
+  display: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.success-message::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(circle, rgba(76, 175, 80, 0.1) 0%, transparent 70%);
+  animation: rotateGlow 15s linear infinite;
+}
+
+.success-icon-container {
+  width: 100px;
+  height: 100px;
+  margin: 0 auto 2rem;
+  background: linear-gradient(135deg, var(--verde-principal), var(--verde-claro));
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  z-index: 1;
+  animation: successPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+@keyframes successPop {
+  0% { transform: scale(0); }
+  50% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.success-icon-container svg {
+  color: white;
+  width: 50px;
+  height: 50px;
+}
+
+.success-title {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.75rem;
+  font-weight: 700;
+  color: var(--verde-principal);
+  margin-bottom: 1rem;
+  position: relative;
+  z-index: 1;
+}
+
+.success-text {
+  font-size: 1.125rem;
+  color: var(--preto);
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  max-width: 500px;
+  margin-left: auto;
+  margin-right: auto;
+  position: relative;
+  z-index: 1;
+}
+
+.download-button {
+  background: var(--preto);
+  color: white;
+  border: 2px solid var(--preto);
+  padding: 1.25rem 2.5rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+  margin-bottom: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+.download-button:hover {
+  background: var(--verde-principal);
+  border-color: var(--verde-principal);
+  transform: translate(-2px, -2px);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.success-note {
+  margin-top: 1.5rem;
+  font-size: 0.875rem;
+  color: var(--cinza);
+  line-height: 1.5;
+  border-top: 1px solid rgba(0,0,0,0.1);
+  padding-top: 1.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* CTA BUTTON */
+.cta-button {
+  background: linear-gradient(135deg, var(--verde-principal), var(--verde-escuro));
+  color: white;
+  border: 2px solid var(--preto);
+  padding: 1.25rem 3rem;
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 1.125rem;
+  font-weight: 700;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  display: inline-flex;
+  align-items: center;
+  gap: 1rem;
+  text-decoration: none;
+  position: relative;
+  overflow: hidden;
+}
+
+.cta-button::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  border-radius: 50%;
+  background: rgba(255, 255, 255, 0.2);
+  transform: translate(-50%, -50%);
+  transition: width 0.6s, height 0.6s;
+}
+
+.cta-button:hover::before {
+  width: 400px;
+  height: 400px;
+}
+
+.cta-button:hover {
+  transform: translate(-3px, -3px);
+  box-shadow: 9px 9px 0 rgba(0, 0, 0, 0.2);
+}
+
+.cta-button span {
+  position: relative;
+  z-index: 1;
+}
+
+.cta-button svg {
+  position: relative;
+  z-index: 1;
+}
+
+/* FOOTER */
+footer {
+  padding: 4rem 0 3rem;
+  border-top: 2px solid rgba(0,0,0,0.08);
+  margin-top: 6rem;
+  position: relative;
+}
+
+.footer-text {
+  font-family: 'Space Grotesk', sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-align: center;
+  color: var(--cinza-claro);
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.02);
+  border-radius: 6px;
+  margin-bottom: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.footer-text svg {
+  color: var(--verde-principal);
+}
+
+.footer-text a {
+  color: var(--verde-principal);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.footer-text a:hover {
+  color: var(--verde-escuro);
+  text-decoration: underline;
+}
+
+/* LOADING STATE */
+.form-submit.loading span {
+  opacity: 0;
+}
+
+.form-submit.loading::after {
+  content: '';
+  position: absolute;
+  width: 24px;
+  height: 24px;
+  border: 3px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: white;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* HIDDEN IFRAME */
+.hidden-iframe {
+  display: none;
+  width: 0;
+  height: 0;
+  border: none;
+  visibility: hidden;
+  position: absolute;
+  left: -9999px;
+  top: -9999px;
+}
+
+/* SCROLLBAR */
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--creme);
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, var(--verde-principal), var(--verde-claro));
+  border-radius: 5px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(180deg, var(--verde-escuro), var(--verde-principal));
+}
+
+/* RESPONSIVIDADE */
+@media (max-width: 1399px) {
+  .container {
+    max-width: 1100px;
+    padding-left: 4rem;
+    padding-right: 3rem;
+  }
+  
+  .hero-title { font-size: 3rem; }
+  .section-title { font-size: 2.25rem; }
+  .hero-image-container { width: 300px; }
+  .cards-grid { gap: 1.25rem; }
+  .card { padding: 1.75rem; }
+}
+
+@media (max-width: 1023px) {
+  .container {
+    max-width: 100%;
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .hero-image-container {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .hero-text { padding-right: 0; }
+  .lead-form-container { margin-left: auto; margin-right: auto; }
+  
+  .cards-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1.25rem;
+  }
+  
+  .card-1 { grid-column: 1 / 5; }
+  .card-2 { grid-column: 5 / 9; }
+  .card-3 { grid-column: 1 / 5; }
+  .card-4 { grid-column: 5 / 9; }
+  .card-5 { grid-column: 1 / 5; }
+  .card-6 { grid-column: 5 / 9; }
+}
+
+@media (max-width: 767px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+  }
+  
+  .sidebar-accent { width: 3px; }
+  header { padding: 4rem 0 2rem; }
+  .marca { margin-bottom: 3rem; font-size: 0.6875rem; }
+  .hero-title { font-size: 2.25rem; }
+  .hero-subtitle { font-size: 1.125rem; }
+  .section { padding: 3rem 0; }
+  .section-title { font-size: 2rem; }
+  
+  .cards-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+  
+  .card { padding: 1.5rem; }
+  .card-1 { grid-column: 1 / 4; }
+  .card-2 { grid-column: 4 / 7; }
+  .card-3 { grid-column: 1 / 4; }
+  .card-4 { grid-column: 4 / 7; }
+  .card-5 { grid-column: 1 / 4; }
+  .card-6 { grid-column: 4 / 7; }
+  
+  .quote-block { padding: 2.5rem 1.5rem; margin: 3rem 0; }
+  .quote-mark { font-size: 5rem; top: -1rem; right: 1rem; }
+  .quote-text { font-size: 1.5rem; }
+  
+  .stats-grid { grid-template-columns: 1fr; }
+  .stat { border-right: none; border-bottom: 2px solid var(--preto); }
+  .stat:last-child { border-bottom: none; }
+  
+  .lead-form { padding: 2rem; }
+  .lead-form-container { max-width: 100%; }
+}
+
+@media (max-width: 599px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+  }
+  
+  .hero-title { font-size: 1.75rem; }
+  .profile-decoration { display: none; }
+  
+  .cards-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .card-1, .card-2, .card-3, .card-4, .card-5, .card-6 {
+    grid-column: 1;
+  }
+  
+  .card-title { font-size: 1.125rem; }
+  .card-text { font-size: 0.875rem; }
+  .section-title { font-size: 1.75rem; }
+  .text-block { font-size: 1rem; }
+}
+
+@media (max-width: 374px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .hero-title { font-size: 1.5rem; }
+  .card { padding: 1.25rem; }
+  .card-icon { width: 40px; height: 40px; }
+  .lead-form { padding: 1.5rem; }
+}
+    </style>
+</head>
+<body>
+    <!-- Canvas para partículas -->
+    <canvas id="particles-canvas"></canvas>
+    
+    <!-- Barra lateral -->
+    <div class="sidebar-accent"></div>
+    
+    <div class="container">
+        <header>
+            <div class="marca">
+                <i data-lucide="sparkles" class="marca-icon" width="16" height="16"></i>
+                THAIS CARVALHO NUTRI
+            </div>
+            
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Para a <span class="glow-word">Mulher</span> Que 
+                        <span class="glow-word">Cuida</span> de <span class="glow-word">Todos</span> e quer voltar a <span class="glow-word">Cuidar de si</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Se você vive cansada, <span class="glow-word">sobrecarregada</span> e sente que se perdeu no meio de tantas responsabilidades, 
+                        este <span class="glow-word">espaço</span> é pra você. <span class="glow-word">Aqui, você aprende</span> 
+                        a se reconectar <span class="glow-word">com você mesma</span> de forma simples, <span class="glow-word">possível e real</span>.
+                    </p>
+
+                    <!-- Formulário -->
+                    <div class="lead-form-container" id="form">
+                        <form id="leadForm" class="lead-form">
+                            <div class="form-header">
+                                <div class="form-icon-container">
+                                    <i data-lucide="book-open" width="40" height="40"></i>
+                                </div>
+                                <h3 class="form-title">Receba seu livro digital grátis</h3>
+                                <p class="form-subtitle">"Mulher Que Carrega o Mundo" - Guia prático de autocuidado</p>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="text" name="nome" placeholder="Seu nome completo" required>
+                                <i data-lucide="user" class="input-icon" width="20" height="20"></i>
+                            </div>
+                            
+                            <!-- Added WhatsApp field -->
+                            <div class="form-group">
+                                <input type="tel" name="whatsapp" placeholder="Seu WhatsApp (com DDD)" required>
+                                <i data-lucide="phone" class="input-icon" width="20" height="20"></i>
+                            </div>
+                            
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+                                <i data-lucide="mail" class="input-icon" width="20" height="20"></i>
+                            </div>
+                            
+                            <button type="submit" class="form-submit" id="submitBtn">
+                                <span id="btnText">Baixar livro agora</span>
+                                <i data-lucide="download" width="20" height="20"></i>
+                            </button>
+                            
+                            <p class="form-note">
+                                <i data-lucide="lock" width="14" height="14"></i>
+                                Seus dados estão seguros conosco
+                            </p>
+                        </form>
+                        
+                        <!-- Mensagem de sucesso -->
+                        <div id="successMessage" class="success-message">
+                            <div class="success-icon-container">
+                                <i data-lucide="check-circle" width="50" height="50"></i>
+                            </div>
+                            <h3 class="success-title">Pronto, <span id="userName"></span>!</h3>
+                            <p class="success-text">
+                                Seu livro "Mulher Que Carrega o Mundo" está liberado. 
+                                Clique no botão abaixo para baixar gratuitamente.
+                            </p>
+                            <a href="#" class="download-button" id="downloadLink" target="_blank">
+                                <i data-lucide="download-cloud" width="24" height="24"></i>
+                                <span>Baixar livro agora (PDF)</span>
+                            </a>
+                            <p class="success-note">
+                                Também enviamos uma cópia para: <strong id="userEmail"></strong><br>
+                                Verifique sua caixa de entrada e spam.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="hero-image-container">
+                    <div class="profile-frame">
+                        <img 
+                            src="img/thais.webp" 
+                            alt="Thais Carvalho - Nutricionista"
+                            class="profile-image"
+                            onerror="this.style.display='none'; this.parentElement.style.background='var(--verde-claro)';"
+                        />
+                    </div>
+                    
+                    <div class="profile-decoration"></div>
+                    
+                    <div class="profile-caption">
+                        <div class="profile-name">Thais Carvalho</div>
+                        <div class="profile-title">Nutricionista & Mentora de Autocuidado</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <p class="text-block">
+            Você não está <span class="glow-word">sozinha</span>. Muitas mulheres chegam até aqui sentindo:
+        </p>
+        
+        <div class="cards-grid">
+            <div class="card card-1">
+                <div class="card-icon">
+                    <i data-lucide="brain" width="24" height="24"></i>
+                </div>
+                <div class="card-number">01</div>
+                <h3 class="card-title">Mente Acelerada</h3>
+                <p class="card-text">
+                    Pensamentos que não param, mesmo na hora de dormir.
+                </p>
+            </div>
+            
+            <div class="card card-2">
+                <div class="card-icon">
+                    <i data-lucide="clock" width="24" height="24"></i>
+                </div>
+                <div class="card-number">02</div>
+                <h3 class="card-title">Falta de Tempo Para Si</h3>
+                <p class="card-text">
+                    Você cuida de tudo e de todos, mas nunca sobra tempo para você.
+                </p>
+            </div>
+            
+            <div class="card card-3">
+                <div class="card-icon">
+                    <i data-lucide="battery-low" width="24" height="24"></i>
+                </div>
+                <div class="card-number">03</div>
+                <h3 class="card-title">Cansaço Constante</h3>
+                <p class="card-text">
+                    Um cansaço que não é só físico, é emocional, e muitas vezes também nutricional.
+                </p>
+            </div>
+            
+            <div class="card card-4">
+                <div class="card-icon">
+                    <i data-lucide="heart-crack" width="24" height="24"></i>
+                </div>
+                <div class="card-number">04</div>
+                <h3 class="card-title">Culpa ao Tentar Parar</h3>
+                <p class="card-text">
+                    Quando descansa, sente culpa. Quando continua, se esgota.
+                </p>
+            </div>
+            
+            <div class="card card-5">
+                <div class="card-icon">
+                    <i data-lucide="utensils-crossed" width="24" height="24"></i>
+                </div>
+                <div class="card-number">05</div>
+                <h3 class="card-title">Alimentação no Automático</h3>
+                <p class="card-text">
+                    Dias passando à base de massas, açúcar e gordura, sem água suficiente, sem uma fruta, sem uma salada.
+                </p>
+            </div>
+            
+            <div class="card card-6">
+                <div class="card-icon">
+                    <i data-lucide="user-x" width="24" height="24"></i>
+                </div>
+                <div class="card-number">06</div>
+                <h3 class="card-title">Identidade Perdida</h3>
+                <p class="card-text">
+                    Você exerce muitos papéis, mas não sabe mais quem é de verdade.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Quote Block -->
+        <div class="quote-block">
+            <div class="quote-icon">
+                <i data-lucide="heart" width="24" height="24"></i>
+            </div>
+            <div class="quote-mark">"</div>
+            <p class="quote-text">
+                Você não precisa de uma <span class="glow-word">dieta perfeita</span>.
+                Você precisa do <span class="glow-word">básico bem feito</span>.
+            </p>
+        </div>
+        
+        <!-- Seção 02 -->
+        <section class="section">
+            <span class="section-number">
+                <i data-lucide="sparkles" width="16" height="16"></i>
+                02 / TRANSFORMAÇÃO
+            </span>
+            <h2 class="section-title">O que você vai <span class="glow-word">aprender</span> aqui</h2>
+            
+            <p class="text-block">
+                Antes de qualquer <span class="glow-word">método complicado</span>, 
+                vem o <span class="glow-word">essencial</span> e ele funciona.
+            </p>
+            
+            <p class="text-block">
+                Muitas vezes, o que está <span class="glow-word">faltando</span> é:
+            </p>
+            
+            <ul class="brutal-list">
+                <li>
+                    <i data-lucide="droplet" class="list-icon" width="20" height="20"></i>
+                    Beber <span class="glow-word">água</span> na quantidade certa
+                </li>
+                <li>
+                    <i data-lucide="apple" class="list-icon" width="20" height="20"></i>
+                    Comer ao menos uma <span class="glow-word">fruta</span> por dia
+                </li>
+                <li>
+                    <i data-lucide="salad" class="list-icon" width="20" height="20"></i>
+                    Ter uma <span class="glow-word">salada</span> no almoço
+                </li>
+                <li>
+                    <i data-lucide="utensils" class="list-icon" width="20" height="20"></i>
+                    Fazer <span class="glow-word">refeições</span> de verdade, não só beliscos
+                </li>
+                <li>
+                    <i data-lucide="candy-off" class="list-icon" width="20" height="20"></i>
+                    Diminuir o excesso de <span class="glow-word">massas, açúcar e gordura</span>
+                </li>
+            </ul>
+            
+            <p class="text-block">
+                Aqui, você vai <span class="glow-word">aprender</span> a:
+            </p>
+            
+            <ul class="brutal-list">
+                <li>
+                    <i data-lucide="calendar-check" class="list-icon" width="20" height="20"></i>
+                    Organizar sua <span class="glow-word">rotina alimentar</span> sem radicalismo
+                </li>
+                <li>
+                    <i data-lucide="heart-pulse" class="list-icon" width="20" height="20"></i>
+                    Cuidar da sua <span class="glow-word">saúde emocional</span> junto com a alimentação
+                </li>
+                <li>
+                    <i data-lucide="trending-up" class="list-icon" width="20" height="20"></i>
+                    Entender que <span class="glow-word">constância</span> vale mais do que perfeição
+                </li>
+                <li>
+                    <i data-lucide="sparkles" class="list-icon" width="20" height="20"></i>
+                    Criar <span class="glow-word">hábitos simples</span> que cabem na sua vida real
+                </li>
+            </ul>
+        </section>
+        
+        <!-- Stats -->
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-content">
+                    <div class="stat-icon">
+                        <i data-lucide="calendar-days" width="32" height="32"></i>
+                    </div>
+                    <div class="stat-number">6</div>
+                    <div class="stat-label">Dias de Direcionamento</div>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="stat-content">
+                    <div class="stat-icon">
+                        <i data-lucide="timer" width="32" height="32"></i>
+                    </div>
+                    <div class="stat-number">15</div>
+                    <div class="stat-label">Min por Dia</div>
+                </div>
+            </div>
+            <div class="stat">
+                <div class="stat-content">
+                    <div class="stat-icon">
+                        <i data-lucide="sprout" width="32" height="32"></i>
+                    </div>
+                    <div class="stat-number">x</div>
+                    <div class="stat-label">Mudanças Simples</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Seção 03 -->
+        <section class="section">
+            <span class="section-number">
+                <i data-lucide="map" width="16" height="16"></i>
+                03 / SUA JORNADA
+            </span>
+            <h2 class="section-title">Uma jornada <span class="glow-word">prática</span> de <span class="glow-word">6 dias</span></h2>
+            
+            <p class="text-block">
+                Um processo <span class="glow-word">simples</span> para te ajudar a se reorganizar 
+                <span class="glow-word">por dentro</span> e <span class="glow-word">por fora</span> — 
+                começando pelo <span class="glow-word">básico</span>.
+            </p>
+            
+            <div class="cards-grid">
+                <div class="card card-1">
+                    <div class="card-icon">
+                        <i data-lucide="list-checks" width="24" height="24"></i>
+                    </div>
+                    <div class="card-number">DIA 1</div>
+                    <h3 class="card-title">Organização Mental e Alimentar</h3>
+                    <p class="card-text">
+                        Entenda onde está sua energia e como está sua alimentação hoje.
+                    </p>
+                </div>
+                
+                <div class="card card-2">
+                    <div class="card-icon">
+                        <i data-lucide="heart-handshake" width="24" height="24"></i>
+                    </div>
+                    <div class="card-number">DIA 2</div>
+                    <h3 class="card-title">Emoções e Fome Emocional</h3>
+                    <p class="card-text">
+                        Aprenda a diferenciar fome física de emocional.
+                    </p>
+                </div>
+                
+                <div class="card card-3">
+                    <div class="card-icon">
+                        <i data-lucide="compass" width="24" height="24"></i>
+                    </div>
+                    <div class="card-number">DIA 3</div>
+                    <h3 class="card-title">Valores e Escolhas</h3>
+                    <p class="card-text">
+                        O que guia suas decisões, inclusive à mesa?
+                    </p>
+                </div>
+                
+                <div class="card card-4">
+                    <div class="card-icon">
+                        <i data-lucide="shield-check" width="24" height="24"></i>
+                    </div>
+                    <div class="card-number">DIA 4</div>
+                    <h3 class="card-title">Limites e Rotina</h3>
+                    <p class="card-text">
+                        Identifique o que te drena e aprenda a se respeitar.
+                    </p>
+                </div>
+                
+                <div class="card card-5">
+                    <div class="card-icon">
+                        <i data-lucide="user-round-search" width="24" height="24"></i>
+                    </div>
+                    <div class="card-number">DIA 5</div>
+                    <h3 class="card-title">Reconexão com Você</h3>
+                    <p class="card-text">
+                        Resgate desejos, vontades e autocuidado.
+                    </p>
+                </div>
+                
+                <div class="card card-6">
+                    <div class="card-icon">
+                        <i data-lucide="flower-2" width="24" height="24"></i>
+                    </div>
+                    <div class="card-number">DIA 6</div>
+                    <h3 class="card-title">Autocuidado Possível</h3>
+                    <p class="card-text">
+                        Crie pequenos rituais — beber água, comer melhor, pausar — sem culpa.
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-block" style="margin-top: 3rem; text-align: center;">
+                Não é sobre fazer tudo ao mesmo tempo.<br>
+                É sobre fazer o <span class="glow-word">básico</span> todos os dias.
+            </p>
+        </section>
+
+        <!-- Quote Final -->
+        <div class="quote-block">
+            <div class="quote-icon">
+                <i data-lucide="sparkles" width="24" height="24"></i>
+            </div>
+            <div class="quote-mark">"</div>
+            <p class="quote-text">
+                Um caminho <span class="glow-word">simples</span>, 
+                <span class="glow-word">possível</span> e 
+                <span class="glow-word">real</span> de volta para você.
+            </p>
+        </div>
+
+        <!-- Seção Final -->
+        <section class="section">
+            <span class="section-number">
+                <i data-lucide="arrow-right-circle" width="16" height="16"></i>
+                04 / PRÓXIMOS PASSOS
+            </span>
+            <h2 class="section-title">Você <span class="glow-word">merece</span> esse cuidado</h2>
+            
+            <p class="text-block">
+                Cuidar de você não é <span class="glow-word">egoísmo</span>. 
+                É <span class="glow-word">necessidade</span>.
+            </p>
+            
+            <ul class="brutal-list">
+                <li>
+                    <i data-lucide="x-circle" class="list-icon" width="20" height="20"></i>
+                    Você não precisa <span class="glow-word">cortar tudo</span> o que gosta
+                </li>
+                <li>
+                    <i data-lucide="ban" class="list-icon" width="20" height="20"></i>
+                    Você não precisa seguir <span class="glow-word">dietas mirabolantes</span>
+                </li>
+                <li>
+                    <i data-lucide="circle-slash" class="list-icon" width="20" height="20"></i>
+                    Você não precisa ser <span class="glow-word">perfeita</span>
+                </li>
+                <li>
+                    <i data-lucide="check-circle" class="list-icon" width="20" height="20"></i>
+                    Você só precisa <span class="glow-word">começar pelo básico e manter</span>
+                </li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#form" style="text-decoration: none;">
+                    <button class="cta-button">
+                        <span>Baixar livro grátis</span>
+                        <i data-lucide="arrow-down-to-line" width="24" height="24"></i>
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">
+                <i data-lucide="heart" width="16" height="16"></i>
+                Mulher Que Carrega o Mundo • 2026
+            </p>
+            <a href="https://eitadevis.vercel.app/" style="text-decoration: none;">
+                <p class="footer-text" style="color: #ff6a00;">
+                    <span style="color:#7A7A7A;">produzido por:</span> EITA DEVIS
+                    <i data-lucide="external-link" width="14" height="14"></i>
+                </p>
+            </a>
+        </footer>
+    </div>
+
+    <!-- Iframe escondido -->
+    <iframe name="hidden-iframe" class="hidden-iframe"></iframe>
+
+    <script>
+        // ==========================================
+        // PARTÍCULAS FLUTUANTES
+        // ==========================================
+        const canvas = document.getElementById('particles-canvas');
+        const ctx = canvas.getContext('2d');
+        
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+        
+        const particles = [];
+        const particleCount = 50;
+        
+        class Particle {
+            constructor() {
+                this.x = Math.random() * canvas.width;
+                this.y = Math.random() * canvas.height;
+                this.size = Math.random() * 3 + 1;
+                this.speedX = Math.random() * 0.5 - 0.25;
+                this.speedY = Math.random() * 0.5 - 0.25;
+                this.opacity = Math.random() * 0.5 + 0.2;
+            }
+            
+            update() {
+                this.x += this.speedX;
+                this.y += this.speedY;
+                
+                if (this.x > canvas.width) this.x = 0;
+                if (this.x < 0) this.x = canvas.width;
+                if (this.y > canvas.height) this.y = 0;
+                if (this.y < 0) this.y = canvas.height;
+            }
+            
+            draw() {
+                ctx.fillStyle = `rgba(76, 175, 80, ${this.opacity})`;
+                ctx.beginPath();
+                ctx.arc(this.x, this.y, this.size, 0, Math.PI * 2);
+                ctx.fill();
+            }
+        }
+        
+        function initParticles() {
+            for (let i = 0; i < particleCount; i++) {
+                particles.push(new Particle());
+            }
+        }
+        
+        function animateParticles() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            
+            particles.forEach(particle => {
+                particle.update();
+                particle.draw();
+            });
+            
+            requestAnimationFrame(animateParticles);
+        }
+        
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+        
+        initParticles();
+        animateParticles();
+        
+        // ==========================================
+        // EFEITO GLOW WORD (ACENDER AO ROLAR)
+        // ==========================================
+        function updateGlowWords() {
+            const glowWords = document.querySelectorAll('.glow-word');
+            const windowHeight = window.innerHeight;
+            const centerY = windowHeight * 0.5;
+            
+            glowWords.forEach(word => {
+                const rect = word.getBoundingClientRect();
+                const wordCenterY = rect.top + (rect.height / 2);
+                const distanceFromCenter = Math.abs(wordCenterY - centerY);
+                const activationRange = 250;
+                
+                word.classList.toggle('active', distanceFromCenter < activationRange);
+            });
+        }
+        
+        let scrollTimeout;
+        function debouncedUpdate() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateGlowWords, 10);
+        }
+        
+        window.addEventListener('scroll', debouncedUpdate, { passive: true });
+        window.addEventListener('load', updateGlowWords);
+        window.addEventListener('resize', debouncedUpdate);
+        updateGlowWords();
+        
+        // ==========================================
+        // ANIMAÇÕES DE ENTRADA (SCROLL REVEAL)
+        // ==========================================
+        function revealOnScroll() {
+            const elements = document.querySelectorAll('.section, .card, .lead-form-container');
+            const windowHeight = window.innerHeight;
+            
+            elements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const revealPoint = 100;
+                
+                if (elementTop < windowHeight - revealPoint) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+        
+        window.addEventListener('scroll', revealOnScroll, { passive: true });
+        window.addEventListener('load', revealOnScroll);
+        revealOnScroll();
+        
+        // ==========================================
+        // FORMULÁRIO GOOGLE FORMS + DOWNLOAD
+        // ==========================================
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('leadForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const successMessage = document.getElementById('successMessage');
+            const userName = document.getElementById('userName');
+            const userEmail = document.getElementById('userEmail');
+            const downloadLink = document.getElementById('downloadLink');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nome = this.nome.value.trim();
+                    const whatsapp = this.whatsapp.value.trim();
+                    const email = this.email.value.trim();
+                    
+                    if (!nome || !whatsapp || !email) {
+                        alert('Por favor, preencha todos os campos.');
+                        return;
+                    }
+                    
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Por favor, insira um e-mail válido.');
+                        return;
+                    }
+                    
+                    // Loading state
+                    btnText.textContent = 'Enviando...';
+                    submitBtn.classList.add('loading');
+                    submitBtn.disabled = true;
+                    
+                    // SUBSTITUA ESTAS CONFIGURAÇÕES COM AS SUAS
+                    const googleFormUrl = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdUqwbImf2757MblvEFXYec4Y2hZ5G2wq7dwixnNPjUwH-etg/formResponse';
+                    const entryIds = {
+                        nome: 'entry.1160734915',
+                        whatsapp: 'entry.856031161',
+                        email: 'entry.2119518607'
+                    };
+                    
+                    const dynamicForm = document.createElement('form');
+                    dynamicForm.method = 'POST';
+                    dynamicForm.action = googleFormUrl;
+                    dynamicForm.target = 'hidden-iframe';
+                    dynamicForm.style.display = 'none';
+                    
+                    function addFormField(name, value) {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = name;
+                        input.value = value;
+                        dynamicForm.appendChild(input);
+                    }
+                    
+                    addFormField(entryIds.nome, nome);
+                    addFormField(entryIds.whatsapp, whatsapp);
+                    addFormField(entryIds.email, email);
+                    addFormField('draftResponse', '[]');
+                    addFormField('pageHistory', '0');
+                    addFormField('fbzx', '-55280095427114923');
+                    
+                    document.body.appendChild(dynamicForm);
+                    dynamicForm.submit();
+                    
+                    setTimeout(() => {
+                        form.style.display = 'none';
+                        userName.textContent = nome.split(' ')[0];
+                        userEmail.textContent = email;
+                        successMessage.style.display = 'block';
+                        
+                        // SUBSTITUA COM SEU ID DO GOOGLE DRIVE
+                        const driveFileId = 'SEU_ID_DO_ARQUIVO_AQUI';
+                        const downloadUrl = `https://drive.google.com/uc?export=download&id=${driveFileId}`;
+                        downloadLink.href = downloadUrl;
+                        
+                        btnText.textContent = 'Baixar livro agora';
+                        submitBtn.classList.remove('loading');
+                        submitBtn.disabled = false;
+                        
+                        successMessage.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'nearest' 
+                        });
+                        
+                        setTimeout(() => {
+                            if (dynamicForm.parentNode) {
+                                document.body.removeChild(dynamicForm);
+                            }
+                        }, 1000);
+                        
+                    }, 1500);
+                });
+            }
+        });
+        
+        // ==========================================
+        // INICIALIZAR ÍCONES LUCIDE
+        // ==========================================
+        lucide.createIcons();
+    </script>
+</body>
+</html>
