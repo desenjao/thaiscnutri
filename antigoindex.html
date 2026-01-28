@@ -1,0 +1,1687 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mulher Que Carrega o Mundo</title>
+    
+    <!-- Fontes otimizadas -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Inter:wght@300;400&display=swap" rel="stylesheet">
+    
+    <style>
+:root {
+  --verde-principal: #4CAF50;
+  --verde-claro: #A5D6A7;
+  --creme: #F6F8F5;
+  --preto: #2E2E2E;
+  --cinza: #7A7A7A;
+  --cinza-claro: #B0B0B0;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  background: var(--creme);
+  color: var(--preto);
+  line-height: 1.6;
+  overflow-x: hidden;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* BARRA LATERAL REFINADA */
+.sidebar-accent {
+  position: fixed;
+  left: 0;
+  top: 0;
+  width: 4px;
+  height: 100vh;
+  background: linear-gradient(180deg, var(--verde-principal), var(--verde-claro));
+  z-index: 1000;
+}
+
+/* CONTAINER ELEGANTE */
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding-left: 5rem;
+  padding-right: 4rem;
+  width: 100%;
+}
+
+/* MARCA DISCRETA */
+.marca {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--verde-principal);
+  margin-bottom: 4rem;
+  display: inline-block;
+  padding: 0.5rem 1rem;
+  background: rgba(76, 175, 80, 0.05);
+  border-radius: 3px;
+  border: 1px solid rgba(76, 175, 80, 0.1);
+}
+
+/* HEADER REFINADO */
+header {
+  padding: 6rem 0 3rem;
+  position: relative;
+}
+
+/* LAYOUT HEADER COM FOTO */
+.hero-content {
+  display: flex;
+  align-items: flex-start;
+  gap: 4rem;
+  margin-bottom: 5rem;
+}
+
+.hero-text {
+  flex: 1;
+  min-width: 0;
+  padding-right: 2rem;
+}
+
+.hero-image-container {
+  flex-shrink: 0;
+  width: 320px;
+  position: relative;
+}
+
+/* TÍTULO PRINCIPAL ELEGANTE */
+.hero-title {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+  margin-bottom: 1.5rem;
+  color: var(--preto);
+  max-width: 700px;
+}
+
+.hero-subtitle {
+  font-size: 1.25rem;
+  font-weight: 350;
+  max-width: 700px;
+  color: var(--cinza);
+  line-height: 1.7;
+  letter-spacing: 0.01em;
+}
+
+/* GLOW WORD SUTIL */
+.glow-word {
+  position: relative;
+  display: inline-block;
+  transition: all 0.3s ease;
+  padding: 0 0.1rem;
+}
+
+.glow-word.active {
+  color: var(--verde-principal);
+  text-shadow: 
+    0 0 8px rgba(76, 175, 80, 0.3),
+    0 0 16px rgba(165, 214, 167, 0.1);
+  background: linear-gradient(45deg, transparent, rgba(76, 175, 80, 0.02), transparent);
+}
+
+/* FOTO DA NUTRI REFINADA */
+.profile-frame {
+  width: 100%;
+  padding-top: 130%;
+  position: relative;
+  overflow: hidden;
+  border: 2px solid var(--preto);
+  border-radius: 3px;
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.08);
+  background: var(--verde-claro);
+  transform: rotate(1deg);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.profile-frame:hover {
+  transform: rotate(0deg) translateY(-4px);
+  box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.1);
+}
+
+.profile-image {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  filter: grayscale(10%) contrast(105%);
+  transition: filter 0.3s ease;
+}
+
+.profile-frame:hover .profile-image {
+  filter: grayscale(0%) contrast(110%);
+}
+
+.profile-decoration {
+  position: absolute;
+  bottom: -12px;
+  right: -12px;
+  width: 60px;
+  height: 60px;
+  background: var(--verde-principal);
+  border: 2px solid var(--preto);
+  z-index: -1;
+  opacity: 0.8;
+}
+
+.profile-caption {
+  margin-top: 1.25rem;
+  padding: 0.875rem;
+  background: rgba(76, 175, 80, 0.04);
+  border-left: 2px solid var(--verde-principal);
+  border-radius: 0 3px 3px 0;
+}
+
+.profile-name {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: var(--preto);
+  margin-bottom: 0.125rem;
+  letter-spacing: 0.02em;
+}
+
+.profile-title {
+  font-size: 0.75rem;
+  color: var(--cinza);
+  font-weight: 350;
+  line-height: 1.4;
+}
+
+/* SEÇÕES ELEGANTES */
+.section {
+  padding: 5rem 0;
+  position: relative;
+}
+
+.section-number {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  letter-spacing: 0.15em;
+  color: var(--verde-principal);
+  margin-bottom: 1.5rem;
+  display: block;
+  position: relative;
+  padding-left: 2rem;
+  text-transform: uppercase;
+}
+
+.section-number::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  width: 1.5rem;
+  height: 1px;
+  background: var(--verde-principal);
+  transform: translateY(-50%);
+}
+
+.section-title {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 2.5rem;
+  font-weight: 700;
+  line-height: 1.1;
+  margin-bottom: 2.5rem;
+  letter-spacing: -0.01em;
+  max-width: 800px;
+}
+
+.text-block {
+  font-size: 1.125rem;
+  line-height: 1.7;
+  max-width: 700px;
+  margin-bottom: 2.5rem;
+  font-weight: 350;
+  color: var(--preto);
+  letter-spacing: 0.01em;
+}
+
+/* CARDS REFINADOS - CORREÇÃO PRINCIPAL */
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(12, 1fr);
+  gap: 1.5rem;
+  margin: 4rem 0;
+}
+
+.card {
+  background: white;
+  padding: 2rem;
+  border: 2px solid var(--preto);
+  border-radius: 2px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+}
+
+.card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: var(--verde-principal);
+  transform: scaleX(0);
+  transition: transform 0.3s ease;
+}
+
+.card:hover {
+  transform: translate(-4px, -4px);
+  box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.1);
+  border-color: var(--verde-principal);
+}
+
+.card:hover::before {
+  transform: scaleX(1);
+}
+
+/* POSICIONAMENTO DOS CARDS (12 COLUNAS) - DESKTOP COMPLETO */
+.card-1 { grid-column: 1 / 5; grid-row: 1; }
+.card-2 { grid-column: 5 / 9; grid-row: 1; background: rgba(165, 214, 167, 0.2); }
+.card-3 { grid-column: 9 / 13; grid-row: 1; }
+.card-4 { grid-column: 1 / 5; grid-row: 2; background: var(--verde-principal); color: white; }
+.card-5 { grid-column: 5 / 9; grid-row: 2; background: var(--preto); color: white; }
+.card-6 { grid-column: 9 / 13; grid-row: 2; }
+
+.card-number {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 2rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 1rem;
+  opacity: 0.2;
+  transition: opacity 0.3s ease;
+}
+
+.card:hover .card-number {
+  opacity: 0.3;
+}
+
+.card-title {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 0.75rem;
+  line-height: 1.3;
+}
+
+.card-text {
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  color: var(--cinza);
+  font-weight: 350;
+}
+
+/* QUOTE BLOCK ELEGANTE */
+.quote-block {
+  background: linear-gradient(135deg, rgba(46, 46, 46, 0.98), var(--preto));
+  color: white;
+  padding: 4rem 3rem;
+  margin: 5rem 0;
+  border-left: 4px solid var(--verde-claro);
+  position: relative;
+  border-radius: 0 4px 4px 0;
+}
+
+.quote-mark {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 8rem;
+  font-weight: 700;
+  position: absolute;
+  top: -2rem;
+  right: 2rem;
+  opacity: 0.05;
+  line-height: 1;
+}
+
+.quote-text {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 1.75rem;
+  font-weight: 500;
+  line-height: 1.4;
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  letter-spacing: 0.01em;
+}
+
+/* LISTA REFINADA */
+.brutal-list {
+  list-style: none;
+  margin: 3rem 0;
+}
+
+.brutal-list li {
+  font-size: 1.125rem;
+  padding: 1.25rem 0;
+  border-bottom: 1px solid rgba(0,0,0,0.08);
+  position: relative;
+  padding-left: 2.5rem;
+  transition: all 0.3s ease;
+  max-width: 700px;
+  color: var(--preto);
+}
+
+.brutal-list li:hover {
+  padding-left: 3rem;
+  border-bottom-color: var(--verde-principal);
+  background: linear-gradient(90deg, rgba(76, 175, 80, 0.03), transparent);
+}
+
+.brutal-list li::before {
+  content: "→";
+  position: absolute;
+  left: 0;
+  font-size: 1.25rem;
+  color: var(--verde-principal);
+  font-weight: 600;
+  transition: transform 0.3s ease;
+  opacity: 0.8;
+}
+
+.brutal-list li:hover::before {
+  transform: translateX(4px);
+  opacity: 1;
+}
+
+/* STATS ELEGANTES */
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 0;
+  margin: 4rem 0;
+  border: 2px solid var(--preto);
+  border-radius: 4px;
+  overflow: hidden;
+  background: white;
+}
+
+.stat {
+  padding: 3rem 1.5rem;
+  text-align: center;
+  border-right: 2px solid var(--preto);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+.stat::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: var(--verde-principal);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+  z-index: 0;
+}
+
+.stat:hover::before {
+  opacity: 0.03;
+}
+
+.stat:last-child {
+  border-right: none;
+}
+
+.stat:hover {
+  transform: translateY(-2px);
+}
+
+.stat-content {
+  position: relative;
+  z-index: 1;
+}
+
+.stat-number {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 3rem;
+  font-weight: 700;
+  line-height: 1;
+  margin-bottom: 0.75rem;
+  color: var(--verde-principal);
+}
+
+.stat-label {
+  font-size: 0.875rem;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  color: var(--cinza);
+}
+
+/* FOOTER ELEGANTE */
+footer {
+  padding: 4rem 0 3rem;
+  border-top: 2px solid rgba(0,0,0,0.08);
+  margin-top: 5rem;
+}
+
+.footer-text {
+  font-family: 'Space Grotesk', -apple-system, BlinkMacSystemFont, sans-serif;
+  font-size: 0.75rem;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  text-align: center;
+  color: var(--cinza-claro);
+  padding: 1.5rem;
+  background: rgba(0,0,0,0.01);
+  border-radius: 4px;
+  margin-bottom: 1rem;
+}
+
+.footer-text a {
+  color: var(--verde-principal);
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 600;
+}
+
+.footer-text a:hover {
+  color: var(--verde-claro);
+  text-decoration: underline;
+}
+
+/* ANIMAÇÕES SUAVES */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(15px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.section, .card, .stat {
+  animation: fadeInUp 0.4s ease-out forwards;
+  opacity: 0;
+}
+
+.section { animation-delay: 0.1s; }
+.card { animation-delay: 0.2s; }
+.stat { animation-delay: 0.3s; }
+
+/* SCROLLBAR REFINADA */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--creme);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--verde-claro);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--verde-principal);
+}
+
+/* ESTILOS DO FORMULÁRIO */
+.lead-form-container {
+    margin-top: 3rem;
+    max-width: 400px;
+    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.lead-form {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1.5px solid rgba(76, 175, 80, 0.2);
+    border-radius: 8px;
+    padding: 1.75rem;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.form-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-icon {
+    display: block;
+    font-size: 2rem;
+    margin-bottom: 0.75rem;
+    opacity: 0.8;
+}
+
+.form-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.125rem;
+    font-weight: 600;
+    color: var(--preto);
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    font-size: 0.875rem;
+    color: var(--cinza);
+    line-height: 1.5;
+}
+
+.form-group {
+    margin-bottom: 1rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 0.875rem 1rem;
+    border: 1.5px solid rgba(0, 0, 0, 0.1);
+    border-radius: 6px;
+    font-family: 'Inter', sans-serif;
+    font-size: 0.9375rem;
+    background: white;
+    transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--verde-principal);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.1);
+}
+
+.form-submit {
+    width: 100%;
+    padding: 1rem;
+    background: var(--verde-principal);
+    color: white;
+    border: none;
+    border-radius: 6px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 600;
+    font-size: 0.9375rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+}
+
+.form-submit:hover {
+    background: #43A047;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(76, 175, 80, 0.2);
+}
+
+.form-submit svg {
+    transition: transform 0.3s ease;
+}
+
+.form-submit:hover svg {
+    transform: translateX(4px);
+}
+
+.form-note {
+    margin-top: 1rem;
+    font-size: 0.75rem;
+    color: var(--cinza-claro);
+    text-align: center;
+    line-height: 1.5;
+}
+
+/* Botão CTA */
+.cta-button {
+    background: var(--verde-principal);
+    color: white;
+    border: 1.5px solid var(--preto);
+    padding: 1rem 2.5rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    font-weight: 600;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.1);
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    position: relative;
+    overflow: hidden;
+}
+
+.cta-button:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.15);
+}
+
+/* RESPONSIVIDADE COM LAYOUT CORRETO */
+
+/* DESKTOP MÉDIO (1024px - 1399px) */
+@media (max-width: 1399px) {
+  .container {
+    max-width: 1100px;
+    padding-left: 4rem;
+    padding-right: 3rem;
+  }
+  
+  .hero-title {
+    font-size: 3rem;
+  }
+  
+  .section-title {
+    font-size: 2.25rem;
+  }
+  
+  .hero-image-container {
+    width: 300px;
+  }
+  
+  /* Cards mantêm layout de 12 colunas */
+  .cards-grid {
+    gap: 1.25rem;
+  }
+  
+  .card {
+    padding: 1.75rem;
+  }
+}
+
+/* DESKTOP PEQUENO / TABLET GRANDE (768px - 1023px) */
+@media (max-width: 1023px) {
+  .container {
+    max-width: 100%;
+    padding-left: 3rem;
+    padding-right: 2rem;
+  }
+  
+  .hero-content {
+    flex-direction: column;
+    gap: 3rem;
+  }
+  
+  .hero-image-container {
+    width: 100%;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .hero-text {
+    padding-right: 0;
+  }
+  
+  .lead-form-container {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  
+  /* CARDS EM 8 COLUNAS (2 CARDS POR LINHA) */
+  .cards-grid {
+    grid-template-columns: repeat(8, 1fr);
+    gap: 1.25rem;
+  }
+  
+  /* Reposicionamento para 2 cards por linha */
+  .card-1 { grid-column: 1 / 5; grid-row: 1; }
+  .card-2 { grid-column: 5 / 9; grid-row: 1; }
+  .card-3 { grid-column: 1 / 5; grid-row: 2; }
+  .card-4 { grid-column: 5 / 9; grid-row: 2; }
+  .card-5 { grid-column: 1 / 5; grid-row: 3; }
+  .card-6 { grid-column: 5 / 9; grid-row: 3; }
+}
+
+/* TABLET (600px - 767px) */
+@media (max-width: 767px) {
+  .container {
+    padding-left: 2rem;
+    padding-right: 1.5rem;
+  }
+  
+  .sidebar-accent {
+    width: 3px;
+  }
+  
+  header {
+    padding: 4rem 0 2rem;
+  }
+  
+  .marca {
+    margin-bottom: 3rem;
+  }
+  
+  .hero-title {
+    font-size: 2.25rem;
+  }
+  
+  .hero-subtitle {
+    font-size: 1.125rem;
+  }
+  
+  .section {
+    padding: 3rem 0;
+  }
+  
+  .lead-form {
+    padding: 1.5rem;
+  }
+  
+  .lead-form-container {
+    max-width: 100%;
+  }
+  
+  /* CARDS EM 6 COLUNAS (ainda 2 cards por linha mas mais estreitos) */
+  .cards-grid {
+    grid-template-columns: repeat(6, 1fr);
+    gap: 1rem;
+  }
+  
+  .card {
+    padding: 1.5rem;
+  }
+  
+  /* Reposicionamento mantendo 2 cards por linha */
+  .card-1 { grid-column: 1 / 4; grid-row: 1; }
+  .card-2 { grid-column: 4 / 7; grid-row: 1; }
+  .card-3 { grid-column: 1 / 4; grid-row: 2; }
+  .card-4 { grid-column: 4 / 7; grid-row: 2; }
+  .card-5 { grid-column: 1 / 4; grid-row: 3; }
+  .card-6 { grid-column: 4 / 7; grid-row: 3; }
+  
+  .quote-block {
+    padding: 3rem 1.5rem;
+    margin: 3rem 0;
+  }
+  
+  .quote-mark {
+    font-size: 5rem;
+    top: -1rem;
+    right: 1rem;
+  }
+  
+  .quote-text {
+    font-size: 1.5rem;
+  }
+  
+  /* Stats em coluna única */
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .stat {
+    border-right: none;
+    border-bottom: 2px solid var(--preto);
+  }
+  
+  .stat:last-child {
+    border-bottom: none;
+  }
+}
+
+/* MOBILE (abaixo de 600px) */
+@media (max-width: 599px) {
+  .container {
+    padding-left: 1.5rem;
+    padding-right: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 1.75rem;
+  }
+  
+  .profile-decoration {
+    display: none;
+  }
+  
+  /* CARDS EM COLUNA ÚNICA */
+  .cards-grid {
+    grid-template-columns: 1fr;
+    gap: 1rem;
+  }
+  
+  /* Todos os cards ocupam a coluna completa */
+  .card-1, .card-2, .card-3, .card-4, .card-5, .card-6 {
+    grid-column: 1;
+    grid-row: auto !important;
+  }
+  
+  .card-title {
+    font-size: 1.125rem;
+  }
+  
+  .card-text {
+    font-size: 0.875rem;
+  }
+  
+  .section-title {
+    font-size: 1.75rem;
+  }
+  
+  .text-block {
+    font-size: 1rem;
+  }
+}
+
+/* MOBILE MUITO PEQUENO (abaixo de 375px) */
+@media (max-width: 374px) {
+  .container {
+    padding-left: 1rem;
+    padding-right: 1rem;
+  }
+  
+  .hero-title {
+    font-size: 1.5rem;
+  }
+  
+  .card {
+    padding: 1.25rem;
+  }
+  
+  .card-number {
+    font-size: 1.5rem;
+  }
+}
+/* =========================== */
+/* ESTILOS DO NOVO FORMULÁRIO */
+/* =========================== */
+
+.lead-form-container {
+    margin-top: 3rem;
+    max-width: 400px;
+    animation: fadeInUp 0.6s ease-out 0.4s forwards;
+    opacity: 0;
+}
+
+.lead-form {
+    background: rgba(255, 255, 255, 0.98);
+    border: 2px solid var(--preto);
+    border-radius: 2px;
+    padding: 2rem;
+    box-shadow: 8px 8px 0 rgba(0, 0, 0, 0.08);
+    transition: all 0.3s ease;
+}
+
+.lead-form:hover {
+    box-shadow: 12px 12px 0 rgba(0, 0, 0, 0.12);
+    border-color: var(--verde-principal);
+}
+
+.form-header {
+    margin-bottom: 1.5rem;
+    text-align: center;
+}
+
+.form-icon {
+    display: block;
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    opacity: 1;
+    color: var(--verde-principal);
+}
+
+.form-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--preto);
+    margin-bottom: 0.5rem;
+}
+
+.form-subtitle {
+    font-size: 0.9375rem;
+    color: var(--cinza);
+    line-height: 1.5;
+    font-weight: 350;
+}
+
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 1rem 1.25rem;
+    border: 2px solid rgba(0, 0, 0, 0.2);
+    border-radius: 2px;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    background: white;
+    transition: all 0.3s ease;
+    color: var(--preto);
+}
+
+.form-group input:focus {
+    outline: none;
+    border-color: var(--verde-principal);
+    box-shadow: 0 0 0 3px rgba(76, 175, 80, 0.15);
+}
+
+.form-group input::placeholder {
+    color: var(--cinza-claro);
+}
+
+.form-submit {
+    width: 100%;
+    padding: 1.25rem;
+    background: var(--verde-principal);
+    color: white;
+    border: 2px solid var(--preto);
+    border-radius: 2px;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.75rem;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    margin-top: 0.5rem;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+}
+
+.form-submit:hover:not(:disabled) {
+    background: #43A047;
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.form-submit:disabled {
+    opacity: 0.7;
+    cursor: not-allowed;
+}
+
+.form-submit svg {
+    transition: transform 0.3s ease;
+}
+
+.form-submit:hover:not(:disabled) svg {
+    transform: translateX(4px);
+}
+
+.form-note {
+    margin-top: 1.25rem;
+    font-size: 0.75rem;
+    color: var(--cinza-claro);
+    text-align: center;
+    line-height: 1.5;
+    padding: 0.75rem;
+    background: rgba(0,0,0,0.02);
+    border-radius: 2px;
+}
+
+/* MENSAGEM DE SUCESSO */
+.success-message {
+    background: rgba(76, 175, 80, 0.1);
+    border: 2px solid var(--verde-principal);
+    border-radius: 2px;
+    padding: 2.5rem;
+    text-align: center;
+    animation: fadeInUp 0.5s ease-out;
+    display: none; /* Inicialmente escondido */
+}
+
+.success-icon {
+    font-size: 3rem;
+    margin-bottom: 1.5rem;
+    color: var(--verde-principal);
+}
+
+.success-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: var(--verde-principal);
+    margin-bottom: 1rem;
+}
+
+.success-text {
+    font-size: 1.125rem;
+    color: var(--preto);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+    max-width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.download-button {
+    background: var(--preto);
+    color: white;
+    border: 2px solid var(--preto);
+    padding: 1rem 2rem;
+    font-family: 'Space Grotesk', sans-serif;
+    font-weight: 700;
+    font-size: 1rem;
+    border-radius: 2px;
+    cursor: pointer;
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75rem;
+    text-decoration: none;
+    letter-spacing: 0.02em;
+    text-transform: uppercase;
+    box-shadow: 4px 4px 0 rgba(0, 0, 0, 0.15);
+    margin-bottom: 1.5rem;
+}
+
+.download-button:hover {
+    background: var(--verde-principal);
+    transform: translate(-2px, -2px);
+    box-shadow: 6px 6px 0 rgba(0, 0, 0, 0.2);
+}
+
+.success-note {
+    margin-top: 1rem;
+    font-size: 0.875rem;
+    color: var(--cinza);
+    line-height: 1.5;
+    border-top: 1px solid rgba(0,0,0,0.1);
+    padding-top: 1rem;
+}
+
+/* Iframe escondido */
+.hidden-iframe {
+    display: none;
+    width: 0;
+    height: 0;
+    border: none;
+    visibility: hidden;
+    position: absolute;
+    left: -9999px;
+    top: -9999px;
+}
+
+/* Loading state */
+.form-submit.loading {
+    position: relative;
+    color: transparent;
+}
+
+.form-submit.loading::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    border: 3px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: white;
+    animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+    to { transform: rotate(360deg); }
+}
+
+/* Responsividade do formulário */
+@media (max-width: 767px) {
+    .lead-form {
+        padding: 1.5rem;
+    }
+    
+    .form-title {
+        font-size: 1.25rem;
+    }
+    
+    .form-subtitle {
+        font-size: 0.875rem;
+    }
+    
+    .success-message {
+        padding: 1.75rem 1.25rem;
+    }
+    
+    .success-title {
+        font-size: 1.25rem;
+    }
+    
+    .success-text {
+        font-size: 1rem;
+    }
+    
+    .download-button {
+        padding: 0.875rem 1.5rem;
+        font-size: 0.9375rem;
+    }
+}
+
+@media (max-width: 374px) {
+    .lead-form {
+        padding: 1.25rem;
+    }
+    
+    .form-icon {
+        font-size: 2rem;
+    }
+    
+    .form-title {
+        font-size: 1.125rem;
+    }
+    
+    .form-group input {
+        padding: 0.875rem 1rem;
+        font-size: 0.9375rem;
+    }
+    
+    .form-submit {
+        padding: 1rem;
+        font-size: 0.9375rem;
+    }
+}
+    </style>
+</head>
+<body>
+    <div class="sidebar-accent"></div>
+    
+    <div class="container">
+        <header>
+            <div class="marca">THAIS CARVALHO NUTRI</div>
+            
+            <div class="hero-content">
+                <div class="hero-text">
+                    <h1 class="hero-title">
+                        Para a <span class="glow-word">Mulher</span> Que 
+                        <span class="glow-word">Cuida</span> de <span class="glow-word">Todos </span> e quer voltar a <span class="glow-word">Cuidar de si</span>
+                    </h1>
+                    
+                    <p class="hero-subtitle">
+                        Se você vive cansada <span class="glow-word">sobrecarregada</span> e sente que se perdeu no meio de tantas responsabilidades 
+                        Este <span class="glow-word">espaço</span>é pra você. <span class="glow-word">Aqui, você aprende</span>, 
+                        a se reconectar <span class="glow-word"> com você mesma</span> de forma simples <span class="glow-word">, possível e real</span>.
+                    </p>
+
+                  
+                <div class="hero-image-container">
+                    <div class="profile-frame">
+                        <img 
+                            src="img/thais.webp" 
+                            alt="Thais Carvalho - Nutricionista"
+                            class="profile-image"
+                            onerror="this.style.display='none'; this.parentElement.style.background='var(--verde-claro)';"
+                        />
+                    </div>
+                    
+                    <div class="profile-decoration"></div>
+                    
+                    <div class="profile-caption">
+                        <div class="profile-name">Thais Carvalho</div>
+                        <div class="profile-title">Nutricionista & Mentora de Autocuidado</div>
+                    </div>
+                </div>
+            </div>
+        </header>
+        
+        <p class="text-block">
+            Você não está <span class="glow-word">sozinha</span>. Muitas mulheres chegam até aqui sentindo:
+        </p>
+          <!-- FORMULÁRIO ATUALIZADO PARA GOOGLE FORMS + DOWNLOAD -->
+                    <div class="lead-form-container" id="form">
+                        <form id="leadForm" class="lead-form">
+                            <div class="form-header">
+                                <span class="form-icon">📖</span>
+                                <h3 class="form-title">Receba seu livro digital grátis</h3>
+                                <p class="form-subtitle">"Mulher Que Carrega o Mundo" - Guia prático de autocuidado</p>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="text" name="nome" placeholder="Seu nome completo" required>
+                            </div>
+
+                            <div class="form-group">
+                                <input type="email" name="email" placeholder="Seu melhor e-mail" required>
+                            </div>
+
+                            <button type="submit" class="form-submit" id="submitBtn">
+                                <span id="btnText">📥 Baixar livro agora</span>
+                                <svg width="20" height="20" viewBox="0 0 24 24" fill="none">
+                                    <path d="M5 12H19M19 12L12 5M19 12L12 19"
+                                        stroke="currentColor"
+                                        stroke-width="2"
+                                        stroke-linecap="round"/>
+                                </svg>
+                            </button>
+
+                            <p class="form-note">Enviaremos o link para download automaticamente</p>
+                        </form>
+                        
+                        <!-- Área para mensagem de sucesso com link do Drive -->
+                        <div id="successMessage" class="success-message" style="display: none;">
+                            <div class="success-icon">🎉</div>
+                            <h3 class="success-title">Pronto, <span id="userName"></span>!</h3>
+                            <p class="success-text">
+                                Seu livro "Mulher Que Carrega o Mundo" está liberado. 
+                                Clique no botão abaixo para baixar gratuitamente.
+                            </p>
+                            <a href="https://drive.google.com/uc?export=download&id=SEU_ID_DO_ARQUIVO_AQUI" 
+                               class="download-button" 
+                               id="downloadLink"
+                               target="_blank">
+                                <span>📚 Baixar livro agora (PDF)</span>
+                            </a>
+                            <p class="success-note">
+                                Também enviamos uma cópia para: <strong id="userEmail"></strong><br>
+                                Verifique sua caixa de entrada e spam.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                
+        <div class="cards-grid">
+            <div class="card card-1">
+                <div class="card-number">01</div>
+                <h3 class="card-title">Mente Acelerada</h3>
+                <p class="card-text">
+                    Pensamentos que não param, mesmo na hora de dormir.
+                </p>
+            </div>
+            
+            <div class="card card-2">
+                <div class="card-number">02</div>
+                <h3 class="card-title">Falta de Tempo Para Si</h3>
+                <p class="card-text">
+                    Você cuida de tudo e de todos, mas nunca sobra tempo para você.
+                </p>
+            </div>
+            
+            <div class="card card-3">
+                <div class="card-number">03</div>
+                <h3 class="card-title">Cansaço Constante</h3>
+                <p class="card-text">
+                    Um cansaço que não é só físico, é emocional, e muitas vezes também nutricional.
+                </p>
+            </div>
+            
+            <div class="card card-4">
+                <div class="card-number">04</div>
+                <h3 class="card-title">Culpa ao Tentar e Parar</h3>
+                <p class="card-text" style="color: white;">
+                    Quando descansa, sente culpa. Quando continua, se esgota.
+                </p>
+            </div>
+            
+            <div class="card card-5">
+                <div class="card-number">05</div>
+                <h3 class="card-title">Alimentação no Automático</h3>
+                <p class="card-text">
+                    Dias passando à base de massas, açúcar e gordura, sem água suficiente, sem uma fruta, sem uma salada — não por falta de vontade, mas por falta de orientação simples.
+                </p>
+            </div>
+            
+            <div class="card card-6">
+                <div class="card-number">06</div>
+                <h3 class="card-title">Identidade Perdida</h3>
+                <p class="card-text">
+                    Você exerce muitos papéis, mas não sabe mais quem é de verdade.
+                </p>
+            </div>
+        </div>
+        
+        <!-- Citação Brutal -->
+        <div class="quote-block">
+            <div class="quote-mark">"</div>
+            <p class="quote-text">
+                Você não precisa de uma <span class="glow-word">dieta perfeita</span>.
+                Você precisa do <span class="glow-word">básico bem feito</span>.
+            </p>
+        </div>
+        
+        <!-- Seção 02: O Caminho -->
+        <section class="section">
+            <span class="section-number">02 / TRANSFORMAÇÃO</span>
+            <h2 class="section-title">O que você vai <span class="glow-word">aprender</span> aqui</h2>
+            
+            <p class="text-block">
+                Antes de qualquer <span class="glow-word">método complicado</span>, 
+                vem o <span class="glow-word">essencial</span> e ele funciona.
+            </p>
+            
+            <p class="text-block">
+                Muitas vezes, o que está <span class="glow-word">faltando</span> é:
+            </p>
+            
+            <ul class="brutal-list">
+                <li>Beber <span class="glow-word">água</span> na quantidade certa</li>
+                <li>Comer ao menos uma <span class="glow-word">fruta</span> por dia</li>
+                <li>Ter uma <span class="glow-word">salada</span> no almoço</li>
+                <li>Fazer <span class="glow-word">refeições</span> de verdade, não só beliscos</li>
+                <li>Diminuir o excesso de <span class="glow-word">massas, açúcar e gordura</span></li>
+            </ul>
+            
+            <p class="text-block">
+                Aqui, você vai <span class="glow-word">aprender</span> a:
+            </p>
+            
+            <ul class="brutal-list">
+                <li>Organizar sua <span class="glow-word">rotina alimentar</span> sem radicalismo</li>
+                <li>Cuidar da sua <span class="glow-word">saúde emocional</span> junto com a alimentação</li>
+                <li>Entender que <span class="glow-word">constância</span> vale mais do que perfeição</li>
+                <li>Criar <span class="glow-word">hábitos simples</span> que cabem na sua vida real</li>
+            </ul>
+        </section>
+        
+        <!-- Stats Brutal -->
+        <div class="stats-grid">
+            <div class="stat">
+                <div class="stat-number">6</div>
+                <div class="stat-label">Dias de Direcionameto</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">15</div>
+                <div class="stat-label">Min por Dia</div>
+            </div>
+            <div class="stat">
+                <div class="stat-number">🌱</div>
+                <div class="stat-label">Mudanças simples</div>
+            </div>
+        </div>
+        
+        <!-- Seção 03: Jornada -->
+        <section class="section">
+            <span class="section-number">03 / SUA JORNADA</span>
+            <h2 class="section-title">Uma jornada <span class="glow-word">prática</span> de <span class="glow-word">6 dias</span></h2>
+            
+            <p class="text-block">
+                Um processo <span class="glow-word">simples</span> para te ajudar a se reorganizar 
+                <span class="glow-word">por dentro</span> e <span class="glow-word">por fora</span> — 
+                começando pelo <span class="glow-word">básico</span>.
+            </p>
+            
+            <div class="cards-grid">
+                <div class="card card-1">
+                    <div class="card-number">DIA 1</div>
+                    <h3 class="card-title">Organização Mental e Alimentar</h3>
+                    <p class="card-text">
+                        Entenda onde está sua energia e como está sua alimentação hoje.
+                    </p>
+                </div>
+                
+                <div class="card card-2">
+                    <div class="card-number">DIA 2</div>
+                    <h3 class="card-title">Emoções e Fome Emocional</h3>
+                    <p class="card-text">
+                        Aprenda a diferenciar fome física de emocional.
+                    </p>
+                </div>
+                
+                <div class="card card-3">
+                    <div class="card-number">DIA 3</div>
+                    <h3 class="card-title">Valores e Escolhas</h3>
+                    <p class="card-text">
+                        O que guia suas decisões, inclusive à mesa?
+                    </p>
+                </div>
+                
+                <div class="card card-4">
+                    <div class="card-number">DIA 4</div>
+                    <h3 class="card-title">Limites e Rotina</h3>
+                    <p class="card-text" style="color: white;">
+                        Identifique o que te drena e aprenda a se respeitar.
+                    </p>
+                </div>
+                
+                <div class="card card-5">
+                    <div class="card-number">DIA 5</div>
+                    <h3 class="card-title">Reconexão com Você</h3>
+                    <p class="card-text">
+                        Resgate desejos, vontades e autocuidado.
+                    </p>
+                </div>
+                
+                <div class="card card-6">
+                    <div class="card-number">DIA 6</div>
+                    <h3 class="card-title">Autocuidado Possível</h3>
+                    <p class="card-text">
+                        Crie pequenos rituais — beber água, comer melhor, pausar — sem culpa.
+                    </p>
+                </div>
+            </div>
+            
+            <p class="text-block" style="margin-top: 3rem; text-align: center;">
+                Não é sobre fazer tudo ao mesmo tempo.<br>
+                É sobre fazer o <span class="glow-word">básico</span> todos os dias.
+            </p>
+        </section>
+
+        <!-- Bloco Final -->
+        <div class="quote-block">
+            <div class="quote-mark">"</div>
+            <p class="quote-text">
+                Um caminho <span class="glow-word">simples</span>, 
+                <span class="glow-word">possível</span> e 
+                <span class="glow-word">real</span> de volta para você.
+            </p>
+        </div>
+
+        <!-- Seção Final -->
+        <section class="section">
+            <span class="section-number">04 / PRÓXIMOS PASSOS</span>
+            <h2 class="section-title">Você <span class="glow-word">merece</span> esse cuidado</h2>
+            
+            <p class="text-block">
+                Cuidar de você não é <span class="glow-word">egoísmo</span>. 
+                É <span class="glow-word">necessidade</span>.
+            </p>
+            
+            <ul class="brutal-list">
+                <li>Você não precisa <span class="glow-word">cortar tudo</span> o que gosta</li>
+                <li>Você não precisa seguir <span class="glow-word">dietas mirabolantes</span></li>
+                <li>Você não precisa ser <span class="glow-word">perfeita</span></li>
+                <li>Você só precisa <span class="glow-word">começar pelo básico e manter</span></li>
+            </ul>
+            
+            <div style="text-align: center; margin-top: 3rem;">
+                <a href="#form" style="text-decoration: none; display: inline-block;">
+                    <button class="cta-button">
+                        📥 Baixar livro grátis
+                    </button>
+                </a>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer>
+            <p class="footer-text">Mulher Que Carrega o Mundo • 2026</p>
+            <a href="https://eitadevis.vercel.app/" style="text-decoration: none;">
+                <p class="footer-text" style="color: rgb(255, 106, 0);">
+                    <span style="color:#7A7A7A;">produzido por: </span>EITA DEVIS
+                </p>
+            </a>
+        </footer>
+    </div>
+
+    <!-- Iframe invisível para envio ao Google Forms -->
+    <iframe name="hidden-iframe" class="hidden-iframe"></iframe>
+
+    <script>
+        // Script para o efeito glow nas palavras
+        function updateGlowWords() {
+            const glowWords = document.querySelectorAll('.glow-word');
+            const windowHeight = window.innerHeight;
+            const centerY = windowHeight * 0.4; // 40% da altura para melhor UX
+            
+            glowWords.forEach(word => {
+                const rect = word.getBoundingClientRect();
+                const wordCenterY = rect.top + (rect.height / 2);
+                const distanceFromCenter = Math.abs(wordCenterY - centerY);
+                const activationRange = 200;
+                
+                word.classList.toggle('active', distanceFromCenter < activationRange);
+            });
+        }
+        
+        // Debounce para performance
+        let scrollTimeout;
+        function debouncedUpdate() {
+            clearTimeout(scrollTimeout);
+            scrollTimeout = setTimeout(updateGlowWords, 16); // ~60fps
+        }
+        
+        // Event listeners para o efeito glow
+        window.addEventListener('scroll', debouncedUpdate, { passive: true });
+        window.addEventListener('load', updateGlowWords);
+        window.addEventListener('resize', debouncedUpdate);
+        
+        // Inicializa o efeito
+        updateGlowWords();
+        
+        // Script para o formulário ATUALIZADO
+        document.addEventListener('DOMContentLoaded', function() {
+            const form = document.getElementById('leadForm');
+            const submitBtn = document.getElementById('submitBtn');
+            const btnText = document.getElementById('btnText');
+            const successMessage = document.getElementById('successMessage');
+            const userName = document.getElementById('userName');
+            const userEmail = document.getElementById('userEmail');
+            const downloadLink = document.getElementById('downloadLink');
+            
+            if (form) {
+                form.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    const nome = this.nome.value.trim();
+                    const email = this.email.value.trim();
+                    
+                    // Validação básica
+                    if (!nome || !email) {
+                        alert('Por favor, preencha todos os campos.');
+                        return;
+                    }
+                    
+                    // Validação de email
+                    const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+                    if (!emailRegex.test(email)) {
+                        alert('Por favor, insira um e-mail válido.');
+                        return;
+                    }
+                    
+                    // Mostrar loading
+                    btnText.innerHTML = '⏳ Enviando...';
+                    submitBtn.disabled = true;
+                    
+                    // Configuração do Google Forms (SUBSTITUA COM SEUS DADOS)
+                    const googleFormUrl = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdUqwbImf2757MblvEFXYec4Y2hZ5G2wq7dwixnNPjUwH-etg/formResponse';
+                    const entryIds = {
+                        nome: 'entry.1160734915',    // ID para Nome
+                        email: 'entry.2119518607'    // ID para E-mail
+                    };
+                    
+                    // Criar formulário dinâmico
+                    const dynamicForm = document.createElement('form');
+                    dynamicForm.method = 'POST';
+                    dynamicForm.action = googleFormUrl;
+                    dynamicForm.target = 'hidden-iframe';
+                    dynamicForm.style.display = 'none';
+                    
+                    // Adicionar campos ao formulário
+                    function addFormField(name, value) {
+                        const input = document.createElement('input');
+                        input.type = 'hidden';
+                        input.name = name;
+                        input.value = value;
+                        dynamicForm.appendChild(input);
+                    }
+                    
+                    // Adicionar dados do usuário
+                    addFormField(entryIds.nome, nome);
+                    addFormField(entryIds.email, email);
+                    
+                    // Adicionar campos técnicos do Google Forms
+                    addFormField('draftResponse', '[]');
+                    addFormField('pageHistory', '0');
+                    addFormField('fbzx', '-55280095427114923');
+                    
+                    // Enviar formulário
+                    document.body.appendChild(dynamicForm);
+                    dynamicForm.submit();
+                    
+                    // Simular processamento e mostrar sucesso
+                    setTimeout(() => {
+                        // Esconder formulário e mostrar sucesso
+                        form.style.display = 'none';
+                        userName.textContent = nome;
+                        userEmail.textContent = email;
+                        successMessage.style.display = 'block';
+                        
+                        // Configurar link de download (SUBSTITUA pelo SEU ID do Drive)
+                        const driveFileId = 'SEU_ID_DO_ARQUIVO_AQUI';
+                        const downloadUrl = `https://drive.google.com/uc?export=download&id=${driveFileId}`;
+                        downloadLink.href = downloadUrl;
+                        
+                        // Restaurar botão (para possíveis novos envios)
+                        btnText.innerHTML = '📥 Baixar livro agora';
+                        submitBtn.disabled = false;
+                        
+                        // Scroll para mensagem de sucesso
+                        successMessage.scrollIntoView({ 
+                            behavior: 'smooth', 
+                            block: 'nearest' 
+                        });
+                        
+                        // Limpar formulário dinâmico após uso
+                        setTimeout(() => {
+                            if (dynamicForm.parentNode) {
+                                document.body.removeChild(dynamicForm);
+                            }
+                        }, 1000);
+                        
+                    }, 1500);
+                });
+            }
+            
+            // Efeito hover no botão CTA
+            const ctaButton = document.querySelector('.cta-button');
+            if (ctaButton) {
+                ctaButton.addEventListener('mouseover', function() {
+                    this.style.transform = 'translate(-2px, -2px)';
+                    this.style.boxShadow = '6px 6px 0 rgba(0, 0, 0, 0.15)';
+                });
+                
+                ctaButton.addEventListener('mouseout', function() {
+                    this.style.transform = 'translate(0, 0)';
+                    this.style.boxShadow = '4px 4px 0 rgba(0, 0, 0, 0.1)';
+                });
+            }
+            
+            // Efeito hover no formulário
+            const leadForm = document.querySelector('.lead-form');
+            if (leadForm) {
+                leadForm.addEventListener('mouseenter', function() {
+                    this.style.transform = 'translate(-2px, -2px)';
+                    this.style.boxShadow = '10px 10px 0 rgba(0, 0, 0, 0.1)';
+                });
+                
+                leadForm.addEventListener('mouseleave', function() {
+                    this.style.transform = 'translate(0, 0)';
+                    this.style.boxShadow = '8px 8px 0 rgba(0, 0, 0, 0.08)';
+                });
+            }
+        });
+    </script>
+</body>
+</html>

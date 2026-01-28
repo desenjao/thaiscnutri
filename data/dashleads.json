@@ -1,0 +1,261 @@
+{
+  "dashboard_summary": {
+    "total_pacientes": 9,
+    "pacientes": [
+      {
+        "id": 1,
+        "nome": "Thaís Coelho",
+        "idade": 35,
+        "contato": {
+          "telefone": "089981287260",
+          "email": "thaiscoelhodias@gmail.com"
+        },
+        "biometria": {
+          "peso_kg": 69,
+          "altura_cm": 164,
+          "imc": 24.5
+        },
+        "perfil_comportamental": {
+          "principal_objetivo": "Comer melhor sem dietas malucas, Diminuir culpa e ansiedade com comida",
+          "prontidao": "alta",
+          "reacao_deslize": "Desisto de tudo, Sinto culpa e tento compensar",
+          "principal_barreira": "Falta de tempo, Ansiedade/emocional",
+          "historico_dietas": "Nenhum",
+          "autoimagem": "Insatisfeita",
+          "padrao_alimentar": "Consigo manter um padrão na maioria dos dias",
+          "ponto_critico": "Quando estou ansiosa, Quando estou cansada",
+          "sono": "Regular",
+          "atividade_fisica": "Sim, regularmente",
+          "necessidade_percebida": "Orientações simples e práticas, Organização de rotina"
+        }
+      },
+      {
+        "id": 2,
+        "nome": "Kariane da costa santos",
+        "idade": -1,
+        "contato": {
+          "telefone": "(89)98110-4389",
+          "email": "karianedacosta29souza@gmail.com"
+        },
+        "biometria": {
+          "peso_kg": 69,
+          "altura_cm": 153,
+          "imc": 29.5
+        },
+        "perfil_comportamental": {
+          "principal_objetivo": "Retomar o controle da alimentação",
+          "prontidao": "alta",
+          "reacao_deslize": "Desisto de tudo",
+          "principal_barreira": "Falta de constância",
+          "historico_dietas": "Sim, várias vezes",
+          "autoimagem": "Muito crítica comigo mesma",
+          "padrao_alimentar": "Bastante irregular, cada dia de um jeito",
+          "ponto_critico": "À noite",
+          "sono": "Regular",
+          "atividade_fisica": "Às vezes",
+          "principal_motivo_nao_pratica": "Falta de motivação",
+          "necessidade_percebida": "Apoio emocional/motivação"
+        }
+      },
+      {
+        "id": 3,
+        "nome": "Juliana Morais de Sousa",
+        "idade": 28,
+        "contato": {
+          "telefone": "89981215381",
+          "email": "Jujumoraissousa1998@gmail.con"
+        },
+        "biometria": {
+          "peso_kg": 67,
+          "altura_cm": 163,
+          "imc": 25.2
+        },
+        "perfil_comportamental": {
+          "principal_objetivo": "Comer melhor sem dietas malucas, Criar uma rotina simples e possível",
+          "prontidao": "alta",
+          "reacao_deslize": "Sinto culpa e tento compensar",
+          "principal_barreira": "Falta de constância, Ansiedade/emocional",
+          "historico_dietas": "Nenhum",
+          "autoimagem": "Insatisfeita",
+          "padrao_alimentar": "Só desanda à noite",
+          "ponto_critico": "Finais de semana, Quando estou ansiosa",
+          "sono": "Regular",
+          "atividade_fisica": "Sim, regularmente",
+          "necessidade_percebida": "Orientações simples e práticas, Organização de rotina"
+        }
+      },
+      {
+        "id": 4,
+        "nome": "Clemilda da Silva Rocha",
+        "idade": 35,
+        "contato": {
+          "telefone": "(89)981104910",
+          "email": "clemildarocha1990@gmail.com"
+        },
+        "biometria": {
+          "peso_kg": 73,
+          "altura_cm": 140,
+          "imc": 37.2
+        },
+        "perfil_comportamental": {
+          "principal_objetivo": "Retomar o controle da alimentação",
+          "prontidao": "alta",
+          "reacao_deslize": "Desisto de tudo, Sinto culpa e tento compensar",
+          "principal_barreira": "Falta de constância",
+          "historico_dietas": "Sim, várias vezes",
+          "autoimagem": "Insatisfeita",
+          "padrao_alimentar": "Começo bem e me perco ao longo do dia",
+          "ponto_critico": "À noite, E a tarde",
+          "sono": "Regular",
+          "atividade_fisica": "Às vezes",
+          "principal_motivo_nao_pratica": "Falta de motivação",
+          "necessidade_percebida": "Orientações simples e práticas"
+        }
+      },
+      {
+        "id": 5,
+        "nome": "Marisete Fernandes",
+        "idade": 42,
+        "contato": {
+          "telefone": "89 98142-4970",
+          "email": "Marisete366@gmail.com"
+        },
+        "biometria": {
+          "peso_kg": 73,
+          "altura_cm": 166,
+          "imc": 26.5
+        },
+        "perfil_comportamental": {
+          "principal_objetivo": "Retomar o controle da alimentação",
+          "prontidao": "alta",
+          "reacao_deslize": "Sinto culpa e tento compensar",
+          "principal_barreira": "Falta de organização",
+          "historico_dietas": "Já tentei, mas não segui",
+          "autoimagem": "Insatisfeita",
+          "padrao_alimentar": "Consigo manter um padrão na maioria dos dias",
+          "ponto_critico": "Finais de semana",
+          "sono": "Regular",
+          "atividade_fisica": "Sim, regularmente",
+          "necessidade_percebida": "Orientações simples e práticas"
+        }
+      },
+      {
+        "id": 6,
+        "nome": "Marília de Sousa Soares",
+        "idade": 36,
+        "contato": {
+          "telefone": "89981500332",
+          "email": "oliviasoresdesuza@gmail.com"
+        },
+        "biometria": {
+          "peso_kg": 68,
+          "altura_cm": 145,
+          "imc": 32.3
+        },
+        "perfil_comportamental": {
+          "principal_objetivo": "Diminuir culpa e ansiedade com comida",
+          "prontidao": "media",
+          "reacao_deslize": "Desisto de tudo",
+          "principal_barreira": "Ansiedade/emocional",
+          "historico_dietas": "Nenhum",
+          "autoimagem": "Muito crítica comigo mesma",
+          "padrao_alimentar": "Começo bem e me perco ao longo do dia",
+          "ponto_critico": "Finais de semana",
+          "sono": "Regular",
+          "atividade_fisica": "Às vezes",
+          "principal_motivo_nao_pratica": "Falta de motivação",
+          "necessidade_percebida": "Apoio emocional/motivação"
+        }
+      },
+      {
+        "id": 7,
+        "nome": "Andresa Oliveira Afonso",
+        "idade": 24,
+        "contato": {
+          "telefone": "89981220016",
+          "email": "andresaafonsooliveira12@gmail.com"
+        },
+        "biometria": {
+          "peso_kg": 94,
+          "altura_cm": 168,
+          "imc": 33.3
+        },
+        "perfil_comportamental": {
+          "principal_objetivo": "Criar uma rotina simples e possível",
+          "prontidao": "media",
+          "reacao_deslize": "Desisto de tudo",
+          "principal_barreira": "Ansiedade/emocional",
+          "historico_dietas": "Já tentei, mas não segui",
+          "autoimagem": "Insatisfeita",
+          "padrao_alimentar": "Começo bem e me perco ao longo do dia",
+          "ponto_critico": "Quando estou ansiosa",
+          "sono": "Regular",
+          "atividade_fisica": "Sim, regularmente",
+          "necessidade_percebida": "Orientações simples e práticas"
+        }
+      },
+      {
+        "id": 8,
+        "nome": "DarleideRibeiro dos Santos",
+        "idade": 30,
+        "contato": {
+          "telefone": "89 98114-7103",
+          "email": "Ribeirodarleide19@gmail.com"
+        },
+        "biometria": {
+          "peso_kg": 81,
+          "altura_cm": 164,
+          "imc": 30.1
+        },
+        "perfil_comportamental": {
+          "principal_objetivo": "Diminuir culpa e ansiedade com comida",
+          "prontidao": "media",
+          "reacao_deslize": "Nunca pensei nisso",
+          "principal_barreira": "Ansiedade/emocional",
+          "historico_dietas": "Já tentei, mas não segui",
+          "autoimagem": "Insatisfeita",
+          "padrao_alimentar": "Só desanda à noite",
+          "ponto_critico": "Pela manhã",
+          "sono": "Ótimo",
+          "atividade_fisica": "Não pratico",
+          "principal_motivo_nao_pratica": "Falta de energia, Falta de motivação",
+          "necessidade_percebida": "Apoio emocional/motivação"
+        }
+      },
+      {
+        "id": 9,
+        "nome": "Maria Cláudia de Sousa Macedo oliveira",
+        "idade": 30,
+        "contato": {
+          "telefone": "89981064324",
+          "email": "claudiamariaryan23@gamail.com"
+        },
+        "biometria": {
+          "peso_kg": 63,
+          "altura_cm": 160,
+          "imc": 24.6
+        },
+        "perfil_comportamental": {
+          "principal_objetivo": "Diminuir culpa e ansiedade com comida",
+          "prontidao": "alta",
+          "reacao_deslize": "Sinto culpa e tento compensar",
+          "principal_barreira": "Falta de organização",
+          "historico_dietas": "Já tentei, mas não segui",
+          "autoimagem": "Muito crítica comigo mesma",
+          "padrao_alimentar": "Consigo manter um padrão na maioria dos dias",
+          "ponto_critico": "Quando estou ansiosa",
+          "sono": "Regular",
+          "atividade_fisica": "Sim, regularmente",
+          "necessidade_percebida": "Orientações simples e práticas, Apoio emocional/motivação"
+        }
+      }
+    ],
+    "insights_gerais": {
+      "perfil_emocional_predominante": "Ansiedade, culpa e insatisfação corporal",
+      "principais_barreiras": ["Ansiedade/Emocional", "Falta de constância/organização"],
+      "objetivos_mais_comuns": ["Diminuir culpa/ansiedade", "Retomar controle alimentar"],
+      "necessidades_mais_citadas": ["Orientações simples e práticas", "Apoio emocional/motivação"],
+      "ponto_critico_alimentar": "Noite, fins de semana e momentos de ansiedade"
+    }
+  }
+}

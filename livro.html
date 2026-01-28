@@ -1,0 +1,1163 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LIVRO: Mulher Que Carrega o Mundo | PDF PRONTO</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+    
+    <style>
+        /* ===== RESET & BASE ===== */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            font-size: 16px;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: 'Cormorant Garamond', serif;
+            background: linear-gradient(135deg, #f9f7f3 0%, #f5f2ea 100%);
+            color: #2c3e50;
+            line-height: 1.6;
+            width: 80%; /* Tamanho A4 */
+            min-height: 297mm;
+            margin: 20px auto;
+            padding: 0;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1);
+            position: relative;
+            overflow-x: hidden;
+        }
+
+        /* ===== CORES DO LIVRO ===== */
+        :root {
+            --verde-escuro: #2e7d32;
+            --verde-medio: #4caf50;
+            --verde-claro: #a5d6a7;
+            --dourado: #d4af37;
+            --marrom: #8d6e63;
+            --creme: #faf8f5;
+            --cinza-escuro: #37474f;
+            --cinza-claro: #90a4ae;
+        }
+
+        /* ===== PÁGINA ÚNICA ===== */
+        .livro-container {
+            position: relative;
+            width: 100%;
+            padding: 50px;
+            background: white;
+            border: 1px solid #eee;
+        }
+
+        /* ===== CAPA DO LIVRO ===== */
+        .capa {
+            text-align: center;
+            padding: 80px 40px;
+            margin-bottom: 60px;
+            background: linear-gradient(135deg, var(--verde-escuro), var(--verde-medio));
+            color: white;
+            position: relative;
+            overflow: hidden;
+            border-radius: 8px;
+        }
+
+        .capa::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('img/thais.webp') center/cover;
+            opacity: 0.15;
+        }
+
+        .titulo-principal {
+            font-size: 4.2rem;
+            font-weight: 700;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            line-height: 1.1;
+            position: relative;
+            z-index: 2;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .subtitulo {
+            font-size: 1.8rem;
+            font-weight: 400;
+            font-style: italic;
+            margin-bottom: 40px;
+            opacity: 0.9;
+            position: relative;
+            z-index: 2;
+        }
+
+        .autor {
+            font-size: 1.5rem;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+            color: var(--dourado);
+        }
+
+        .ornamento {
+            width: 100px;
+            height: 2px;
+            background: var(--dourado);
+            margin: 30px auto;
+            position: relative;
+            z-index: 2;
+        }
+
+        /* ===== ÍNDICE ELEGANTE ===== */
+        .indice {
+            margin: 60px 0;
+            padding: 40px;
+            background: var(--creme);
+            border-left: 4px solid var(--verde-medio);
+            border-radius: 4px;
+        }
+
+        .indice h2 {
+            font-size: 2.2rem;
+            color: var(--verde-escuro);
+            margin-bottom: 30px;
+            font-weight: 600;
+        }
+
+        .lista-capitulos {
+            list-style: none;
+            column-count: 2;
+            column-gap: 40px;
+        }
+
+        .lista-capitulos li {
+            margin-bottom: 15px;
+            break-inside: avoid;
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .lista-capitulos li::before {
+            content: "→";
+            position: absolute;
+            left: 0;
+            color: var(--verde-medio);
+            font-weight: bold;
+        }
+
+        .lista-capitulos a {
+            color: var(--cinza-escuro);
+            text-decoration: none;
+            font-size: 1.1rem;
+            transition: color 0.3s;
+            display: block;
+            padding: 5px 0;
+        }
+
+        .lista-capitulos a:hover {
+            color: var(--verde-escuro);
+        }
+
+        /* ===== CAPÍTULOS ESTILIZADOS ===== */
+        .capitulo {
+            margin: 80px 0;
+            page-break-inside: avoid;
+        }
+
+        .numero-capitulo {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--verde-medio);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .numero-capitulo::after {
+            content: '';
+            flex: 1;
+            height: 1px;
+            background: linear-gradient(90deg, var(--verde-medio), transparent);
+        }
+
+        .titulo-capitulo {
+            font-size: 2.8rem;
+            font-weight: 700;
+            color: var(--cinza-escuro);
+            margin-bottom: 15px;
+            line-height: 1.2;
+        }
+
+        .subtitulo-capitulo {
+            font-size: 1.3rem;
+            color: var(--cinza-claro);
+            font-style: italic;
+            margin-bottom: 40px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 400;
+        }
+
+        .conteudo-capitulo {
+            font-size: 1.15rem;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .conteudo-capitulo p {
+            margin-bottom: 25px;
+            text-indent: 40px;
+        }
+
+        /* ===== DESTAQUES E CITAÇÕES ===== */
+        .destaque {
+            background: linear-gradient(120deg, rgba(165, 214, 167, 0.1) 0%, rgba(165, 214, 167, 0.05) 100%);
+            border-left: 4px solid var(--verde-medio);
+            padding: 25px 30px;
+            margin: 30px 0;
+            font-style: italic;
+            font-size: 1.2rem;
+            color: var(--cinza-escuro);
+            border-radius: 0 8px 8px 0;
+        }
+
+        .citacao {
+            text-align: center;
+            padding: 40px;
+            margin: 40px 0;
+            position: relative;
+            background: var(--creme);
+            border-radius: 8px;
+        }
+
+        .citacao::before,
+        .citacao::after {
+            content: '"';
+            font-size: 4rem;
+            color: var(--verde-claro);
+            position: absolute;
+            opacity: 0.3;
+        }
+
+        .citacao::before {
+            top: 10px;
+            left: 20px;
+        }
+
+        .citacao::after {
+            bottom: 10px;
+            right: 20px;
+        }
+
+        .texto-citacao {
+            font-size: 1.4rem;
+            font-style: italic;
+            color: var(--marrom);
+            margin-bottom: 20px;
+        }
+
+        .autor-citacao {
+            font-weight: 600;
+            color: var(--verde-escuro);
+            font-size: 1.1rem;
+        }
+
+        /* ===== EXERCÍCIOS ===== */
+        .exercicio {
+            background: white;
+            border: 2px solid var(--verde-claro);
+            border-radius: 12px;
+            padding: 30px;
+            margin: 40px 0;
+            box-shadow: 0 10px 30px rgba(165, 214, 167, 0.15);
+        }
+
+        .cabecalho-exercicio {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 25px;
+            padding-bottom: 15px;
+            border-bottom: 2px dashed var(--verde-claro);
+        }
+
+        .tempo-exercicio {
+            background: var(--verde-medio);
+            color: white;
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        .titulo-exercicio {
+            font-size: 1.5rem;
+            color: var(--verde-escuro);
+            font-weight: 600;
+        }
+
+        .passos-exercicio {
+            list-style: none;
+            margin: 25px 0;
+        }
+
+        .passos-exercicio li {
+            margin-bottom: 15px;
+            padding-left: 35px;
+            position: relative;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .passos-exercicio li::before {
+            content: "✓";
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 24px;
+            height: 24px;
+            background: var(--verde-claro);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+        }
+
+        /* ===== LISTA DE PONTOS-CHAVE ===== */
+        .pontos-chave {
+            background: linear-gradient(135deg, rgba(76, 175, 80, 0.05), rgba(76, 175, 80, 0.02));
+            padding: 35px;
+            border-radius: 8px;
+            margin: 40px 0;
+            border: 1px solid rgba(165, 214, 167, 0.3);
+        }
+
+        .pontos-chave h3 {
+            font-size: 1.5rem;
+            color: var(--verde-escuro);
+            margin-bottom: 25px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .pontos-chave h3::before {
+            content: "★";
+            color: var(--dourado);
+        }
+
+        .lista-pontos {
+            list-style: none;
+        }
+
+        .lista-pontos li {
+            margin-bottom: 15px;
+            padding-left: 30px;
+            position: relative;
+            font-size: 1.1rem;
+        }
+
+        .lista-pontos li::before {
+            content: "•";
+            position: absolute;
+            left: 0;
+            color: var(--verde-medio);
+            font-size: 2rem;
+            line-height: 1;
+        }
+
+        /* ===== RODAPÉ DO LIVRO ===== */
+        .encerramento {
+            text-align: center;
+            padding: 80px 40px;
+            margin-top: 80px;
+            background: linear-gradient(135deg, var(--cinza-escuro), #263238);
+            color: white;
+            border-radius: 8px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .encerramento::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(165, 214, 167, 0.1) 0%, transparent 70%);
+            animation: rotateGlow 20s linear infinite;
+        }
+
+        @keyframes rotateGlow {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .mensagem-final {
+            font-size: 1.8rem;
+            margin-bottom: 40px;
+            line-height: 1.4;
+            position: relative;
+            z-index: 2;
+            color: var(--verde-claro);
+        }
+
+        .assinatura {
+            margin-top: 60px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .nome-autor {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--dourado);
+            letter-spacing: 2px;
+        }
+
+        .titulo-autor {
+            font-size: 1.1rem;
+            opacity: 0.8;
+            margin-top: 5px;
+        }
+
+        /* ===== DECORAÇÕES ===== */
+        .separador {
+            width: 100%;
+            height: 1px;
+            background: linear-gradient(90deg, transparent, var(--verde-claro), transparent);
+            margin: 60px 0;
+        }
+
+        .flor-decorativa {
+            position: absolute;
+            width: 80px;
+            height: 80px;
+            opacity: 0.05;
+            pointer-events: none;
+        }
+
+        .flor-1 {
+            top: 10%;
+            right: 5%;
+            background: radial-gradient(circle, var(--verde-medio), transparent 70%);
+            border-radius: 50%;
+        }
+
+        .flor-2 {
+            bottom: 15%;
+            left: 5%;
+            background: conic-gradient(var(--verde-claro), var(--dourado), var(--verde-claro));
+            border-radius: 50%;
+        }
+
+        /* ===== METADADOS DO LIVRO ===== */
+        .metadados {
+            display: flex;
+            justify-content: center;
+            gap: 50px;
+            margin-top: 30px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--cinza-claro);
+        }
+
+        .metadado-item {
+            text-align: center;
+        }
+
+        .metadado-valor {
+            font-size: 1.8rem;
+            font-weight: 600;
+            color: var(--verde-medio);
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        .metadado-rotulo {
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-size: 0.8rem;
+        }
+
+        /* ===== RESPONSIVO PARA PRINT ===== */
+        @media print {
+            body {
+                margin: 0;
+                padding: 0;
+                width: 210mm;
+                height: 297mm;
+                box-shadow: none;
+                background: white;
+            }
+            
+            .livro-container {
+                padding: 25mm;
+                break-inside: avoid;
+            }
+            
+            .capa {
+                page-break-after: always;
+            }
+            
+            .capitulo {
+                page-break-inside: avoid;
+                page-break-after: auto;
+            }
+            
+            .exercicio, .citacao, .pontos-chave {
+                page-break-inside: avoid;
+            }
+        }
+
+        /* ===== ESTILOS ESPECIAIS ===== */
+        .texto-gradiente {
+            background: linear-gradient(135deg, var(--verde-escuro), var(--marrom));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+
+        .sombra-texto {
+            text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .borda-elegante {
+            border: 2px solid transparent;
+            border-image: linear-gradient(135deg, var(--verde-medio), var(--dourado)) 1;
+        }
+
+        .numero-grande {
+            font-size: 3.5rem;
+            font-weight: 700;
+            color: var(--verde-medio);
+            opacity: 0.1;
+            position: absolute;
+            right: 20px;
+            top: -20px;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+<body>
+    <div class="flor-decorativa flor-1"></div>
+    <div class="flor-decorativa flor-2"></div>
+
+    <div class="livro-container">
+        
+        <!-- CAPA -->
+        <div class="capa">
+            <div class="ornamento"></div>
+            <h1 class="titulo-principal sombra-texto">Mulher Que Carrega o Mundo</h1>
+            <p class="subtitulo">Um guia de 7 dias para reconectar-se com você mesma</p>
+            <div class="ornamento"></div>
+            <p class="autor">Thais Carvalho</p>
+            
+            <div class="metadados">
+                <div class="metadado-item">
+                    <span class="metadado-valor">7</span>
+                    <span class="metadado-rotulo">Capítulos</span>
+                </div>
+                <div class="metadado-item">
+                    <span class="metadado-valor">15</span>
+                    <span class="metadado-rotulo">Minutos/Dia</span>
+                </div>
+                <div class="metadado-item">
+                    <span class="metadado-valor">🌱</span>
+                    <span class="metadado-rotulo">Mudanças</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- ÍNDICE -->
+        <div class="indice">
+            <h2 class="texto-gradiente">Sumário</h2>
+            <ul class="lista-capitulos">
+                <li><a href="#cap1">Capítulo 1: O Peso Que Você Escolheu Carregar</a></li>
+                <li><a href="#cap2">Capítulo 2: A Fome Que Não É Sua</a></li>
+                <li><a href="#cap3">Capítulo 3: O Que Você Vende Por Um Prato de Massa</a></li>
+                <li><a href="#cap4">Capítulo 4: Os Muros Que Te Protegem, As Portas Que Te Libertam</a></li>
+                <li><a href="#cap5">Capítulo 5: A Rainha Que Esqueceu da Coroa</a></li>
+                <li><a href="#cap6">Capítulo 6: Os Rituais Que Transformam Peso em Presença</a></li>
+                <li><a href="#cap7">Capítulo 7: Agora o Mundo É Mais Leve Porque Você É Mais Forte</a></li>
+            </ul>
+        </div>
+
+        <div class="separador"></div>
+
+        <!-- CAPÍTULO 1 -->
+        <div class="capitulo" id="cap1">
+            <div class="numero-capitulo">Dia 01</div>
+            <h2 class="titulo-capitulo">O Peso Que Você Escolheu Carregar</h2>
+            <p class="subtitulo-capitulo">Organização Mental e Alimentar</p>
+            
+            <div class="conteudo-capitulo">
+                <p>Seus ombros doem de carregar o mundo. Não é metáfora. É fisiológico. Os músculos trapézios, aquela faixa que vai do pescoço até os ombros, estão em constante tensão. Eles não foram projetados para suportar o peso das responsabilidades, dos "e se", dos "mas tenho que".</p>
+                
+                <div class="destaque">
+                    Você acorda cansada. Não da noite mal dormida, mas da vida mal vivida. A sensação é de estar em uma esteira que nunca desliga, correndo sem sair do lugar.
+                </div>
+                
+                <p>Cada tarefa cumprida é imediatamente substituída por outra. Você se pergunta: <strong>"Quando foi que parei de viver para começar a sobreviver?"</strong></p>
+                
+                <div class="citacao">
+                    <p class="texto-citacao">"O cansaço mais profundo não vem do que você faz, mas do que você deixa de fazer por si mesma."</p>
+                    <p class="autor-citacao">— Thais Carvalho</p>
+                </div>
+                
+                <p>Vamos fazer um exercício de verdade. Não aqueles que pedem para você "pensar positivo". Este é um exercício de <strong>honestidade brutal</strong>.</p>
+                
+                <div class="exercicio">
+                    <div class="cabecalho-exercicio">
+                        <span class="tempo-exercicio">5 MINUTOS</span>
+                        <h3 class="titulo-exercicio">O Mapa da Exaustão</h3>
+                    </div>
+                    <p><strong>Você vai precisar:</strong> Uma folha de papel e uma caneta.</p>
+                    <ol class="passos-exercicio">
+                        <li>Divida a folha em duas colunas</li>
+                        <li>Na coluna da esquerda: Liste 3 coisas que <strong>ROBAM</strong> sua energia</li>
+                        <li>Na coluna da direita: Liste 3 coisas que <strong>DEVOLVEM</strong> sua energia</li>
+                        <li>Agora, olhe para as listas. Qual coluna está mais cheia na sua vida real?</li>
+                    </ol>
+                    <p><em>Dica:</em> Anote as primeiras coisas que vierem à mente. Não censure.</p>
+                </div>
+                
+                <div class="pontos-chave">
+                    <h3>PARA VOCÊ GUARDAR</h3>
+                    <ul class="lista-pontos">
+                        <li>Você não está cansada de trabalhar, está cansada de não ver propósito</li>
+                        <li>Sua alimentação não é preguiça, é sinal de SOS do corpo</li>
+                        <li>O peso nos ombros é real – mas o que você carrega pode mudar</li>
+                    </ul>
+                </div>
+                
+                <p>Amanhã, vamos tirar um desses pesos dos seus ombros. Escolha qual. Enquanto isso, beba um copo de água. Sim, agora mesmo. Seu corpo agradece.</p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+        <!-- CAPÍTULO 2 -->
+        <div class="capitulo" id="cap2">
+            <div class="numero-capitulo">Dia 02</div>
+            <h2 class="titulo-capitulo">A Fome Que Não É Sua</h2>
+            <p class="subtitulo-capitulo">Emoções e Fome Emocional</p>
+            
+            <div class="conteudo-capitulo">
+                <p>Quando você abre a geladeira às 22h, não está com fome. Está com saudade de algo. Alguém. Algum momento em que a vida era mais leve. O chocolate não é doce, é anestésico. O pão não é macio, é abraço de farinha e fermento.</p>
+                
+                <div class="destaque">
+                    Vamos falar de algo que ninguém te contou: você come o amor que não recebe. Você preenche com comida os vazios que as palavras deixaram.
+                </div>
+                
+                <div class="exercicio">
+                    <div class="cabecalho-exercicio">
+                        <span class="tempo-exercicio">7 MINUTOS</span>
+                        <h3 class="titulo-exercicio">O Diálogo da Fome</h3>
+                    </div>
+                    <p><strong>Antes de comer qualquer coisa hoje:</strong></p>
+                    <ol class="passos-exercicio">
+                        <li>Pare por 30 segundos</li>
+                        <li>Coloque a mão no estômago</li>
+                        <li>Pergunte em voz alta: "Isso é combustível ou fuga?"</li>
+                        <li>Espere 10 segundos pela resposta do corpo</li>
+                        <li>Escute. Seu corpo sempre responde</li>
+                    </ol>
+                    <p><em>Atenção:</em> Não julgue a resposta. Apenas observe.</p>
+                </div>
+                
+                <p>O açúcar não é seu inimigo. A gordura não é vilã. O verdadeiro problema é quando você usa a comida como <strong>tradução</strong> para emoções que não consegue nomear. Raiva vira chocolate. Tristeza vira sorvete. Solidão vira pão com manteiga.</p>
+                
+                <div class="citacao">
+                    <p class="texto-citacao">"Seu corpo fala em sintomas. Cabe a você aprender a língua."</p>
+                    <p class="autor-citacao">— Thais Carvalho</p>
+                </div>
+                
+                <div class="pontos-chave">
+                    <h3>PARA VOCÊ LEMBRAR</h3>
+                    <ul class="lista-pontos">
+                        <li>Fome física vem gradualmente – fome emocional vem como tsunami</li>
+                        <li>Seu corpo sabe o que precisa – você só precisa aprender a ouvi-lo</li>
+                        <li>Comer com atenção é o primeiro passo para comer com intenção</li>
+                    </ul>
+                </div>
+                
+                <p>Amanhã, vamos descobrir quem você realmente é – além das máscaras, dos papéis, das expectativas.</p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+        <!-- CAPÍTULO 3 -->
+        <div class="capitulo" id="cap3">
+            <div class="numero-capitulo">Dia 03</div>
+            <h2 class="titulo-capitulo">O Que Você Vende Por Um Prato de Massa</h2>
+            <p class="subtitulo-capitulo">Valores e Escolhas</p>
+            
+            <div class="conteudo-capitulo">
+                <p>Cada vez que você diz "sim" ao que não quer, diz "não" a uma parte de você. Cada prato comido por obrigação social, cada sorriso forçado, cada "tudo bem" quando não está tudo bem – são pequenas traições à sua essência.</p>
+                
+                <div class="destaque">
+                    Vamos fazer uma conta: você troca sua energia por aprovação. A gordura no seu corpo não é apenas gordura – é depósito de concessões não feitas, limites não estabelecidos, "nãos" não ditos.
+                </div>
+                
+                <div class="exercicio">
+                    <div class="cabecalho-exercicio">
+                        <span class="tempo-exercicio">10 MINUTOS</span>
+                        <h3 class="titulo-exercicio">O Orçamento de Energia</h3>
+                    </div>
+                    <p><strong>Imagine que você tem 100 moedas de energia por dia:</strong></p>
+                    <ol class="passos-exercicio">
+                        <li>Liste onde você GASTA suas moedas (tarefas, pessoas, obrigações)</li>
+                        <li>Agora liste onde você INVESTIRIA suas moedas (sonhos, desejos, autocuidado)</li>
+                        <li>Compare as duas listas – qual tem mais itens?</li>
+                        <li>Escolha UMA coisa da lista de gastos para transferir para a lista de investimentos</li>
+                    </ol>
+                    <p><em>Exemplo:</em> Gastar menos energia com redes sociais, investir mais em ler um livro.</p>
+                </div>
+                
+                <div class="citacao">
+                    <p class="texto-citacao">"A perfeição não existe. O que existe é a consistência em honrar quem você é."</p>
+                    <p class="autor-citacao">— Thais Carvalho</p>
+                </div>
+                
+                <p>Seus valores estão no seu prato. Literalmente. O que você escolhe comer diz muito sobre o que você escolhe viver. <strong>Comida rápida, vida rápida. Comida sem atenção, vida sem presença.</strong></p>
+                
+                <div class="pontos-chave">
+                    <h3>PARA VOCÊ PRATICAR</h3>
+                    <ul class="lista-pontos">
+                        <li>Cada escolha alimentar é uma afirmação de valor</li>
+                        <li>Ser "boazinha" demais te mata aos poucos</li>
+                        <li>Seus limites são sua soberania nutricional</li>
+                    </ul>
+                </div>
+                
+                <p>Amanhã, vamos construir muros. Muros saudáveis, necessários, que protegem o que é seu por direito.</p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+        <!-- CAPÍTULO 4 -->
+        <div class="capitulo" id="cap4">
+            <div class="numero-capitulo">Dia 04</div>
+            <h2 class="titulo-capitulo">Os Muros Que Te Protegem, As Portas Que Te Libertam</h2>
+            <p class="subtitulo-capitulo">Limites e Rotina</p>
+            
+            <div class="conteudo-capitulo">
+                <p>Você não precisa de mais horas no dia. Precisa de menos invasões na sua alma. O caos externo é apenas reflexo do caos interno. Quando tudo está bagunçado fora, é porque está bagunçado dentro.</p>
+                
+                <div class="destaque">
+                    Vamos falar de uma palavra que assusta: rotina. Não a rotina prisional, mas a rotina libertadora. A que cria espaço para a magia acontecer. A que diz "neste horário, eu sou minha prioridade".
+                </div>
+                
+                <div class="exercicio">
+                    <div class="cabecalho-exercicio">
+                        <span class="tempo-exercicio">15 MINUTOS</span>
+                        <h3 class="titulo-exercicio">A Fortaleza de 15 Minutos</h3>
+                    </div>
+                    <p><strong>Vamos criar um espaço intocável no seu dia:</strong></p>
+                    <ol class="passos-exercicio">
+                        <li>Escolha um horário (pode ser de manhã ou à noite)</li>
+                        <li>Bloqueie 15 minutos no seu calendário</li>
+                        <li>Nesses 15 minutos: nada de celular, nada de tarefas</li>
+                        <li>Faça apenas UMA destas coisas: respirar, alongar, tomar um chá em silêncio, escrever 3 gratidões</li>
+                        <li>Defenda esse tempo como defende o de seus filhos</li>
+                    </ol>
+                    <p><em>Importante:</em> Comece com 15 minutos. Depois aumente se quiser.</p>
+                </div>
+                
+                <div class="citacao">
+                    <p class="texto-citacao">"Dizer 'não' para os outros é dizer 'sim' para a vida que você merece."</p>
+                    <p class="autor-citacao">— Thais Carvalho</p>
+                </div>
+                
+                <p>Seu tempo sem limites é sua energia sem dono. As pessoas tomam porque você deixa. A comida invade porque você abre a porta. <strong>A rotina é o esqueleto que sustenta seus sonhos.</strong> Sem ela, tudo desmorona.</p>
+                
+                <div class="pontos-chave">
+                    <h3>PARA VOCÊ PROTEGER</h3>
+                    <ul class="lista-pontos">
+                        <li>Limites não são egoísmo – são sobrevivência</li>
+                        <li>Rotina não é prisão – é liberdade estruturada</li>
+                        <li>Seu "não" mais importante é o que diz a si mesma</li>
+                    </ul>
+                </div>
+                
+                <p>Amanhã, vamos reconquistar territórios perdidos. Vamos lembrar quem você era antes do mundo te dizer quem ser.</p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+        <!-- CAPÍTULO 5 -->
+        <div class="capitulo" id="cap5">
+            <div class="numero-capitulo">Dia 05</div>
+            <h2 class="titulo-capitulo">A Rainha Que Esqueceu da Coroa</h2>
+            <p class="subtitulo-capitulo">Reconexão com Você</p>
+            
+            <div class="conteudo-capitulo">
+                <p>Em algum momento, você começou a servir a todos e se demitiu de si mesma. Esqueceu que é rainha do seu próprio corpo, soberana das suas escolhas, arquiteta da sua paz. A coroa está empoeirada, mas não perdida.</p>
+                
+                <div class="destaque">
+                    Seus desejos não morreram. Estão em coma induzido pela rotina, pela pressa, pelo "depois eu vejo". O corpo que você critica é o mesmo que carrega seus sonhos.
+                </div>
+                
+                <div class="exercicio">
+                    <div class="cabecalho-exercicio">
+                        <span class="tempo-exercicio">10 MINUTOS</span>
+                        <h3 class="titulo-exercicio">O Tribunal dos Desejos</h3>
+                    </div>
+                    <p><strong>Vamos resgatar uma vontade genuína:</strong></p>
+                    <ol class="passos-exercicio">
+                        <li>Feche os olhos e respire profundamente 3 vezes</li>
+                        <li>Pergunte ao seu corpo: "O que você realmente quer AGORA?"</li>
+                        <li>Espere. A primeira resposta é a verdadeira</li>
+                        <li>Pode ser algo simples: "Quero deitar", "Quero uma fruta", "Quero silêncio"</li>
+                        <li>Honre esse desejo. Faça-o agora, se possível</li>
+                    </ol>
+                    <p><em>Observação:</em> Não precisa ser grande. Pequenos desejos honrados criam grandes mudanças.</p>
+                </div>
+                
+                <div class="citacao">
+                    <p class="texto-citacao">"Autocuidado não é vaidade. É manutenção da realeza que você é."</p>
+                    <p class="autor-citacao">— Thais Carvalho</p>
+                </div>
+                
+                <p>O prazer não é pecado. É combustível. O descanso não é preguiça. É estratégia. O amor-próprio não é narcisismo. É pré-requisito para amar os outros de verdade. <strong>Você não pode dar o que não tem.</strong></p>
+                
+                <div class="pontos-chave">
+                    <h3>PARA VOCÊ RECONHECER</h3>
+                    <ul class="lista-pontos">
+                        <li>Você é rainha – lembre-se da coroa</li>
+                        <li>Seus desejos são mapas do tesouro – siga-os</li>
+                        <li>Autocuidado não é luxo – é soberania</li>
+                    </ul>
+                </div>
+                
+                <p>Amanhã, vamos coroar essas mudanças. Vamos transformar teoria em rituais sagrados.</p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+        <!-- CAPÍTULO 6 -->
+        <div class="capitulo" id="cap6">
+            <div class="numero-capitulo">Dia 06</div>
+            <h2 class="titulo-capitulo">Os Rituais Que Transformam Peso em Presença</h2>
+            <p class="subtitulo-capitulo">Autocuidado Possível</p>
+            
+            <div class="conteudo-capitulo">
+                <p>Você não precisa de mudanças radicais. Precisa de rituais sagrados que caibam na sua vida real. Um copo d'água com intenção vale mais que uma dieta perfeita nunca iniciada. Uma respiração consciente vale mais que uma hora de meditação adiada.</p>
+                
+                <div class="destaque">
+                    Vamos falar de matemática emocional: 1% melhor cada dia é revolucionário. Em um ano, você é 37 vezes melhor. A salada que você come hoje planta as sementes do amanhã que você sonha.
+                </div>
+                
+                <div class="exercicio">
+                    <div class="cabecalho-exercicio">
+                        <span class="tempo-exercicio">15 MINUTOS</span>
+                        <h3 class="titulo-exercicio">Os 3 Pilares</h3>
+                    </div>
+                    <p><strong>Hoje, pratique os três rituais essenciais:</strong></p>
+                    <ol class="passos-exercicio">
+                        <li><strong>Água com presença</strong> – Beba um copo de água olhando pela janela, sentindo o líquido no corpo</li>
+                        <li><strong>Movimento mínimo</strong> – Alongue-se por 2 minutos, sentindo cada músculo</li>
+                        <li><strong>Pausa intencional</strong> – Pare por 60 segundos, feche os olhos, respire</li>
+                    </ol>
+                    <p><em>Lembre-se:</em> É sobre qualidade, não quantidade. Presença, não perfeição.</p>
+                </div>
+                
+                <div class="citacao">
+                    <p class="texto-citacao">"A pausa não é perda de tempo. É ganho de vida."</p>
+                    <p class="autor-citacao">— Thais Carvalho</p>
+                </div>
+                
+                <p>Consistência supera intensidade. Hábito vence vontade. <strong>Os rituais são as cordas que te puxam para cima quando tudo quer te puxar para baixo.</strong> Eles não precisam ser grandiosos. Precisam ser reais.</p>
+                
+                <div class="pontos-chave">
+                    <h3>PARA VOCÊ CRIAR</h3>
+                    <ul class="lista-pontos">
+                        <li>Rituais são âncoras em dias turbulentos</li>
+                        <li>Pequenas ações consistentes criam grandes transformações</li>
+                        <li>O autocuidado possível é melhor que o perfeito impossível</li>
+                    </ul>
+                </div>
+                
+                <p>O caminho está feito. As ferramentas estão nas suas mãos. Amanhã não é um fim. É um recomeço com novos olhos.</p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+        <!-- CAPÍTULO 7 -->
+        <div class="capitulo" id="cap7">
+            <div class="numero-capitulo">Dia 07</div>
+            <h2 class="titulo-capitulo">Agora o Mundo É Mais Leve Porque Você É Mais Forte</h2>
+            <p class="subtitulo-capitulo">Encerramento e Continuação</p>
+            
+            <div class="conteudo-capitulo">
+                <p>Há 7 dias, você abriu este livro carregando o mundo. Hoje, você carrega a si mesma. E sabe o segredo? <strong>Quando você está bem consigo, o mundo fica mais leve.</strong> Não porque ele mudou, mas porque você mudou.</p>
+                
+                <div class="destaque">
+                    Vamos revisar a jornada com novos olhos. Veja como você caminhou:
+                </div>
+                
+                <div class="pontos-chave">
+                    <h3>SUA JORNADA DE 7 DIAS</h3>
+                    <ul class="lista-pontos">
+                        <li><strong>Dia 1</strong> – Você identificou os pesos desnecessários</li>
+                        <li><strong>Dia 2</strong> – Você aprendeu a diferenciar fome de emoção</li>
+                        <li><strong>Dia 3</strong> – Você descobriu seus valores verdadeiros</li>
+                        <li><strong>Dia 4</strong> – Você construiu limites saudáveis</li>
+                        <li><strong>Dia 5</strong> – Você reconectou-se com sua essência</li>
+                        <li><strong>Dia 6</strong> – Você criou rituais que sustentam</li>
+                        <li><strong>Hoje</strong> – Você é uma mulher mais leve, mais presente, mais sua</li>
+                    </ul>
+                </div>
+                
+                <div class="exercicio">
+                    <div class="cabecalho-exercicio">
+                        <span class="tempo-exercicio">10 MINUTOS</span>
+                        <h3 class="titulo-exercicio">A Carta para Você daqui a 6 Meses</h3>
+                    </div>
+                    <p><strong>Escreva uma carta para você mesma:</strong></p>
+                    <ol class="passos-exercicio">
+                        <li>Data: Daqui a 6 meses</li>
+                        <li>Comece com: "Querida [seu nome], hoje você..."</li>
+                        <li>Descreva como será sua rotina, seus hábitos, sua paz</li>
+                        <li>Inclua as conquistas que terá alcançado</li>
+                        <li>Termine com: "Você conseguiu. Eu sabia que conseguiria."</li>
+                        <li>Guarde em um lugar especial</li>
+                    </ol>
+                </div>
+                
+                <div class="citacao">
+                    <p class="texto-citacao">"O autocuidado não é destino. É direção. Um dia de cada vez, um copo d'água de cada vez, um 'não' de cada vez."</p>
+                    <p class="autor-citacao">— Thais Carvalho</p>
+                </div>
+                
+                <div class="pontos-chave">
+                    <h3>RECURSOS PARA CONTINUAR</h3>
+                    <ul class="lista-pontos">
+                        <li><strong>Comunidade:</strong> Você não está sozinha. Milhares de mulheres estão nessa jornada</li>
+                        <li><strong>Diário:</strong> Continue registrando seus insights e conquistas</li>
+                        <li><strong>Ritual:</strong> Mantenha os 3 pilares – água, movimento, pausa</li>
+                        <li><strong>Compaixão:</strong> Nos dias difíceis, lembre-se: recomeçar é permitido</li>
+                    </ul>
+                </div>
+                
+                <p><strong>Eu, Thais, continuo aqui.</strong> Esta não é uma despedida. É um "até já". Sua jornada continua, e eu estou torcendo por você.</p>
+                
+                <div class="destaque" style="text-align: center; font-size: 1.3rem; padding: 30px; margin: 40px 0;">
+                    O mundo precisa do seu peso. Mas do peso da sua presença, não do seu cansaço. Do peso do seu amor, não da sua culpa. Do peso da sua verdade, não das suas máscaras.
+                </div>
+                
+                <p style="text-align: center; font-size: 1.4rem; font-weight: 600; color: var(--verde-escuro); margin: 40px 0;">
+                    Você não carrega mais o mundo sozinha.<br>
+                    Agora você dança com ele.
+                </p>
+            </div>
+        </div>
+
+        <div class="separador"></div>
+
+        <!-- ENCERRAMENTO -->
+        <div class="encerramento">
+            <h2 class="texto-gradiente">Sua Jornada Continua</h2>
+            <p class="mensagem-final">
+                Agora o mundo é mais leve<br>
+                porque você é mais forte.
+            </p>
+            
+            <div class="assinatura">
+                <div class="nome-autor">Thais Carvalho</div>
+                <div class="titulo-autor">Nutricionista & Mentora de Autocuidado</div>
+            </div>
+            
+            <div class="metadados">
+                <div class="metadado-item">
+                    <span class="metadado-valor">2026</span>
+                    <span class="metadado-rotulo">Edição</span>
+                </div>
+                <div class="metadado-item">
+                    <span class="metadado-valor">❤️</span>
+                    <span class="metadado-rotulo">Com amor</span>
+                </div>
+                <div class="metadado-item">
+                    <span class="metadado-valor">📖</span>
+                    <span class="metadado-rotulo">Para você</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Suavizar rolagem para links internos
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Adicionar números grandes decorativos aos capítulos
+        document.querySelectorAll('.capitulo').forEach((capitulo, index) => {
+            const numero = document.createElement('div');
+            numero.className = 'numero-grande';
+            numero.textContent = (index + 1).toString().padStart(2, '0');
+            capitulo.style.position = 'relative';
+            capitulo.appendChild(numero);
+        });
+
+        // Efeito de fade-in ao rolar
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1
+        });
+
+        // Aplicar efeito a todos os elementos principais
+        document.querySelectorAll('.capitulo, .exercicio, .citacao, .pontos-chave').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // Botão de impressão silenciosa
+        const printButton = document.createElement('button');
+        printButton.innerHTML = '🖨️ Imprimir PDF';
+        printButton.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, var(--verde-medio), var(--verde-escuro));
+            color: white;
+            border: none;
+            padding: 12px 24px;
+            border-radius: 25px;
+            font-family: 'Inter', sans-serif;
+            font-weight: 600;
+            cursor: pointer;
+            box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+            z-index: 1000;
+            transition: all 0.3s ease;
+        `;
+        
+        printButton.onmouseover = () => {
+            printButton.style.transform = 'translateY(-2px)';
+            printButton.style.boxShadow = '0 6px 20px rgba(76, 175, 80, 0.4)';
+        };
+        
+        printButton.onmouseout = () => {
+            printButton.style.transform = 'translateY(0)';
+            printButton.style.boxShadow = '0 4px 15px rgba(76, 175, 80, 0.3)';
+        };
+        
+        printButton.onclick = () => {
+            window.print();
+        };
+        
+        document.body.appendChild(printButton);
+
+        // Efeito parallax nas flores decorativas
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const flor1 = document.querySelector('.flor-1');
+            const flor2 = document.querySelector('.flor-2');
+            
+            if (flor1) flor1.style.transform = `translateY(${scrolled * 0.1}px)`;
+            if (flor2) flor2.style.transform = `translateY(${scrolled * -0.1}px)`;
+        });
+
+        // Salvar última posição de leitura
+        let saveTimeout;
+        window.addEventListener('scroll', () => {
+            clearTimeout(saveTimeout);
+            saveTimeout = setTimeout(() => {
+                const visibleChapter = Array.from(document.querySelectorAll('.capitulo'))
+                    .find(chapter => {
+                        const rect = chapter.getBoundingClientRect();
+                        return rect.top < window.innerHeight / 3;
+                    });
+                
+                if (visibleChapter) {
+                    localStorage.setItem('ultimoCapituloLido', visibleChapter.id);
+                }
+            }, 1000);
+        });
+
+        // Restaurar posição salva
+        window.addEventListener('load', () => {
+            const ultimoCapitulo = localStorage.getItem('ultimoCapituloLido');
+            if (ultimoCapitulo) {
+                const elemento = document.getElementById(ultimoCapitulo);
+                if (elemento) {
+                    setTimeout(() => {
+                        elemento.scrollIntoView({ behavior: 'smooth' });
+                    }, 500);
+                }
+            }
+        });
+
+        // Contador de páginas (apenas visual)
+        const pageCount = document.createElement('div');
+        pageCount.innerHTML = '📖 24 páginas';
+        pageCount.style.cssText = `
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 8px 16px;
+            border-radius: 20px;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            color: var(--verde-escuro);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            z-index: 1000;
+            border: 1px solid var(--verde-claro);
+        `;
+        document.body.appendChild(pageCount);
+
+        // Marcação de capítulos lidos
+        const chapters = document.querySelectorAll('.capitulo');
+        chapters.forEach(chapter => {
+            chapter.addEventListener('click', () => {
+                chapter.style.borderLeft = '3px solid var(--verde-medio)';
+                localStorage.setItem(`capitulo_${chapter.id}`, 'lido');
+            });
+        });
+    </script>
+</body>
+</html>

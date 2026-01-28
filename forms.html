@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contato - Thais C Nutri</title>
+    <style>
+       
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>Thais C Nutri</h1>
+            <p>Entre em contato para mais informações</p>
+        </div>
+        
+        <div class="form-container">
+            <form id="contactForm">
+                <div class="form-group">
+                    <label for="nome" class="required">Nome completo</label>
+                    <input type="text" id="nome" name="nome" placeholder="Digite seu nome completo" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="whatsapp" class="required">WhatsApp</label>
+                    <input type="tel" id="whatsapp" name="whatsapp" placeholder="(11) 99999-9999" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="email" class="required">E-mail</label>
+                    <input type="email" id="email" name="email" placeholder="seu@email.com" required>
+                </div>
+                
+                <button type="submit" class="submit-btn" id="submitBtn">
+                    <span id="btnText">Enviar Mensagem</span>
+                    <span id="btnLoading" class="loading" style="display:none;"></span>
+                </button>
+                
+                <div id="message" class="message"></div>
+            </form>
+            
+            <div class="form-footer">
+                <p>Seus dados estão seguros conosco ✨</p>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Iframe invisível para envio -->
+    <iframe name="hidden-iframe" class="hidden-iframe"></iframe>
+    
+    <script>
+        document.getElementById('contactForm').addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Validação básica
+            const nome = document.getElementById('nome').value.trim();
+            const whatsapp = document.getElementById('whatsapp').value.trim();
+            const email = document.getElementById('email').value.trim();
+            
+            if (!nome || !whatsapp || !email) {
+                showMessage('Por favor, preencha todos os campos obrigatórios.', 'error');
+                return;
+            }
+            
+            // Email validation
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (!emailRegex.test(email)) {
+                showMessage('Por favor, insira um e-mail válido.', 'error');
+                return;
+            }
+            
+            // Mostrar loading
+            document.getElementById('btnText').style.display = 'none';
+            document.getElementById('btnLoading').style.display = 'inline-block';
+            document.getElementById('submitBtn').disabled = true;
+            
+            // Criar formulário dinâmico para envio
+            const dynamicForm = document.createElement('form');
+            dynamicForm.method = 'POST';
+            dynamicForm.action = 'https://docs.google.com/forms/u/0/d/e/1FAIpQLSdUqwbImf2757MblvEFXYec4Y2hZ5G2wq7dwixnNPjUwH-etg/formResponse';
+            dynamicForm.target = 'hidden-iframe';
+            dynamicForm.style.display = 'none';
+            
+            // Adicionar campos com os entry IDs corretos
+            addFormField(dynamicForm, 'entry.1160734915', nome);
+            addFormField(dynamicForm, 'entry.856031161', whatsapp);
+            addFormField(dynamicForm, 'entry.2119518607', email);
+            
+            // Adicionar ao body e submeter
+            document.body.appendChild(dynamicForm);
+            dynamicForm.submit();
+            
+            // Simular delay para feedback (pode remover se quiser resposta mais rápida)
+            setTimeout(function() {
+                document.getElementById('btnText').style.display = 'inline';
+                document.getElementById('btnLoading').style.display = 'none';
+                document.getElementById('submitBtn').disabled = false;
+                
+                // Mostrar mensagem de sucesso
+                showMessage('✅ Mensagem enviada com sucesso! Em breve entraremos em contato.', 'success');
+                
+                // Limpar formulário
+                document.getElementById('contactForm').reset();
+                
+                // Remover formulário dinâmico
+                document.body.removeChild(dynamicForm);
+            }, 1500);
+        });
+        
+        function addFormField(form, name, value) {
+            const input = document.createElement('input');
+            input.type = 'hidden';
+            input.name = name;
+            input.value = value;
+            form.appendChild(input);
+        }
+        
+        function showMessage(text, type) {
+            const messageDiv = document.getElementById('message');
+            messageDiv.textContent = text;
+            messageDiv.className = 'message ' + type;
+            messageDiv.style.display = 'block';
+            
+            // Auto esconder mensagem após 5 segundos
+            setTimeout(() => {
+                messageDiv.style.display = 'none';
+            }, 5000);
+        }
+        
+        // Máscara para WhatsApp
+        document.getElementById('whatsapp').addEventListener('input', function(e) {
+            let value = e.target.value.replace(/\D/g, '');
+            if (value.length > 0) {
+                value = value.replace(/^(\d{2})(\d)/g, '($1) $2');
+                if (value.length > 10) {
+                    value = value.replace(/(\d{5})(\d)/, '$1-$2');
+                }
+                if (value.length > 15) {
+                    value = value.substring(0, 15);
+                }
+            }
+            e.target.value = value;
+        });
+    </script>
+</body>
+</html>
