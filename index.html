@@ -487,6 +487,90 @@
                 padding: 20px;
             }
         }
+        .whatsapp-cta {
+    margin: 20px auto;
+    max-width: 600px;
+}
+
+.whatsapp-link {
+    display: flex;
+    align-items: center;
+    background: linear-gradient(135deg, #dc2626, #b91c1c);
+    color: white;
+    text-decoration: none;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 15px rgba(220, 38, 38, 0.3);
+    transition: all 0.3s ease;
+    border: none;
+    cursor: pointer;
+}
+
+.whatsapp-link:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(220, 38, 38, 0.4);
+    background: linear-gradient(135deg, #ef4444, #dc2626);
+}
+
+.whatsapp-icon {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 50%;
+    width: 60px;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 20px;
+    flex-shrink: 0;
+}
+
+.whatsapp-icon i {
+    font-size: 28px;
+}
+
+.whatsapp-content {
+    flex: 1;
+}
+
+.whatsapp-content h2 {
+    margin: 0 0 5px 0;
+    font-size: 1.3rem;
+}
+
+.whatsapp-content p {
+    margin: 0;
+    opacity: 0.9;
+    font-size: 0.9rem;
+}
+
+.whatsapp-link .fa-chevron-right {
+    font-size: 1.2rem;
+    opacity: 0.8;
+}
+
+@media (max-width: 600px) {
+    .whatsapp-link {
+        padding: 15px;
+    }
+    
+    .whatsapp-icon {
+        width: 50px;
+        height: 50px;
+        margin-right: 15px;
+    }
+    
+    .whatsapp-icon i {
+        font-size: 24px;
+    }
+    
+    .whatsapp-content h2 {
+        font-size: 1.1rem;
+    }
+    
+    .whatsapp-content p {
+        font-size: 0.85rem;
+    }
+}
     </style>
 </head>
 <body>
@@ -528,6 +612,19 @@
                 <i class="fas fa-chevron-right"></i>
             </a>
         </section>
+        <!-- Botão Vermelho do WhatsApp -->
+<section class="whatsapp-cta">
+    <a href="nindex.html" class="whatsapp-link" id="whatsappSendLink">
+        <div class="whatsapp-icon">
+            <i class="fab fa-whatsapp"></i>
+        </div>
+        <div class="whatsapp-content">
+            <h2>Enviar para WhatsApp</h2>
+            <p>Clique para enviar links para todos os contatos ativos</p>
+        </div>
+        <i class="fas fa-chevron-right"></i>
+    </a>
+</section>
 
         <!-- Seção de Dicas -->
         <section class="tips-section">

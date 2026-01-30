@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>App de Tarefas</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background-color: #f5f7fa;
+            color: #333;
+            line-height: 1.6;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+        
+        h1 {
+            color: #5a67d8;
+            margin-bottom: 8px;
+        }
+        
+        .add-task-form {
+            display: flex;
+            margin-bottom: 25px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .task-input {
+            flex: 1;
+            padding: 16px 20px;
+            border: none;
+            font-size: 1rem;
+            outline: none;
+        }
+        
+        .add-button {
+            background-color: #5a67d8;
+            color: white;
+            border: none;
+            padding: 0 24px;
+            cursor: pointer;
+            font-size: 1.2rem;
+        }
+        
+        .tasks-info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 15px;
+            color: #718096;
+        }
+        
+        .tasks-section {
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+            margin-bottom: 25px;
+        }
+        
+        .section-title {
+            padding: 16px 20px;
+            background-color: #f8f9fa;
+            border-bottom: 1px solid #f1f1f1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .section-title h2 {
+            font-size: 1.1rem;
+            color: #4a5568;
+        }
+        
+        .counter {
+            background-color: #e2e8f0;
+            color: #4a5568;
+            padding: 2px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+        }
+        
+        .tasks-list {
+            max-height: 300px;
+            overflow-y: auto;
+        }
+        
+        .task-item {
+            display: flex;
+            align-items: center;
+            padding: 18px 20px;
+            border-bottom: 1px solid #f1f1f1;
+        }
+        
+        .task-checkbox {
+            width: 24px;
+            height: 24px;
+            border-radius: 50%;
+            border: 2px solid #cbd5e0;
+            margin-right: 16px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-shrink: 0;
+        }
+        
+        .task-checkbox.checked {
+            background-color: #5a67d8;
+            border-color: #5a67d8;
+        }
+        
+        .task-checkbox.checked::after {
+            content: '✓';
+            color: white;
+            font-size: 0.9rem;
+        }
+        
+        .task-content {
+            flex: 1;
+        }
+        
+        .task-text {
+            font-size: 1.05rem;
+            margin-bottom: 4px;
+        }
+        
+        .task-text.completed {
+            text-decoration: line-through;
+            color: #a0aec0;
+        }
+        
+        .task-details {
+            font-size: 0.85rem;
+            color: #718096;
+        }
+        
+        .task-actions {
+            display: flex;
+            gap: 8px;
+            margin-left: 10px;
+        }
+        
+        .action-btn {
+            background: none;
+            border: none;
+            cursor: pointer;
+            font-size: 1rem;
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .whatsapp-btn {
+            background-color: #25D366;
+            color: white;
+        }
+        
+        .delete-btn {
+            background-color: rgba(229, 62, 62, 0.1);
+            color: #e53e3e;
+        }
+        
+        .restore-btn {
+            background-color: rgba(56, 161, 105, 0.1);
+            color: #38a169;
+        }
+        
+        .empty-state {
+            text-align: center;
+            padding: 50px 20px;
+            color: #a0aec0;
+        }
+        
+        .empty-state i {
+            font-size: 3rem;
+            margin-bottom: 15px;
+            color: #cbd5e0;
+        }
+        
+        .trash-section {
+            background-color: #fff5f5;
+            border: 2px dashed #fed7d7;
+        }
+        
+        .trash-section .section-title {
+            background-color: #fff5f5;
+        }
+        
+        .clear-trash-btn {
+            display: block;
+            width: 100%;
+            padding: 12px;
+            background-color: #fed7d7;
+            color: #c53030;
+            border: none;
+            cursor: pointer;
+            font-weight: 600;
+        }
+        
+        .clear-trash-btn:disabled {
+            background-color: #e2e8f0;
+            color: #a0aec0;
+            cursor: not-allowed;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>Contatos para WhatsApp</h1>
+            <p>Clique no botão verde para enviar link</p>
+        </header>
+        
+        <div class="tasks-info">
+            <span id="totalTasks">Total: 0 contatos</span>
+            <span id="completedTasks">Enviados: 0</span>
+        </div>
+        
+        <div class="tasks-section" id="activeTasksSection">
+            <div class="section-title">
+                <h2>Contatos Ativos</h2>
+                <span class="counter" id="activeCounter">0</span>
+            </div>
+            <div class="tasks-list" id="activeTasksList">
+                <div class="empty-state" id="activeEmptyState">
+                    <i class="fas fa-users"></i>
+                    <h3>Nenhum contato</h3>
+                    <p>Os contatos serão carregados automaticamente</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="tasks-section trash-section" id="trashSection">
+            <div class="section-title">
+                <h2>Lixeira</h2>
+                <span class="counter" id="trashCounter">0</span>
+            </div>
+            <div class="tasks-list" id="trashTasksList">
+                <div class="empty-state" id="trashEmptyState">
+                    <i class="fas fa-trash"></i>
+                    <h3>Lixeira vazia</h3>
+                </div>
+            </div>
+            <button class="clear-trash-btn" id="clearTrashBtn" disabled>
+                Limpar Lixeira
+            </button>
+        </div>
+    </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', async function() {
+        // Elementos DOM
+        const activeTasksList = document.getElementById('activeTasksList');
+        const trashTasksList = document.getElementById('trashTasksList');
+        const activeEmptyState = document.getElementById('activeEmptyState');
+        const trashEmptyState = document.getElementById('trashEmptyState');
+        const totalTasksSpan = document.getElementById('totalTasks');
+        const completedTasksSpan = document.getElementById('completedTasks');
+        const activeCounter = document.getElementById('activeCounter');
+        const trashCounter = document.getElementById('trashCounter');
+        const clearTrashBtn = document.getElementById('clearTrashBtn');
+        const trashSection = document.getElementById('trashSection');
+        
+        // Variáveis para armazenar as tarefas
+        let activeTasks = [];
+        let trashTasks = [];
+        
+        // Função para carregar contatos do arquivo JSON
+        async function loadContactsFromJSON() {
+            try {
+                const response = await fetch('list.json');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                const contactsData = await response.json();
+                
+                // Verifica se é um array ou um objeto único
+                let contactsArray;
+                if (Array.isArray(contactsData)) {
+                    contactsArray = contactsData;
+                } else if (contactsData && typeof contactsData === 'object') {
+                    // Se for um objeto único, coloca em um array
+                    contactsArray = [contactsData];
+                } else {
+                    console.error('Formato inválido do JSON');
+                    return [];
+                }
+                
+                // Transforma os dados no formato esperado pelo app
+                return contactsArray.map((contact, index) => ({
+                    id: Date.now() + index, // ID único baseado no timestamp
+                    nome: contact.nome || '',
+                    telefone: contact.telefone || '',
+                    link: contact.link || '',
+                    completed: false,
+                    deleted: false,
+                    createdAt: new Date().toISOString()
+                }));
+            } catch (error) {
+                console.error('Erro ao carregar list.json:', error);
+                // Retorna array vazio se houver erro
+                return [];
+            }
+        }
+        
+        // Função principal para carregar tarefas
+        async function loadTasks() {
+            const savedActive = JSON.parse(localStorage.getItem('activeTasks'));
+            const savedTrash = JSON.parse(localStorage.getItem('trashTasks'));
+            
+            if (savedActive && savedActive.length > 0) {
+                activeTasks = savedActive;
+            } else {
+                // Carrega contatos do JSON externo
+                activeTasks = await loadContactsFromJSON();
+            }
+            
+            trashTasks = savedTrash || [];
+        }
+        
+        function updateCounters() {
+            const totalTasks = activeTasks.length + trashTasks.length;
+            const completedTasks = activeTasks.filter(task => task.completed).length;
+            
+            totalTasksSpan.textContent = `Total: ${totalTasks} contato${totalTasks !== 1 ? 's' : ''}`;
+            completedTasksSpan.textContent = `Enviados: ${completedTasks}`;
+            activeCounter.textContent = activeTasks.length;
+            trashCounter.textContent = trashTasks.length;
+            
+            if (activeTasks.length === 0) {
+                activeEmptyState.style.display = 'block';
+            } else {
+                activeEmptyState.style.display = 'none';
+            }
+            
+            if (trashTasks.length === 0) {
+                trashEmptyState.style.display = 'block';
+                clearTrashBtn.disabled = true;
+                trashSection.style.display = 'none';
+            } else {
+                trashEmptyState.style.display = 'none';
+                clearTrashBtn.disabled = false;
+                trashSection.style.display = 'block';
+            }
+        }
+        
+        function saveTasks() {
+            localStorage.setItem('activeTasks', JSON.stringify(activeTasks));
+            localStorage.setItem('trashTasks', JSON.stringify(trashTasks));
+            updateCounters();
+        }
+        
+        function sendWhatsApp(task) {
+            if (!task.telefone) return;
+            
+            const phoneNumber = task.telefone.replace(/\D/g, '');
+            const firstName = task.nome.split(' ')[0];
+            const message = `Olá ${firstName}! Segue a análise completa do seu formulário conforme prometido. Se tiver qualquer dúvida, estou à disposição para esclarecer! ${task.link}`;
+            const encodedMessage = encodeURIComponent(message);
+            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
+            
+            window.open(whatsappUrl, '_blank');
+            task.completed = true;
+            saveTasks();
+            renderTasks();
+        }
+        
+        function renderTasks() {
+            activeTasksList.innerHTML = '';
+            
+            if (activeTasks.length === 0) {
+                activeTasksList.appendChild(activeEmptyState);
+                activeEmptyState.style.display = 'block';
+            } else {
+                activeEmptyState.style.display = 'none';
+                
+                activeTasks.forEach((task, index) => {
+                    const taskItem = document.createElement('div');
+                    taskItem.className = 'task-item';
+                    
+                    const taskContent = document.createElement('div');
+                    taskContent.className = 'task-content';
+                    
+                    const taskText = document.createElement('div');
+                    taskText.className = `task-text ${task.completed ? 'completed' : ''}`;
+                    taskText.textContent = task.nome;
+                    
+                    const taskDetails = document.createElement('div');
+                    taskDetails.className = 'task-details';
+                    taskDetails.textContent = task.telefone;
+                    
+                    const taskActions = document.createElement('div');
+                    taskActions.className = 'task-actions';
+                    
+                    const whatsappBtn = document.createElement('button');
+                    whatsappBtn.className = 'action-btn whatsapp-btn';
+                    whatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
+                    whatsappBtn.title = 'Enviar WhatsApp';
+                    
+                    whatsappBtn.addEventListener('click', function() {
+                        sendWhatsApp(task);
+                    });
+                    
+                    const deleteBtn = document.createElement('button');
+                    deleteBtn.className = 'action-btn delete-btn';
+                    deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
+                    deleteBtn.title = 'Mover para lixeira';
+                    
+                    deleteBtn.addEventListener('click', function() {
+                        moveToTrash(index);
+                    });
+                    
+                    taskContent.appendChild(taskText);
+                    taskContent.appendChild(taskDetails);
+                    taskActions.appendChild(whatsappBtn);
+                    taskActions.appendChild(deleteBtn);
+                    
+                    taskItem.appendChild(taskContent);
+                    taskItem.appendChild(taskActions);
+                    activeTasksList.appendChild(taskItem);
+                });
+            }
+            
+            renderTrash();
+        }
+        
+        function renderTrash() {
+            trashTasksList.innerHTML = '';
+            
+            if (trashTasks.length === 0) {
+                trashTasksList.appendChild(trashEmptyState);
+                trashEmptyState.style.display = 'block';
+            } else {
+                trashEmptyState.style.display = 'none';
+                
+                trashTasks.forEach((task, index) => {
+                    const taskItem = document.createElement('div');
+                    taskItem.className = 'task-item';
+                    
+                    const taskContent = document.createElement('div');
+                    taskContent.className = 'task-content';
+                    
+                    const taskText = document.createElement('div');
+                    taskText.className = 'task-text';
+                    taskText.textContent = task.nome;
+                    
+                    const taskDetails = document.createElement('div');
+                    taskDetails.className = 'task-details';
+                    taskDetails.textContent = task.telefone;
+                    
+                    const taskActions = document.createElement('div');
+                    taskActions.className = 'task-actions';
+                    
+                    const restoreBtn = document.createElement('button');
+                    restoreBtn.className = 'action-btn restore-btn';
+                    restoreBtn.innerHTML = '<i class="fas fa-undo"></i>';
+                    restoreBtn.title = 'Restaurar';
+                    
+                    restoreBtn.addEventListener('click', function() {
+                        restoreFromTrash(index);
+                    });
+                    
+                    taskContent.appendChild(taskText);
+                    taskContent.appendChild(taskDetails);
+                    taskActions.appendChild(restoreBtn);
+                    
+                    taskItem.appendChild(taskContent);
+                    taskItem.appendChild(taskActions);
+                    trashTasksList.appendChild(taskItem);
+                });
+            }
+        }
+        
+        function moveToTrash(index) {
+            const task = activeTasks[index];
+            task.deletedAt = new Date().toISOString();
+            trashTasks.push(task);
+            activeTasks.splice(index, 1);
+            saveTasks();
+            renderTasks();
+        }
+        
+        function restoreFromTrash(index) {
+            const task = trashTasks[index];
+            task.deletedAt = null;
+            activeTasks.push(task);
+            trashTasks.splice(index, 1);
+            saveTasks();
+            renderTasks();
+        }
+        
+        function clearTrash() {
+            if (trashTasks.length === 0) return;
+            
+            if (confirm(`Excluir ${trashTasks.length} item${trashTasks.length !== 1 ? 's' : ''} permanentemente?`)) {
+                trashTasks = [];
+                saveTasks();
+                renderTasks();
+            }
+        }
+        
+        // Event Listeners
+        clearTrashBtn.addEventListener('click', clearTrash);
+        
+        // Inicialização
+        await loadTasks();
+        updateCounters();
+        renderTasks();
+    });
+</script>
+</body>
+</html>
