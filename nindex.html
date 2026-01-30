@@ -377,7 +377,7 @@
             
             const phoneNumber = task.telefone.replace(/\D/g, '');
             const firstName = task.nome.split(' ')[0];
-            const message = `Olá ${firstName}! Segue a análise completa do seu formulário conforme prometido. Se tiver qualquer dúvida, estou à disposição para esclarecer! ${task.link}`;
+            const message = `Olá ${firstName}! Segue a análise completa do seu formulário conforme prometido. ${task.link}`;
             const encodedMessage = encodeURIComponent(message);
             const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
             
