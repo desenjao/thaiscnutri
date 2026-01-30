@@ -3,532 +3,990 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>App de Tarefas</title>
+    <title>Envio de WhatsApp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
         }
         
         body {
-            background-color: #f5f7fa;
-            color: #333;
-            line-height: 1.6;
-            padding: 20px;
+            background-color: #0f0f0f;
+            color: #f1f1f1;
+            line-height: 1.5;
+            min-height: 100vh;
         }
         
         .container {
-            max-width: 600px;
-            margin: 0 auto;
+            max-width: 100%;
+            padding: 0;
         }
         
-        header {
-            text-align: center;
-            margin-bottom: 25px;
+        /* Header Fixo */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(15, 15, 15, 0.95);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid #272727;
+            z-index: 100;
+            padding: 12px 16px;
         }
         
-        h1 {
-            color: #5a67d8;
-            margin-bottom: 8px;
-        }
-        
-        .add-task-form {
+        .header-content {
             display: flex;
-            margin-bottom: 25px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
+            align-items: center;
+            gap: 12px;
         }
         
-        .task-input {
-            flex: 1;
-            padding: 16px 20px;
-            border: none;
-            font-size: 1rem;
-            outline: none;
-        }
-        
-        .add-button {
-            background-color: #5a67d8;
-            color: white;
-            border: none;
-            padding: 0 24px;
-            cursor: pointer;
+        .header-icon {
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             font-size: 1.2rem;
         }
         
-        .tasks-info {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 15px;
-            color: #718096;
-        }
-        
-        .tasks-section {
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
-            overflow: hidden;
-            margin-bottom: 25px;
-        }
-        
-        .section-title {
-            padding: 16px 20px;
-            background-color: #f8f9fa;
-            border-bottom: 1px solid #f1f1f1;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-        
-        .section-title h2 {
-            font-size: 1.1rem;
-            color: #4a5568;
-        }
-        
-        .counter {
-            background-color: #e2e8f0;
-            color: #4a5568;
-            padding: 2px 10px;
-            border-radius: 20px;
-            font-size: 0.85rem;
-        }
-        
-        .tasks-list {
-            max-height: 300px;
-            overflow-y: auto;
-        }
-        
-        .task-item {
-            display: flex;
-            align-items: center;
-            padding: 18px 20px;
-            border-bottom: 1px solid #f1f1f1;
-        }
-        
-        .task-checkbox {
-            width: 24px;
-            height: 24px;
-            border-radius: 50%;
-            border: 2px solid #cbd5e0;
-            margin-right: 16px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            flex-shrink: 0;
-        }
-        
-        .task-checkbox.checked {
-            background-color: #5a67d8;
-            border-color: #5a67d8;
-        }
-        
-        .task-checkbox.checked::after {
-            content: '✓';
-            color: white;
-            font-size: 0.9rem;
-        }
-        
-        .task-content {
+        .header-text {
             flex: 1;
         }
         
-        .task-text {
-            font-size: 1.05rem;
-            margin-bottom: 4px;
+        .header-title {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 2px;
         }
         
-        .task-text.completed {
-            text-decoration: line-through;
-            color: #a0aec0;
-        }
-        
-        .task-details {
+        .header-subtitle {
             font-size: 0.85rem;
-            color: #718096;
+            color: #aaa;
         }
         
-        .task-actions {
-            display: flex;
+        /* Filtros estilo YouTube */
+        .filters-container {
+            margin-top: 64px;
+            padding: 12px 16px;
+            overflow-x: auto;
+            white-space: nowrap;
+            -webkit-overflow-scrolling: touch;
+            background: #0f0f0f;
+            border-bottom: 1px solid #272727;
+        }
+        
+        .filters-scroll {
+            display: inline-flex;
             gap: 8px;
-            margin-left: 10px;
+        }
+        
+        .filter-chip {
+            padding: 8px 16px;
+            border-radius: 20px;
+            background: #272727;
+            color: #f1f1f1;
+            border: none;
+            font-size: 0.9rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.2s;
+            white-space: nowrap;
+        }
+        
+        .filter-chip.active {
+            background: #f1f1f1;
+            color: #0f0f0f;
+        }
+        
+        .filter-chip .counter {
+            margin-left: 6px;
+            font-size: 0.8rem;
+            opacity: 0.8;
+        }
+        
+        /* Contatos List */
+        .contacts-container {
+            padding: 16px;
+            padding-bottom: 100px;
+        }
+        
+        .contact-card {
+            background: #212121;
+            border-radius: 12px;
+            margin-bottom: 12px;
+            overflow: hidden;
+            border: 1px solid #272727;
+            cursor: pointer;
+            transition: all 0.2s;
+        }
+        
+        .contact-card:hover {
+            background: #252525;
+            border-color: #3a3a3a;
+        }
+        
+        .contact-card:active {
+            transform: scale(0.98);
+            transition: transform 0.1s;
+        }
+        
+        .contact-header {
+            padding: 16px;
+            border-bottom: 1px solid #272727;
+        }
+        
+        .contact-name {
+            font-size: 1.1rem;
+            font-weight: 600;
+            margin-bottom: 6px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+        }
+        
+        .contact-status {
+            font-size: 0.75rem;
+            padding: 3px 8px;
+            border-radius: 10px;
+            background: #272727;
+        }
+        
+        .contact-status.sent {
+            background: #1a5d1a;
+            color: #4CAF50;
+        }
+        
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 8px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .info-row i {
+            width: 16px;
+            color: #666;
+        }
+        
+        .contact-actions {
+            display: flex;
+            border-top: 1px solid #272727;
         }
         
         .action-btn {
+            flex: 1;
+            padding: 16px;
             background: none;
             border: none;
+            color: #f1f1f1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 6px;
             cursor: pointer;
-            font-size: 1rem;
-            width: 36px;
-            height: 36px;
+            transition: background 0.2s;
+        }
+        
+        .action-btn:first-child {
+            border-right: 1px solid #272727;
+        }
+        
+        .action-btn:hover {
+            background: #272727;
+        }
+        
+        .action-btn.disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+        
+        .action-btn.disabled:hover {
+            background: none;
+        }
+        
+        .action-icon {
+            font-size: 1.2rem;
+        }
+        
+        .action-label {
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+        
+        .whatsapp-btn .action-icon {
+            color: #25D366;
+        }
+        
+        .email-btn .action-icon {
+            color: #4285F4;
+        }
+        
+        /* Botão Flutuante de Reset */
+        .fab-reset {
+            position: fixed;
+            bottom: 24px;
+            right: 24px;
+            width: 56px;
+            height: 56px;
             border-radius: 50%;
+            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-        }
-        
-        .whatsapp-btn {
-            background-color: #25D366;
-            color: white;
-        }
-        
-        .delete-btn {
-            background-color: rgba(229, 62, 62, 0.1);
-            color: #e53e3e;
-        }
-        
-        .restore-btn {
-            background-color: rgba(56, 161, 105, 0.1);
-            color: #38a169;
-        }
-        
-        .empty-state {
-            text-align: center;
-            padding: 50px 20px;
-            color: #a0aec0;
-        }
-        
-        .empty-state i {
-            font-size: 3rem;
-            margin-bottom: 15px;
-            color: #cbd5e0;
-        }
-        
-        .trash-section {
-            background-color: #fff5f5;
-            border: 2px dashed #fed7d7;
-        }
-        
-        .trash-section .section-title {
-            background-color: #fff5f5;
-        }
-        
-        .clear-trash-btn {
-            display: block;
-            width: 100%;
-            padding: 12px;
-            background-color: #fed7d7;
-            color: #c53030;
-            border: none;
+            font-size: 1.3rem;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
             cursor: pointer;
+            z-index: 90;
+            transition: all 0.2s;
+            border: none;
+        }
+        
+        .fab-reset:hover {
+            transform: scale(1.1);
+            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+        }
+        
+        .fab-reset:active {
+            transform: scale(0.95);
+        }
+        
+        /* Email Composer */
+        .email-composer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: #212121;
+            border-top: 1px solid #272727;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+            z-index: 1000;
+            padding: 16px;
+            border-radius: 20px 20px 0 0;
+            max-height: 80vh;
+            overflow-y: auto;
+        }
+        
+        .email-composer.show {
+            transform: translateY(0);
+        }
+        
+        .email-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            padding-bottom: 12px;
+            border-bottom: 1px solid #272727;
+        }
+        
+        .email-header h3 {
+            font-size: 1.1rem;
             font-weight: 600;
         }
         
-        .clear-trash-btn:disabled {
-            background-color: #e2e8f0;
-            color: #a0aec0;
-            cursor: not-allowed;
+        .close-btn {
+            background: none;
+            border: none;
+            color: #aaa;
+            font-size: 1.2rem;
+            cursor: pointer;
+        }
+        
+        .email-field {
+            margin-bottom: 16px;
+        }
+        
+        .email-label {
+            display: block;
+            margin-bottom: 6px;
+            font-size: 0.9rem;
+            color: #aaa;
+        }
+        
+        .email-input, .email-textarea {
+            width: 100%;
+            padding: 12px;
+            background: #272727;
+            border: 1px solid #3a3a3a;
+            border-radius: 8px;
+            color: #f1f1f1;
+            font-size: 0.95rem;
+        }
+        
+        .email-textarea {
+            min-height: 120px;
+            resize: vertical;
+            font-family: inherit;
+        }
+        
+        .email-actions {
+            display: flex;
+            gap: 12px;
+            margin-top: 20px;
+        }
+        
+        .email-action-btn {
+            flex: 1;
+            padding: 14px;
+            border: none;
+            border-radius: 8px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: opacity 0.2s;
+        }
+        
+        .email-copy {
+            background: #272727;
+            color: #f1f1f1;
+        }
+        
+        .email-open {
+            background: #4285F4;
+            color: white;
+        }
+        
+        /* Empty State */
+        .empty-state {
+            text-align: center;
+            padding: 60px 20px;
+            color: #666;
+        }
+        
+        .empty-icon {
+            font-size: 3rem;
+            margin-bottom: 16px;
+            opacity: 0.5;
+        }
+        
+        /* Loading */
+        .loading {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+        }
+        
+        /* Overlay para email composer */
+        .overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            backdrop-filter: blur(3px);
+            z-index: 999;
+            display: none;
+        }
+        
+        .overlay.show {
+            display: block;
+        }
+        
+        /* Scrollbar personalizada */
+        ::-webkit-scrollbar {
+            width: 8px;
+            height: 8px;
+        }
+        
+        ::-webkit-scrollbar-track {
+            background: #272727;
+        }
+        
+        ::-webkit-scrollbar-thumb {
+            background: #555;
+            border-radius: 4px;
+        }
+        
+        ::-webkit-scrollbar-thumb:hover {
+            background: #666;
+        }
+        
+        /* Responsividade */
+        @media (max-width: 480px) {
+            .header {
+                padding: 12px;
+            }
+            
+            .contacts-container {
+                padding: 12px;
+                padding-bottom: 100px;
+            }
+            
+            .contact-card {
+                margin-bottom: 10px;
+            }
+            
+            .email-composer {
+                padding: 16px 12px;
+            }
+            
+            .fab-reset {
+                bottom: 20px;
+                right: 20px;
+                width: 52px;
+                height: 52px;
+            }
+        }
+        
+        @media (min-width: 768px) {
+            .container {
+                max-width: 500px;
+                margin: 0 auto;
+                padding: 0 16px;
+            }
+            
+            .header {
+                position: relative;
+                background: #0f0f0f;
+                border-bottom: 1px solid #272727;
+                margin-bottom: 0;
+            }
+            
+            .filters-container {
+                margin-top: 0;
+                position: sticky;
+                top: 0;
+                z-index: 99;
+            }
+            
+            .fab-reset {
+                bottom: 30px;
+                right: 30px;
+                width: 60px;
+                height: 60px;
+                font-size: 1.4rem;
+            }
         }
     </style>
 </head>
 <body>
+    <div class="overlay" id="overlay"></div>
+    
+    <!-- Botão Flutuante de Reset -->
+    <button class="fab-reset" id="resetFab" title="Resetar status de todos os contatos">
+        <i class="fas fa-redo"></i>
+    </button>
+    
     <div class="container">
-        <header>
-            <h1>Contatos para WhatsApp</h1>
-            <p>Clique no botão verde para enviar link</p>
-        </header>
-        
-        <div class="tasks-info">
-            <span id="totalTasks">Total: 0 contatos</span>
-            <span id="completedTasks">Enviados: 0</span>
-        </div>
-        
-        <div class="tasks-section" id="activeTasksSection">
-            <div class="section-title">
-                <h2>Contatos Ativos</h2>
-                <span class="counter" id="activeCounter">0</span>
-            </div>
-            <div class="tasks-list" id="activeTasksList">
-                <div class="empty-state" id="activeEmptyState">
-                    <i class="fas fa-users"></i>
-                    <h3>Nenhum contato</h3>
-                    <p>Os contatos serão carregados automaticamente</p>
+        <!-- Header Fixo -->
+        <div class="header">
+            <div class="header-content">
+                <div class="header-icon">
+                    <i class="fab fa-whatsapp"></i>
+                </div>
+                <div class="header-text">
+                    <div class="header-title">Envio de WhatsApp</div>
+                    <div class="header-subtitle">Clique no contato para enviar mensagem</div>
                 </div>
             </div>
         </div>
         
-        <div class="tasks-section trash-section" id="trashSection">
-            <div class="section-title">
-                <h2>Lixeira</h2>
-                <span class="counter" id="trashCounter">0</span>
+        <!-- Filtros estilo YouTube -->
+        <div class="filters-container">
+            <div class="filters-scroll">
+                <button class="filter-chip active" data-filter="all">
+                    Todos <span class="counter" id="filterAll">0</span>
+                </button>
+                <button class="filter-chip" data-filter="with-link">
+                    Com Link <span class="counter" id="filterWithLink">0</span>
+                </button>
+                <button class="filter-chip" data-filter="pending">
+                    Pendentes <span class="counter" id="filterPending">0</span>
+                </button>
+                <button class="filter-chip" data-filter="sent">
+                    Enviados <span class="counter" id="filterSent">0</span>
+                </button>
             </div>
-            <div class="tasks-list" id="trashTasksList">
-                <div class="empty-state" id="trashEmptyState">
-                    <i class="fas fa-trash"></i>
-                    <h3>Lixeira vazia</h3>
-                </div>
+        </div>
+        
+        <!-- Lista de Contatos -->
+        <div class="contacts-container" id="contactsContainer">
+            <div class="loading" id="loading">
+                <i class="fas fa-spinner fa-spin"></i>
+                <p>Carregando contatos...</p>
             </div>
-            <button class="clear-trash-btn" id="clearTrashBtn" disabled>
-                Limpar Lixeira
+        </div>
+    </div>
+    
+    <!-- Email Composer -->
+    <div class="email-composer" id="emailComposer">
+        <div class="email-header">
+            <h3>Enviar Email</h3>
+            <button class="close-btn" id="closeEmailBtn">
+                <i class="fas fa-times"></i>
+            </button>
+        </div>
+        
+        <div class="email-field">
+            <label class="email-label">Para:</label>
+            <input type="text" class="email-input" id="emailTo" readonly>
+        </div>
+        
+        <div class="email-field">
+            <label class="email-label">Assunto:</label>
+            <input type="text" class="email-input" id="emailSubject" placeholder="Assunto do email">
+        </div>
+        
+        <div class="email-field">
+            <label class="email-label">Mensagem:</label>
+            <textarea class="email-textarea" id="emailBody" placeholder="Digite sua mensagem aqui..."></textarea>
+        </div>
+        
+        <div class="email-actions">
+            <button class="email-action-btn email-copy" id="copyEmailBtn">
+                Copiar Email
+            </button>
+            <button class="email-action-btn email-open" id="openEmailBtn">
+                Abrir no Gmail
             </button>
         </div>
     </div>
 
-  <script>
-    document.addEventListener('DOMContentLoaded', async function() {
-        // Elementos DOM
-        const activeTasksList = document.getElementById('activeTasksList');
-        const trashTasksList = document.getElementById('trashTasksList');
-        const activeEmptyState = document.getElementById('activeEmptyState');
-        const trashEmptyState = document.getElementById('trashEmptyState');
-        const totalTasksSpan = document.getElementById('totalTasks');
-        const completedTasksSpan = document.getElementById('completedTasks');
-        const activeCounter = document.getElementById('activeCounter');
-        const trashCounter = document.getElementById('trashCounter');
-        const clearTrashBtn = document.getElementById('clearTrashBtn');
-        const trashSection = document.getElementById('trashSection');
-        
-        // Variáveis para armazenar as tarefas
-        let activeTasks = [];
-        let trashTasks = [];
-        
-        // Função para carregar contatos do arquivo JSON
-        async function loadContactsFromJSON() {
-            try {
-                const response = await fetch('list.json');
-                if (!response.ok) {
-                    throw new Error(`HTTP error! status: ${response.status}`);
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Elementos DOM
+            const contactsContainer = document.getElementById('contactsContainer');
+            const loading = document.getElementById('loading');
+            const filterChips = document.querySelectorAll('.filter-chip');
+            const filterAll = document.getElementById('filterAll');
+            const filterWithLink = document.getElementById('filterWithLink');
+            const filterPending = document.getElementById('filterPending');
+            const filterSent = document.getElementById('filterSent');
+            const emailComposer = document.getElementById('emailComposer');
+            const overlay = document.getElementById('overlay');
+            const closeEmailBtn = document.getElementById('closeEmailBtn');
+            const emailTo = document.getElementById('emailTo');
+            const emailSubject = document.getElementById('emailSubject');
+            const emailBody = document.getElementById('emailBody');
+            const copyEmailBtn = document.getElementById('copyEmailBtn');
+            const openEmailBtn = document.getElementById('openEmailBtn');
+            const resetFab = document.getElementById('resetFab');
+            
+            // Variáveis
+            let contacts = [];
+            let currentFilter = 'all';
+            let selectedContact = null;
+            
+            // Carregar contatos
+            async function loadContacts() {
+                try {
+                    const response = await fetch('list.json');
+                    if (!response.ok) throw new Error('Erro ao carregar list.json');
+                    
+                    contacts = await response.json();
+                    
+                    // Carregar status salvo
+                    const savedStatus = JSON.parse(localStorage.getItem('whatsappStatus')) || {};
+                    
+                    // Inicializar status
+                    contacts = contacts.map(contact => {
+                        const contactId = contact.nome.toLowerCase().replace(/\s+/g, '_');
+                        return {
+                            ...contact,
+                            id: contactId,
+                            sent: savedStatus[contactId] || false,
+                            hasLink: contact.link && contact.link !== null
+                        };
+                    });
+                    
+                    updateFilterCounters();
+                    renderContacts();
+                    
+                } catch (error) {
+                    console.error('Erro:', error);
+                    showError('Erro ao carregar contatos');
+                } finally {
+                    loading.style.display = 'none';
                 }
-                const contactsData = await response.json();
+            }
+            
+            // Atualizar contadores dos filtros
+            function updateFilterCounters() {
+                const total = contacts.length;
+                const withLink = contacts.filter(c => c.hasLink).length;
+                const sent = contacts.filter(c => c.sent).length;
+                const pending = contacts.filter(c => !c.sent && c.hasLink).length;
                 
-                // Verifica se é um array ou um objeto único
-                let contactsArray;
-                if (Array.isArray(contactsData)) {
-                    contactsArray = contactsData;
-                } else if (contactsData && typeof contactsData === 'object') {
-                    // Se for um objeto único, coloca em um array
-                    contactsArray = [contactsData];
+                filterAll.textContent = total;
+                filterWithLink.textContent = withLink;
+                filterPending.textContent = pending;
+                filterSent.textContent = sent;
+            }
+            
+            // Renderizar contatos
+            function renderContacts() {
+                let filteredContacts = [...contacts];
+                
+                // Aplicar filtro
+                switch(currentFilter) {
+                    case 'with-link':
+                        filteredContacts = filteredContacts.filter(c => c.hasLink);
+                        break;
+                    case 'pending':
+                        filteredContacts = filteredContacts.filter(c => !c.sent && c.hasLink);
+                        break;
+                    case 'sent':
+                        filteredContacts = filteredContacts.filter(c => c.sent);
+                        break;
+                }
+                
+                // Limpar container
+                contactsContainer.innerHTML = '';
+                
+                if (filteredContacts.length === 0) {
+                    contactsContainer.innerHTML = `
+                        <div class="empty-state">
+                            <div class="empty-icon">
+                                <i class="fas fa-users"></i>
+                            </div>
+                            <h3>Nenhum contato encontrado</h3>
+                            <p>Não há contatos com esse filtro</p>
+                        </div>
+                    `;
+                    return;
+                }
+                
+                // Adicionar cada contato
+                filteredContacts.forEach(contact => {
+                    const contactCard = document.createElement('div');
+                    contactCard.className = 'contact-card';
+                    
+                    // Formatar telefone
+                    const phoneFormatted = formatPhone(contact.telefone);
+                    
+                    // Status do contato
+                    let statusText = contact.hasLink ? 'Pendente' : 'Sem Link';
+                    let statusClass = contact.hasLink ? '' : '';
+                    if (contact.sent) {
+                        statusText = 'Enviado';
+                        statusClass = 'sent';
+                    }
+                    
+                    contactCard.innerHTML = `
+                        <div class="contact-header">
+                            <div class="contact-name">
+                                <span>${contact.nome}</span>
+                                <span class="contact-status ${statusClass}">${statusText}</span>
+                            </div>
+                            <div class="contact-info">
+                                <div class="info-row">
+                                    <i class="fas fa-phone"></i>
+                                    <span>${phoneFormatted || 'Sem telefone'}</span>
+                                </div>
+                                ${contact.email ? `
+                                    <div class="info-row">
+                                        <i class="fas fa-envelope"></i>
+                                        <span>${contact.email}</span>
+                                    </div>
+                                ` : ''}
+                                ${contact.hasLink ? `
+                                    <div class="info-row">
+                                        <i class="fas fa-link"></i>
+                                        <span>Link disponível</span>
+                                    </div>
+                                ` : `
+                                    <div class="info-row">
+                                        <i class="fas fa-unlink"></i>
+                                        <span>Sem link do Google Drive</span>
+                                    </div>
+                                `}
+                            </div>
+                        </div>
+                        <div class="contact-actions">
+                            <button class="action-btn whatsapp-btn ${!contact.hasLink || contact.sent ? 'disabled' : ''}"
+                                    ${!contact.hasLink || contact.sent ? 'disabled' : ''}>
+                                <div class="action-icon">
+                                    <i class="fab fa-whatsapp"></i>
+                                </div>
+                                <div class="action-label">WhatsApp</div>
+                            </button>
+                            <button class="action-btn email-btn ${!contact.email ? 'disabled' : ''}"
+                                    ${!contact.email ? 'disabled' : ''}>
+                                <div class="action-icon">
+                                    <i class="fas fa-envelope"></i>
+                                </div>
+                                <div class="action-label">Email</div>
+                            </button>
+                        </div>
+                    `;
+                    
+                    // EVENTO 1: Clique no CARD inteiro → WhatsApp
+                    contactCard.addEventListener('click', function(e) {
+                        // Verificar se não clicou nos botões de ação
+                        if (!e.target.closest('.contact-actions')) {
+                            // Só abrir WhatsApp se tiver link, telefone e não estiver enviado
+                            if (contact.hasLink && contact.telefone && !contact.sent) {
+                                sendWhatsApp(contact);
+                            } else if (contact.sent) {
+                                showNotification(`${contact.nome} já recebeu a mensagem`);
+                            } else if (!contact.hasLink) {
+                                showNotification(`${contact.nome} não tem link disponível`);
+                            } else if (!contact.telefone) {
+                                showNotification(`${contact.nome} não tem telefone`);
+                            }
+                        }
+                    });
+                    
+                    // EVENTO 2: Clique no botão WhatsApp
+                    const whatsappBtn = contactCard.querySelector('.whatsapp-btn');
+                    if (whatsappBtn && !whatsappBtn.disabled) {
+                        whatsappBtn.addEventListener('click', function(e) {
+                            e.stopPropagation(); // Impedir que o clique no botão dispare o clique do card
+                            sendWhatsApp(contact);
+                        });
+                    }
+                    
+                    // EVENTO 3: Clique no botão Email
+                    const emailBtn = contactCard.querySelector('.email-btn');
+                    if (emailBtn && !emailBtn.disabled) {
+                        emailBtn.addEventListener('click', function(e) {
+                            e.stopPropagation(); // Impedir que o clique no botão dispare o clique do card
+                            prepareEmail(contact);
+                        });
+                    }
+                    
+                    contactsContainer.appendChild(contactCard);
+                });
+            }
+            
+            // Enviar WhatsApp
+            function sendWhatsApp(contact) {
+                if (!contact.hasLink || !contact.telefone || contact.sent) return;
+                
+                const phoneNumber = contact.telefone.replace(/\D/g, '');
+                if (!phoneNumber) return;
+                
+                const firstName = contact.nome.split(' ')[0];
+                const message = `Olá ${firstName}! Segue a análise completa do seu formulário conforme prometido. ${contact.link}`;
+                const encodedMessage = encodeURIComponent(message);
+                const whatsappUrl = `https://wa.me/55${phoneNumber}?text=${encodedMessage}`;
+                
+                // Marcar como enviado
+                contact.sent = true;
+                saveStatus();
+                updateFilterCounters();
+                renderContacts();
+                
+                // Abrir WhatsApp
+                window.open(whatsappUrl, '_blank');
+                
+                showNotification(`WhatsApp enviado para ${contact.nome}!`);
+            }
+            
+            // Resetar todos os status
+            function resetAllStatus() {
+                if (confirm('Deseja resetar o status de TODOS os contatos?\n\nIsso marcará todos como "Pendente" novamente.')) {
+                    contacts.forEach(contact => {
+                        contact.sent = false;
+                    });
+                    
+                    saveStatus();
+                    updateFilterCounters();
+                    renderContacts();
+                    
+                    showNotification('Status de todos os contatos resetado!');
+                }
+            }
+            
+            // Preparar email
+            function prepareEmail(contact) {
+                if (!contact.email) return;
+                
+                selectedContact = contact;
+                
+                // Preencher campos do email
+                emailTo.value = contact.email;
+                emailSubject.value = `Análise do Formulário - ${contact.nome}`;
+                
+                // Incluir link se disponível
+                const linkText = contact.hasLink ? 
+                    `\n\nLink do Google Drive: ${contact.link}` : 
+                    '\n\n[Link do Google Drive será enviado em breve]';
+                
+                emailBody.value = `Prezada ${contact.nome},\n\nConforme prometido, segue a análise completa do seu formulário.${linkText}\n\nAtenciosamente,\n[Seu Nome]`;
+                
+                // Mostrar email composer
+                emailComposer.classList.add('show');
+                overlay.classList.add('show');
+                
+                // Focar no campo de assunto
+                setTimeout(() => {
+                    emailSubject.focus();
+                }, 300);
+            }
+            
+            // Copiar email
+            function copyEmailToClipboard() {
+                if (!selectedContact) return;
+                
+                const emailText = `Para: ${selectedContact.email}\nAssunto: ${emailSubject.value}\n\n${emailBody.value}`;
+                
+                navigator.clipboard.writeText(emailText)
+                    .then(() => {
+                        showNotification('Email copiado para área de transferência!');
+                    })
+                    .catch(err => {
+                        console.error('Erro ao copiar:', err);
+                        showNotification('Erro ao copiar email');
+                    });
+            }
+            
+            // Abrir no Gmail
+            function openInGmail() {
+                if (!selectedContact) return;
+                
+                const subject = encodeURIComponent(emailSubject.value);
+                const body = encodeURIComponent(emailBody.value);
+                const gmailUrl = `https://mail.google.com/mail/?view=cm&fs=1&to=${selectedContact.email}&su=${subject}&body=${body}`;
+                
+                window.open(gmailUrl, '_blank');
+            }
+            
+            // Fechar email composer
+            function closeEmailComposer() {
+                emailComposer.classList.remove('show');
+                overlay.classList.remove('show');
+                selectedContact = null;
+                
+                // Limpar campos
+                emailTo.value = '';
+                emailSubject.value = '';
+                emailBody.value = '';
+            }
+            
+            // Formatar telefone
+            function formatPhone(phone) {
+                if (!phone) return '';
+                
+                const cleaned = phone.replace(/\D/g, '');
+                
+                if (cleaned.length === 11) {
+                    return `(${cleaned.substring(0,2)}) ${cleaned.substring(2,7)}-${cleaned.substring(7)}`;
+                } else if (cleaned.length === 10) {
+                    return `(${cleaned.substring(0,2)}) ${cleaned.substring(2,6)}-${cleaned.substring(6)}`;
+                }
+                
+                return phone;
+            }
+            
+            // Salvar status
+            function saveStatus() {
+                const status = {};
+                contacts.forEach(contact => {
+                    status[contact.id] = contact.sent;
+                });
+                localStorage.setItem('whatsappStatus', JSON.stringify(status));
+            }
+            
+            // Mostrar notificação
+            function showNotification(message) {
+                // Criar notificação
+                const notification = document.createElement('div');
+                notification.className = 'contact-card';
+                notification.style.background = '#1a5d1a';
+                notification.style.border = '1px solid #4CAF50';
+                notification.innerHTML = `
+                    <div class="contact-header" style="border-bottom: none;">
+                        <div class="contact-name" style="justify-content: center;">
+                            <i class="fas fa-check-circle" style="color: #4CAF50; margin-right: 8px;"></i>
+                            ${message}
+                        </div>
+                    </div>
+                `;
+                
+                // Adicionar no topo
+                if (contactsContainer.firstChild) {
+                    contactsContainer.insertBefore(notification, contactsContainer.firstChild);
                 } else {
-                    console.error('Formato inválido do JSON');
-                    return [];
+                    contactsContainer.appendChild(notification);
                 }
                 
-                // Transforma os dados no formato esperado pelo app
-                return contactsArray.map((contact, index) => ({
-                    id: Date.now() + index, // ID único baseado no timestamp
-                    nome: contact.nome || '',
-                    telefone: contact.telefone || '',
-                    link: contact.link || '',
-                    completed: false,
-                    deleted: false,
-                    createdAt: new Date().toISOString()
-                }));
-            } catch (error) {
-                console.error('Erro ao carregar list.json:', error);
-                // Retorna array vazio se houver erro
-                return [];
-            }
-        }
-        
-        // Função principal para carregar tarefas
-        async function loadTasks() {
-            const savedActive = JSON.parse(localStorage.getItem('activeTasks'));
-            const savedTrash = JSON.parse(localStorage.getItem('trashTasks'));
-            
-            if (savedActive && savedActive.length > 0) {
-                activeTasks = savedActive;
-            } else {
-                // Carrega contatos do JSON externo
-                activeTasks = await loadContactsFromJSON();
+                // Remover após 3 segundos
+                setTimeout(() => {
+                    if (notification.parentNode) {
+                        notification.style.opacity = '0';
+                        notification.style.transition = 'opacity 0.3s';
+                        setTimeout(() => {
+                            if (notification.parentNode) {
+                                notification.parentNode.removeChild(notification);
+                            }
+                        }, 300);
+                    }
+                }, 3000);
             }
             
-            trashTasks = savedTrash || [];
-        }
-        
-        function updateCounters() {
-            const totalTasks = activeTasks.length + trashTasks.length;
-            const completedTasks = activeTasks.filter(task => task.completed).length;
-            
-            totalTasksSpan.textContent = `Total: ${totalTasks} contato${totalTasks !== 1 ? 's' : ''}`;
-            completedTasksSpan.textContent = `Enviados: ${completedTasks}`;
-            activeCounter.textContent = activeTasks.length;
-            trashCounter.textContent = trashTasks.length;
-            
-            if (activeTasks.length === 0) {
-                activeEmptyState.style.display = 'block';
-            } else {
-                activeEmptyState.style.display = 'none';
-            }
-            
-            if (trashTasks.length === 0) {
-                trashEmptyState.style.display = 'block';
-                clearTrashBtn.disabled = true;
-                trashSection.style.display = 'none';
-            } else {
-                trashEmptyState.style.display = 'none';
-                clearTrashBtn.disabled = false;
-                trashSection.style.display = 'block';
-            }
-        }
-        
-        function saveTasks() {
-            localStorage.setItem('activeTasks', JSON.stringify(activeTasks));
-            localStorage.setItem('trashTasks', JSON.stringify(trashTasks));
-            updateCounters();
-        }
-        
-        function sendWhatsApp(task) {
-            if (!task.telefone) return;
-            
-            const phoneNumber = task.telefone.replace(/\D/g, '');
-            const firstName = task.nome.split(' ')[0];
-            const message = `Olá ${firstName}! Segue a análise completa do seu formulário conforme prometido. ${task.link}`;
-            const encodedMessage = encodeURIComponent(message);
-            const whatsappUrl = `https://wa.me/${phoneNumber}?text=${encodedMessage}`;
-            
-            window.open(whatsappUrl, '_blank');
-            task.completed = true;
-            saveTasks();
-            renderTasks();
-        }
-        
-        function renderTasks() {
-            activeTasksList.innerHTML = '';
-            
-            if (activeTasks.length === 0) {
-                activeTasksList.appendChild(activeEmptyState);
-                activeEmptyState.style.display = 'block';
-            } else {
-                activeEmptyState.style.display = 'none';
+            // Mostrar erro
+            function showError(message) {
+                const errorCard = document.createElement('div');
+                errorCard.className = 'contact-card';
+                errorCard.style.background = '#5d1a1a';
+                errorCard.style.border = '1px solid #af504c';
+                errorCard.innerHTML = `
+                    <div class="contact-header" style="border-bottom: none;">
+                        <div class="contact-name" style="justify-content: center;">
+                            <i class="fas fa-exclamation-circle" style="color: #af504c; margin-right: 8px;"></i>
+                            ${message}
+                        </div>
+                        <div class="contact-info" style="text-align: center; color: #aaa;">
+                            <div class="info-row" style="justify-content: center;">
+                                <i class="fas fa-info-circle"></i>
+                                <span>Verifique se o arquivo list.json está na pasta correta</span>
+                            </div>
+                        </div>
+                    </div>
+                `;
                 
-                activeTasks.forEach((task, index) => {
-                    const taskItem = document.createElement('div');
-                    taskItem.className = 'task-item';
-                    
-                    const taskContent = document.createElement('div');
-                    taskContent.className = 'task-content';
-                    
-                    const taskText = document.createElement('div');
-                    taskText.className = `task-text ${task.completed ? 'completed' : ''}`;
-                    taskText.textContent = task.nome;
-                    
-                    const taskDetails = document.createElement('div');
-                    taskDetails.className = 'task-details';
-                    taskDetails.textContent = task.telefone;
-                    
-                    const taskActions = document.createElement('div');
-                    taskActions.className = 'task-actions';
-                    
-                    const whatsappBtn = document.createElement('button');
-                    whatsappBtn.className = 'action-btn whatsapp-btn';
-                    whatsappBtn.innerHTML = '<i class="fab fa-whatsapp"></i>';
-                    whatsappBtn.title = 'Enviar WhatsApp';
-                    
-                    whatsappBtn.addEventListener('click', function() {
-                        sendWhatsApp(task);
-                    });
-                    
-                    const deleteBtn = document.createElement('button');
-                    deleteBtn.className = 'action-btn delete-btn';
-                    deleteBtn.innerHTML = '<i class="fas fa-trash"></i>';
-                    deleteBtn.title = 'Mover para lixeira';
-                    
-                    deleteBtn.addEventListener('click', function() {
-                        moveToTrash(index);
-                    });
-                    
-                    taskContent.appendChild(taskText);
-                    taskContent.appendChild(taskDetails);
-                    taskActions.appendChild(whatsappBtn);
-                    taskActions.appendChild(deleteBtn);
-                    
-                    taskItem.appendChild(taskContent);
-                    taskItem.appendChild(taskActions);
-                    activeTasksList.appendChild(taskItem);
+                contactsContainer.innerHTML = '';
+                contactsContainer.appendChild(errorCard);
+            }
+            
+            // Event Listeners
+            filterChips.forEach(chip => {
+                chip.addEventListener('click', function() {
+                    // Remover active de todos
+                    filterChips.forEach(c => c.classList.remove('active'));
+                    // Adicionar ao clicado
+                    this.classList.add('active');
+                    // Atualizar filtro
+                    currentFilter = this.dataset.filter;
+                    // Renderizar contatos
+                    renderContacts();
                 });
-            }
+            });
             
-            renderTrash();
-        }
-        
-        function renderTrash() {
-            trashTasksList.innerHTML = '';
+            closeEmailBtn.addEventListener('click', closeEmailComposer);
+            overlay.addEventListener('click', closeEmailComposer);
             
-            if (trashTasks.length === 0) {
-                trashTasksList.appendChild(trashEmptyState);
-                trashEmptyState.style.display = 'block';
-            } else {
-                trashEmptyState.style.display = 'none';
-                
-                trashTasks.forEach((task, index) => {
-                    const taskItem = document.createElement('div');
-                    taskItem.className = 'task-item';
-                    
-                    const taskContent = document.createElement('div');
-                    taskContent.className = 'task-content';
-                    
-                    const taskText = document.createElement('div');
-                    taskText.className = 'task-text';
-                    taskText.textContent = task.nome;
-                    
-                    const taskDetails = document.createElement('div');
-                    taskDetails.className = 'task-details';
-                    taskDetails.textContent = task.telefone;
-                    
-                    const taskActions = document.createElement('div');
-                    taskActions.className = 'task-actions';
-                    
-                    const restoreBtn = document.createElement('button');
-                    restoreBtn.className = 'action-btn restore-btn';
-                    restoreBtn.innerHTML = '<i class="fas fa-undo"></i>';
-                    restoreBtn.title = 'Restaurar';
-                    
-                    restoreBtn.addEventListener('click', function() {
-                        restoreFromTrash(index);
-                    });
-                    
-                    taskContent.appendChild(taskText);
-                    taskContent.appendChild(taskDetails);
-                    taskActions.appendChild(restoreBtn);
-                    
-                    taskItem.appendChild(taskContent);
-                    taskItem.appendChild(taskActions);
-                    trashTasksList.appendChild(taskItem);
-                });
-            }
-        }
-        
-        function moveToTrash(index) {
-            const task = activeTasks[index];
-            task.deletedAt = new Date().toISOString();
-            trashTasks.push(task);
-            activeTasks.splice(index, 1);
-            saveTasks();
-            renderTasks();
-        }
-        
-        function restoreFromTrash(index) {
-            const task = trashTasks[index];
-            task.deletedAt = null;
-            activeTasks.push(task);
-            trashTasks.splice(index, 1);
-            saveTasks();
-            renderTasks();
-        }
-        
-        function clearTrash() {
-            if (trashTasks.length === 0) return;
+            copyEmailBtn.addEventListener('click', copyEmailToClipboard);
+            openEmailBtn.addEventListener('click', openInGmail);
             
-            if (confirm(`Excluir ${trashTasks.length} item${trashTasks.length !== 1 ? 's' : ''} permanentemente?`)) {
-                trashTasks = [];
-                saveTasks();
-                renderTasks();
-            }
-        }
-        
-        // Event Listeners
-        clearTrashBtn.addEventListener('click', clearTrash);
-        
-        // Inicialização
-        await loadTasks();
-        updateCounters();
-        renderTasks();
-    });
-</script>
+            resetFab.addEventListener('click', resetAllStatus);
+            
+            // Fechar email composer com ESC
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') {
+                    closeEmailComposer();
+                }
+            });
+            
+            // Inicializar
+            loadContacts();
+        });
+    </script>
 </body>
 </html>
