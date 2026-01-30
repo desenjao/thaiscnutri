@@ -6,6 +6,119 @@
     <title>Envio de WhatsApp</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
+          :root {
+            /* ====== PALETA DE CORES CLARA ====== */
+            
+            /* Cores de fundo - Tema Claro Elegante */
+            --bg-primary: #ffffff;
+            --bg-secondary: #f8fafc;
+            --bg-tertiary: #f1f5f9;
+            --bg-hover: #e2e8f0;
+            --bg-overlay: rgba(0, 0, 0, 0.4);
+            --bg-surface: #ffffff;
+            
+            /* Cores de texto - Alto contraste para legibilidade */
+            --text-primary: #1e293b;
+            --text-secondary: #475569;
+            --text-tertiary: #64748b;
+            --text-disabled: #94a3b8;
+            --text-light: #f8fafc;
+            
+            /* Cores de status - Com boa distinção visual */
+            --status-sent-bg: #dcfce7;
+            --status-sent-text: #166534;
+            --status-sent-border: #86efac;
+            
+            --status-pending-bg: #fef9c3;
+            --status-pending-text: #854d0e;
+            --status-pending-border: #fde047;
+            
+            --status-no-link-bg: #f1f5f9;
+            --status-no-link-text: #475569;
+            --status-no-link-border: #cbd5e1;
+            
+            /* Cores de acento - Vibrantes mas harmoniosas */
+            --accent-whatsapp: #25D366;
+            --accent-whatsapp-dark: #128C7E;
+            --accent-email: #4285F4;
+            --accent-email-dark: #3367d6;
+            --accent-success: #10b981;
+            --accent-error: #ef4444;
+            --accent-warning: #f59e0b;
+            --accent-info: #3b82f6;
+            
+            /* Cores de botões e interações */
+            --button-primary-bg: linear-gradient(135deg, var(--accent-whatsapp) 0%, var(--accent-whatsapp-dark) 100%);
+            --button-secondary-bg: #f1f5f9;
+            --button-email-bg: linear-gradient(135deg, var(--accent-email) 0%, var(--accent-email-dark) 100%);
+            --button-hover: #e2e8f0;
+            --button-active: #cbd5e1;
+            
+            /* Bordas - Suaves e definidas */
+            --border-color: #e2e8f0;
+            --border-hover: #cbd5e1;
+            --border-light: #f1f5f9;
+            --border-dark: #94a3b8;
+            
+            /* Sombras - Leves e elegantes */
+            --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+            --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+            --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+            --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.15);
+            
+            /* Gradientes */
+            --gradient-whatsapp: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            --gradient-email: linear-gradient(135deg, #4285F4 0%, #3367d6 100%);
+            --gradient-surface: linear-gradient(135deg, #ffffff 0%, #f8fafc 100%);
+            
+            /* Espaçamentos */
+            --spacing-xs: 4px;
+            --spacing-sm: 8px;
+            --spacing-md: 12px;
+            --spacing-lg: 16px;
+            --spacing-xl: 20px;
+            --spacing-xxl: 24px;
+            --spacing-xxxl: 32px;
+            
+            /* Bordas arredondadas */
+            --radius-xs: 4px;
+            --radius-sm: 8px;
+            --radius-md: 12px;
+            --radius-lg: 16px;
+            --radius-xl: 20px;
+            --radius-full: 50%;
+            
+            /* Font sizes */
+            --font-xs: 0.75rem;
+            --font-sm: 0.875rem;
+            --font-md: 0.9375rem;
+            --font-base: 1rem;
+            --font-lg: 1.125rem;
+            --font-xl: 1.25rem;
+            --font-xxl: 1.5rem;
+            --font-xxxl: 1.75rem;
+            
+            /* Font weights */
+            --font-light: 300;
+            --font-normal: 400;
+            --font-medium: 500;
+            --font-semibold: 600;
+            --font-bold: 700;
+            
+            /* Transições */
+            --transition-fast: 150ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-normal: 250ms cubic-bezier(0.4, 0, 0.2, 1);
+            --transition-slow: 350ms cubic-bezier(0.4, 0, 0.2, 1);
+            
+            /* Z-index */
+            --z-header: 100;
+            --z-filters: 99;
+            --z-fab: 90;
+            --z-overlay: 999;
+            --z-composer: 1000;
+        }
+        
         * {
             margin: 0;
             padding: 0;
@@ -14,8 +127,8 @@
         }
         
         body {
-            background-color: #0f0f0f;
-            color: #f1f1f1;
+            background-color: var(--bg-primary);
+            color: var(--text-primary);
             line-height: 1.5;
             min-height: 100vh;
         }
@@ -33,26 +146,26 @@
             right: 0;
             background: rgba(15, 15, 15, 0.95);
             backdrop-filter: blur(10px);
-            border-bottom: 1px solid #272727;
-            z-index: 100;
-            padding: 12px 16px;
+            border-bottom: 1px solid var(--border-color);
+            z-index: var(--z-header);
+            padding: var(--spacing-md) var(--spacing-lg);
         }
         
         .header-content {
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: var(--spacing-md);
         }
         
         .header-icon {
             width: 40px;
             height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: var(--radius-full);
+            background: var(--button-primary-bg);
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
+            font-size: var(--font-xxl);
         }
         
         .header-text {
@@ -60,152 +173,153 @@
         }
         
         .header-title {
-            font-size: 1.1rem;
+            font-size: var(--font-xl);
             font-weight: 600;
-            margin-bottom: 2px;
+            margin-bottom: var(--spacing-xs);
         }
         
         .header-subtitle {
-            font-size: 0.85rem;
-            color: #aaa;
+            font-size: var(--font-sm);
+            color: var(--text-secondary);
         }
         
         /* Filtros estilo YouTube */
         .filters-container {
             margin-top: 64px;
-            padding: 12px 16px;
+            padding: var(--spacing-md) var(--spacing-lg);
             overflow-x: auto;
             white-space: nowrap;
             -webkit-overflow-scrolling: touch;
-            background: #0f0f0f;
-            border-bottom: 1px solid #272727;
+            background: var(--bg-primary);
+            border-bottom: 1px solid var(--border-color);
         }
         
         .filters-scroll {
             display: inline-flex;
-            gap: 8px;
+            gap: var(--spacing-sm);
         }
         
         .filter-chip {
-            padding: 8px 16px;
-            border-radius: 20px;
-            background: #272727;
-            color: #f1f1f1;
+            padding: var(--spacing-sm) var(--spacing-lg);
+            border-radius: var(--radius-lg);
+            background: var(--bg-tertiary);
+            color: var(--text-primary);
             border: none;
-            font-size: 0.9rem;
+            font-size: var(--font-md);
             font-weight: 500;
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all var(--transition-normal);
             white-space: nowrap;
         }
         
         .filter-chip.active {
-            background: #f1f1f1;
-            color: #0f0f0f;
+            background: var(--text-primary);
+            color: var(--bg-primary);
         }
         
         .filter-chip .counter {
-            margin-left: 6px;
-            font-size: 0.8rem;
+            margin-left: var(--spacing-xs);
+            font-size: var(--font-xs);
             opacity: 0.8;
         }
         
         /* Contatos List */
         .contacts-container {
-            padding: 16px;
+            padding: var(--spacing-lg);
             padding-bottom: 100px;
         }
         
         .contact-card {
-            background: #212121;
-            border-radius: 12px;
-            margin-bottom: 12px;
+            background: var(--bg-secondary);
+            border-radius: var(--radius-md);
+            margin-bottom: var(--spacing-md);
             overflow: hidden;
-            border: 1px solid #272727;
+            border: 1px solid var(--border-color);
             cursor: pointer;
-            transition: all 0.2s;
+            transition: all var(--transition-normal);
         }
         
         .contact-card:hover {
-            background: #252525;
-            border-color: #3a3a3a;
+            background: var(--bg-hover);
+            border-color: var(--border-hover);
         }
         
         .contact-card:active {
             transform: scale(0.98);
-            transition: transform 0.1s;
+            transition: transform var(--transition-fast);
         }
         
         .contact-header {
-            padding: 16px;
-            border-bottom: 1px solid #272727;
+            padding: var(--spacing-lg);
+            border-bottom: 1px solid var(--border-color);
         }
         
         .contact-name {
-            font-size: 1.1rem;
+            font-size: var(--font-xl);
             font-weight: 600;
-            margin-bottom: 6px;
+            margin-bottom: var(--spacing-xs);
             display: flex;
             align-items: center;
             justify-content: space-between;
         }
         
         .contact-status {
-            font-size: 0.75rem;
-            padding: 3px 8px;
+            font-size: var(--font-xs);
+            padding: 3px var(--spacing-sm);
             border-radius: 10px;
-            background: #272727;
+            background: var(--status-pending-bg);
+            color: var(--status-pending-text);
         }
         
         .contact-status.sent {
-            background: #1a5d1a;
-            color: #4CAF50;
+            background: var(--status-sent-bg);
+            color: var(--status-sent-text);
         }
         
         .contact-info {
             display: flex;
             flex-direction: column;
-            gap: 8px;
-            font-size: 0.9rem;
-            color: #aaa;
+            gap: var(--spacing-sm);
+            font-size: var(--font-md);
+            color: var(--text-secondary);
         }
         
         .info-row {
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: var(--spacing-sm);
         }
         
         .info-row i {
             width: 16px;
-            color: #666;
+            color: var(--accent-info);
         }
         
         .contact-actions {
             display: flex;
-            border-top: 1px solid #272727;
+            border-top: 1px solid var(--border-color);
         }
         
         .action-btn {
             flex: 1;
-            padding: 16px;
+            padding: var(--spacing-lg);
             background: none;
             border: none;
-            color: #f1f1f1;
+            color: var(--text-primary);
             display: flex;
             flex-direction: column;
             align-items: center;
-            gap: 6px;
+            gap: var(--spacing-xs);
             cursor: pointer;
-            transition: background 0.2s;
+            transition: background var(--transition-normal);
         }
         
         .action-btn:first-child {
-            border-right: 1px solid #272727;
+            border-right: 1px solid var(--border-color);
         }
         
         .action-btn:hover {
-            background: #272727;
+            background: var(--button-hover);
         }
         
         .action-btn.disabled {
@@ -218,46 +332,46 @@
         }
         
         .action-icon {
-            font-size: 1.2rem;
+            font-size: var(--font-xxl);
         }
         
         .action-label {
-            font-size: 0.8rem;
+            font-size: var(--font-xs);
             font-weight: 500;
         }
         
         .whatsapp-btn .action-icon {
-            color: #25D366;
+            color: var(--accent-whatsapp);
         }
         
         .email-btn .action-icon {
-            color: #4285F4;
+            color: var(--accent-email);
         }
         
         /* Botão Flutuante de Reset */
         .fab-reset {
             position: fixed;
-            bottom: 24px;
-            right: 24px;
+            bottom: var(--spacing-xxl);
+            right: var(--spacing-xxl);
             width: 56px;
             height: 56px;
-            border-radius: 50%;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            border-radius: var(--radius-full);
+            background: var(--button-primary-bg);
             color: white;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.3rem;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4);
+            font-size: var(--font-xxxl);
+            box-shadow: var(--shadow-light);
             cursor: pointer;
-            z-index: 90;
-            transition: all 0.2s;
+            z-index: var(--z-fab);
+            transition: all var(--transition-normal);
             border: none;
         }
         
         .fab-reset:hover {
             transform: scale(1.1);
-            box-shadow: 0 6px 16px rgba(0, 0, 0, 0.5);
+            box-shadow: var(--shadow-medium);
         }
         
         .fab-reset:active {
@@ -270,13 +384,13 @@
             bottom: 0;
             left: 0;
             right: 0;
-            background: #212121;
-            border-top: 1px solid #272727;
+            background: var(--bg-secondary);
+            border-top: 1px solid var(--border-color);
             transform: translateY(100%);
-            transition: transform 0.3s ease;
-            z-index: 1000;
-            padding: 16px;
-            border-radius: 20px 20px 0 0;
+            transition: transform var(--transition-slow) ease;
+            z-index: var(--z-composer);
+            padding: var(--spacing-lg);
+            border-radius: var(--radius-lg) var(--radius-lg) 0 0;
             max-height: 80vh;
             overflow-y: auto;
         }
@@ -289,43 +403,43 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 12px;
-            border-bottom: 1px solid #272727;
+            margin-bottom: var(--spacing-xl);
+            padding-bottom: var(--spacing-md);
+            border-bottom: 1px solid var(--border-color);
         }
         
         .email-header h3 {
-            font-size: 1.1rem;
+            font-size: var(--font-xl);
             font-weight: 600;
         }
         
         .close-btn {
             background: none;
             border: none;
-            color: #aaa;
-            font-size: 1.2rem;
+            color: var(--text-secondary);
+            font-size: var(--font-xxl);
             cursor: pointer;
         }
         
         .email-field {
-            margin-bottom: 16px;
+            margin-bottom: var(--spacing-lg);
         }
         
         .email-label {
             display: block;
-            margin-bottom: 6px;
-            font-size: 0.9rem;
-            color: #aaa;
+            margin-bottom: var(--spacing-xs);
+            font-size: var(--font-md);
+            color: var(--text-secondary);
         }
         
         .email-input, .email-textarea {
             width: 100%;
-            padding: 12px;
-            background: #272727;
-            border: 1px solid #3a3a3a;
-            border-radius: 8px;
-            color: #f1f1f1;
-            font-size: 0.95rem;
+            padding: var(--spacing-md);
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-light);
+            border-radius: var(--radius-sm);
+            color: var(--text-primary);
+            font-size: var(--font-lg);
         }
         
         .email-textarea {
@@ -336,40 +450,40 @@
         
         .email-actions {
             display: flex;
-            gap: 12px;
-            margin-top: 20px;
+            gap: var(--spacing-md);
+            margin-top: var(--spacing-xl);
         }
         
         .email-action-btn {
             flex: 1;
-            padding: 14px;
+            padding: var(--spacing-lg);
             border: none;
-            border-radius: 8px;
+            border-radius: var(--radius-sm);
             font-weight: 600;
             cursor: pointer;
-            transition: opacity 0.2s;
+            transition: opacity var(--transition-normal);
         }
         
         .email-copy {
-            background: #272727;
-            color: #f1f1f1;
+            background: var(--button-secondary-bg);
+            color: var(--text-primary);
         }
         
         .email-open {
-            background: #4285F4;
+            background: var(--button-email-bg);
             color: white;
         }
         
         /* Empty State */
         .empty-state {
             text-align: center;
-            padding: 60px 20px;
-            color: #666;
+            padding: 60px var(--spacing-xl);
+            color: var(--text-tertiary);
         }
         
         .empty-icon {
             font-size: 3rem;
-            margin-bottom: 16px;
+            margin-bottom: var(--spacing-lg);
             opacity: 0.5;
         }
         
@@ -377,7 +491,7 @@
         .loading {
             text-align: center;
             padding: 40px;
-            color: #666;
+            color: var(--text-tertiary);
         }
         
         /* Overlay para email composer */
@@ -387,9 +501,9 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(0, 0, 0, 0.7);
+            background: var(--bg-overlay);
             backdrop-filter: blur(3px);
-            z-index: 999;
+            z-index: var(--z-overlay);
             display: none;
         }
         
@@ -404,40 +518,40 @@
         }
         
         ::-webkit-scrollbar-track {
-            background: #272727;
+            background: var(--bg-tertiary);
         }
         
         ::-webkit-scrollbar-thumb {
-            background: #555;
+            background: var(--text-tertiary);
             border-radius: 4px;
         }
         
         ::-webkit-scrollbar-thumb:hover {
-            background: #666;
+            background: var(--text-secondary);
         }
         
         /* Responsividade */
         @media (max-width: 480px) {
             .header {
-                padding: 12px;
+                padding: var(--spacing-md) var(--spacing-md);
             }
             
             .contacts-container {
-                padding: 12px;
+                padding: var(--spacing-md);
                 padding-bottom: 100px;
             }
             
             .contact-card {
-                margin-bottom: 10px;
+                margin-bottom: var(--spacing-md);
             }
             
             .email-composer {
-                padding: 16px 12px;
+                padding: var(--spacing-lg) var(--spacing-md);
             }
             
             .fab-reset {
-                bottom: 20px;
-                right: 20px;
+                bottom: var(--spacing-xl);
+                right: var(--spacing-xl);
                 width: 52px;
                 height: 52px;
             }
@@ -447,13 +561,13 @@
             .container {
                 max-width: 500px;
                 margin: 0 auto;
-                padding: 0 16px;
+                padding: 0 var(--spacing-lg);
             }
             
             .header {
                 position: relative;
-                background: #0f0f0f;
-                border-bottom: 1px solid #272727;
+                background: var(--bg-primary);
+                border-bottom: 1px solid var(--border-color);
                 margin-bottom: 0;
             }
             
@@ -461,7 +575,7 @@
                 margin-top: 0;
                 position: sticky;
                 top: 0;
-                z-index: 99;
+                z-index: var(--z-filters);
             }
             
             .fab-reset {
