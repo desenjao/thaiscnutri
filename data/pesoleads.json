@@ -1,0 +1,302 @@
+{
+    "protocolo": "Protocolo Semente",
+    "tom_de_voz": "Acolhedor, Esperançoso e Gentil",
+    "perguntas": [
+        {
+            "id": 1,
+            "tema": "Autocompaixão",
+            "pergunta": "Quando as coisas não saem como planejado, como é o diálogo interno que você tem consigo mesma?",
+            "opcoes": [
+                {
+                    "texto": "Sou muito dura e crítica, me sentindo uma fracassada.",
+                    "peso": 1
+                },
+                {
+                    "texto": "Fico frustrada e foco nos erros, cobrando-me excessivamente.",
+                    "peso": 2
+                },
+                {
+                    "texto": "Aceito que nem tudo depende de mim, mas penso em como compensar depois.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Lembro-me de que sou humana e que tropeços fazem parte do caminho.",
+                    "peso": 4
+                },
+                {
+                    "texto": "Pratico o perdão gentil, usando a situação como aprendizado sem culpa.",
+                    "peso": 5
+                }
+            ]
+        },
+        {
+            "id": 2,
+            "tema": "Ritmo Humano",
+            "pergunta": "Qual ritmo de mudança parece mais sustentável e gentil para você hoje?",
+            "opcoes": [
+                {
+                    "texto": "Acelerado e intenso, preciso de resultados urgentes.",
+                    "peso": 1
+                },
+                {
+                    "texto": "Firme e disciplinado, mesmo que isso canse um pouco.",
+                    "peso": 2
+                },
+                {
+                    "texto": "Equilibrado, que permita mudanças sem tirar meu prazer de viver.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Passo a passo, priorizando consistência acima da velocidade.",
+                    "peso": 4
+                },
+                {
+                    "texto": "Orgânico, que se adapte naturalmente à minha vida e paz interior.",
+                    "peso": 5
+                }
+            ]
+        },
+        {
+            "id": 3,
+            "tema": "Ambiente Seguro",
+            "pergunta": "Seu ambiente (casa, trabalho, círculos sociais) apoia suas escolhas de bem-estar?",
+            "opcoes": [
+                {
+                    "texto": "Dificulta bastante, sinto que luto contra ele constantemente.",
+                    "peso": 1
+                },
+                {
+                    "texto": "É mais uma barreira do que ajuda, exige muita força de vontade.",
+                    "peso": 2
+                },
+                {
+                    "texto": "É neutro; o resultado depende quase totalmente dos meus esforços.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Ajuda em alguns aspectos; consigo criar pequenos espaços de apoio.",
+                    "peso": 4
+                },
+                {
+                    "texto": "É um aliado ativo; organizei-o para trabalhar a meu favor.",
+                    "peso": 5
+                }
+            ]
+        },
+        {
+            "id": 4,
+            "tema": "Relação com a Comida",
+            "pergunta": "Qual abordagem alimentar parece mais acolhedora e possível para você atualmente?",
+            "opcoes": [
+                {
+                    "texto": "Regras claras e rígidas do que posso ou não comer.",
+                    "peso": 1
+                },
+                {
+                    "texto": "Um plano estruturado, com uma 'folga' programada por semana.",
+                    "peso": 2
+                },
+                {
+                    "texto": "Entender minhas emoções para diferenciar fome física da emocional.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Comer de tudo com atenção às porções e sinais de saciedade.",
+                    "peso": 4
+                },
+                {
+                    "texto": "Ver comida como nutrição e prazer, sem culpa, focando no presente.",
+                    "peso": 5
+                }
+            ]
+        },
+        {
+            "id": 5,
+            "tema": "Pequenas Vitórias",
+            "pergunta": "Como você reage ao celebrar uma pequena conquista de autocuidado?",
+            "opcoes": [
+                {
+                    "texto": "Acho irrelevante; só grandes resultados me satisfazem.",
+                    "peso": 1
+                },
+                {
+                    "texto": "Sinto alívio, mas logo penso em tudo que ainda falta fazer.",
+                    "peso": 2
+                },
+                {
+                    "texto": "Fico feliz no momento, mas não costumo dar muita importância.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Valorizo muito, pois sei que são a base da transformação.",
+                    "peso": 4
+                },
+                {
+                    "texto": "Celebro com gratidão, como sementes para meu futuro bem-estar.",
+                    "peso": 5
+                }
+            ]
+        },
+        {
+            "id": 6,
+            "tema": "Energia Diária",
+            "pergunta": "Ao final de um dia exaustivo, como está sua disposição para cuidar de si?",
+            "opcoes": [
+                {
+                    "texto": "Zero; busco conforto imediato (como comida) para aliviar.",
+                    "peso": 1
+                },
+                {
+                    "texto": "Muito baixa; faço apenas o essencial para sobreviver.",
+                    "peso": 2
+                },
+                {
+                    "texto": "Razoável; consigo fazer algo pequeno por mim, sem empolgação.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Boa; um pequeno autocuidado me renova.",
+                    "peso": 4
+                },
+                {
+                    "texto": "Consciente; sei que cuidar de mim me devolve energia.",
+                    "peso": 5
+                }
+            ]
+        },
+        {
+            "id": 7,
+            "tema": "Visão de Futuro",
+            "pergunta": "O que você mais deseja ter cultivado em si mesma daqui a um ano?",
+            "opcoes": [
+                {
+                    "texto": "Principalmente um número específico na balança.",
+                    "peso": 1
+                },
+                {
+                    "texto": "Um corpo visivelmente diferente, com roupas menores.",
+                    "peso": 2
+                },
+                {
+                    "texto": "Mais saúde, vitalidade e bons resultados em exames.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Hábitos consolidados que me tragam paz e controle saudável.",
+                    "peso": 4
+                },
+                {
+                    "texto": "Liberdade mental e um estilo de vida que eu ame sustentar.",
+                    "peso": 5
+                }
+            ]
+        },
+        {
+            "id": 8,
+            "tema": "Flexibilidade",
+            "pergunta": "Como lida com um imprevisto que desorganiza seus planos de autocuidado?",
+            "opcoes": [
+                {
+                    "texto": "Fico muito ansiosa e, muitas vezes, recuso o convite.",
+                    "peso": 1
+                },
+                {
+                    "texto": "Aceito, mas com culpa, e acabo exagerando.",
+                    "peso": 2
+                },
+                {
+                    "texto": "Vou, mas fico calculando mentalmente as 'consequências'.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Vou tranquila, fazendo escolhas conscientes que me agradam.",
+                    "peso": 4
+                },
+                {
+                    "texto": "Vejo como parte da vida; confio na minha capacidade de retomar.",
+                    "peso": 5
+                }
+            ]
+        },
+        {
+            "id": 9,
+            "tema": "Ouvindo o Corpo",
+            "pergunta": "Consegue diferenciar quando a vontade de comer vem do corpo ou de uma emoção?",
+            "opcoes": [
+                {
+                    "texto": "Tenho muita dificuldade; só percebo depois de comer.",
+                    "peso": 1
+                },
+                {
+                    "texto": "Às vezes percebo, mas é difícil resistir ao impulso emocional.",
+                    "peso": 2
+                },
+                {
+                    "texto": "Consigo identificar na maioria das vezes e tento pausar.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Identifico bem e busco outras formas de cuidar da emoção.",
+                    "peso": 4
+                },
+                {
+                    "texto": "Estou conectada; ouço claramente os sinais do meu corpo.",
+                    "peso": 5
+                }
+            ]
+        },
+        {
+            "id": 10,
+            "tema": "O Recomeço",
+            "pergunta": "Neste momento, o que 'Recomeçar' significa para você?",
+            "opcoes": [
+                {
+                    "texto": "Um peso, que me lembra tentativas passadas que 'falharam'.",
+                    "peso": 1
+                },
+                {
+                    "texto": "Uma obrigação, algo que preciso fazer com certo receio.",
+                    "peso": 2
+                },
+                {
+                    "texto": "Uma nova tentativa de aplicar o que aprendi.",
+                    "peso": 3
+                },
+                {
+                    "texto": "Uma página virada, um ato de coragem com mais sabedoria.",
+                    "peso": 4
+                },
+                {
+                    "texto": "Uma oportunidade fértil de plantar novos hábitos.",
+                    "peso": 5
+                }
+            ]
+        }
+    ],
+    "classificacoes": [
+        {
+            "nome": "Semente na Terra",
+            "descricao": "A jornada começa no silêncio fértil da terra. Este é o momento de reconhecer o desejo de cuidado e acolher a própria vulnerabilidade com gentileza. Aqui, a coragem está em permitir-se começar, confiando que toda transformação nasce de um primeiro passo dado com amor próprio.",
+            "faixa_min": 10,
+            "faixa_max": 20
+        },
+        {
+            "nome": "Broto Emergindo",
+            "descricao": "A primeira folha rompe a superfície e encontra a luz! Este é um momento de descobertas delicadas e progresso visível. Você experimenta como pequenas mudanças geram energia para mais crescimento. O broto precisa de paciência e proteção, mas sua direção é clara: rumo ao seu próprio sol interno.",
+            "faixa_min": 21,
+            "faixa_max": 30
+        },
+        {
+            "nome": "Muda Estabelecida",
+            "descricao": "Raízes firmes sustentam um crescimento constante. Você superou a fase mais frágil e agora constrói consistência com mais confiança. Há equilíbrio entre cuidar dos fundamentos e permitir a expansão. Os desafios são vistos como oportunidades para fortalecer suas raízes emocionais.",
+            "faixa_min": 31,
+            "faixa_max": 40
+        },
+        {
+            "nome": "Árvore Florescente",
+            "descricao": "Sua essência desabrocha em flores únicas! O autocuidado tornou-se uma expressão natural do seu ser. Você não segue rotinas, mas vive um estilo de vida que nutre corpo e alma. Sua presença já oferece inspiração e sombra acolhedora - para você mesma e para quem está ao redor.",
+            "faixa_min": 41,
+            "faixa_max": 50
+        }
+    ]
+}

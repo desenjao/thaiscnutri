@@ -1,0 +1,610 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Protocolo Semente - Questionário de Autocuidado</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4edf5 100%);
+            color: #333;
+            line-height: 1.6;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            overflow: hidden;
+        }
+
+        .header {
+            background: linear-gradient(135deg, #2c786c 0%, #4aa96c 100%);
+            color: white;
+            padding: 30px;
+            text-align: center;
+        }
+
+        .header h1 {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            font-weight: 300;
+        }
+
+        .loading {
+            padding: 40px;
+            text-align: center;
+            color: #666;
+            font-size: 1.1rem;
+        }
+
+        .loading-spinner {
+            border: 4px solid #f3f3f3;
+            border-top: 4px solid #4aa96c;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            animation: spin 1s linear infinite;
+            margin: 0 auto 20px;
+        }
+
+        @keyframes spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+
+        .progress-container {
+            background: #f0f7f4;
+            padding: 15px 30px;
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+
+        .progress-bar {
+            flex: 1;
+            height: 8px;
+            background: #e0e0e0;
+            border-radius: 4px;
+            overflow: hidden;
+        }
+
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(90deg, #4aa96c, #2c786c);
+            width: 0%;
+            transition: width 0.5s ease;
+            border-radius: 4px;
+        }
+
+        .progress-text {
+            font-size: 0.9rem;
+            color: #555;
+            font-weight: 500;
+            min-width: 70px;
+        }
+
+        .question-container {
+            padding: 30px;
+        }
+
+        .question-header {
+            margin-bottom: 25px;
+        }
+
+        .theme-tag {
+            display: inline-block;
+            background: #e8f5e9;
+            color: #2c786c;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 10px;
+        }
+
+        .question-text {
+            font-size: 1.3rem;
+            color: #222;
+            margin-bottom: 5px;
+            line-height: 1.5;
+        }
+
+        .question-id {
+            color: #777;
+            font-size: 0.9rem;
+            font-weight: 500;
+        }
+
+        .options-container {
+            display: flex;
+            flex-direction: column;
+            gap: 12px;
+            margin-bottom: 30px;
+        }
+
+        .option {
+            background: #f9f9f9;
+            border: 2px solid #eee;
+            border-radius: 12px;
+            padding: 18px 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .option:hover {
+            background: #f0f7f4;
+            border-color: #c8e6c9;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+
+        .option.selected {
+            background: #e8f5e9;
+            border-color: #4aa96c;
+            box-shadow: 0 5px 15px rgba(76, 175, 80, 0.1);
+        }
+
+        .option-text {
+            font-size: 1rem;
+            color: #333;
+            position: relative;
+            z-index: 2;
+        }
+
+        .navigation-buttons {
+            display: flex;
+            justify-content: space-between;
+            gap: 15px;
+        }
+
+        .btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 12px;
+            font-size: 1rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+        }
+
+        .btn-prev {
+            background: #f5f5f5;
+            color: #555;
+        }
+
+        .btn-prev:hover {
+            background: #e0e0e0;
+        }
+
+        .btn-next {
+            background: linear-gradient(135deg, #4aa96c, #2c786c);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-next:hover {
+            background: linear-gradient(135deg, #3d8c57, #226456);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(44, 120, 108, 0.2);
+        }
+
+        .btn-next:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .btn-finish {
+            background: linear-gradient(135deg, #ff9800, #f57c00);
+            color: white;
+            flex: 1;
+        }
+
+        .btn-finish:hover {
+            background: linear-gradient(135deg, #f57c00, #e65100);
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(245, 124, 0, 0.2);
+        }
+
+        .result-container {
+            padding: 40px 30px;
+            text-align: center;
+            display: none;
+        }
+
+        .result-header {
+            margin-bottom: 30px;
+        }
+
+        .result-title {
+            font-size: 2rem;
+            color: #2c786c;
+            margin-bottom: 10px;
+        }
+
+        .result-score {
+            font-size: 1.2rem;
+            color: #555;
+            margin-bottom: 20px;
+        }
+
+        .result-description {
+            background: #f9f9f9;
+            border-left: 4px solid #4aa96c;
+            padding: 20px;
+            border-radius: 0 12px 12px 0;
+            text-align: left;
+            margin: 25px 0;
+            font-size: 1.05rem;
+            line-height: 1.7;
+        }
+
+        .result-message {
+            font-size: 1.1rem;
+            color: #333;
+            margin-top: 20px;
+            padding: 15px;
+            background: #e8f5e9;
+            border-radius: 12px;
+        }
+
+        .btn-restart {
+            background: linear-gradient(135deg, #2196f3, #1976d2);
+            color: white;
+            margin-top: 20px;
+        }
+
+        .btn-restart:hover {
+            background: linear-gradient(135deg, #1976d2, #1565c0);
+        }
+
+        .footer {
+            text-align: center;
+            padding: 20px;
+            color: #777;
+            font-size: 0.9rem;
+            border-top: 1px solid #eee;
+            background: #f9f9f9;
+        }
+
+        @media (max-width: 600px) {
+            .container {
+                border-radius: 15px;
+            }
+            
+            .header {
+                padding: 20px;
+            }
+            
+            .header h1 {
+                font-size: 1.8rem;
+            }
+            
+            .question-container {
+                padding: 20px;
+            }
+            
+            .question-text {
+                font-size: 1.1rem;
+            }
+            
+            .option {
+                padding: 15px;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 0.95rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🌱 Protocolo Semente</h1>
+            <div class="subtitle" id="subtitle">Carregando questionário...</div>
+        </div>
+
+        <div class="loading" id="loading">
+            <div class="loading-spinner"></div>
+            <p>Carregando questionário...</p>
+        </div>
+
+        <div id="quiz-content" style="display: none;">
+            <div class="progress-container">
+                <div class="progress-text">Questão <span id="current-question">1</span> de <span id="total-questions">10</span></div>
+                <div class="progress-bar">
+                    <div class="progress-fill" id="progress-fill"></div>
+                </div>
+            </div>
+
+            <div class="question-container" id="question-container">
+                <div class="question-header">
+                    <div class="theme-tag" id="theme-tag">Carregando...</div>
+                    <h2 class="question-text" id="question-text">Carregando pergunta...</h2>
+                    <div class="question-id">Questão <span id="question-number">1</span>/<span id="total-questions-display">10</span></div>
+                </div>
+
+                <div class="options-container" id="options-container">
+                    <!-- Opções serão geradas aqui pelo JavaScript -->
+                </div>
+
+                <div class="navigation-buttons">
+                    <button class="btn btn-prev" id="prev-btn" onclick="prevQuestion()">
+                        ← Anterior
+                    </button>
+                    <button class="btn btn-next" id="next-btn" onclick="nextQuestion()" disabled>
+                        Próxima →
+                    </button>
+                </div>
+            </div>
+
+            <div class="result-container" id="result-container">
+                <div class="result-header">
+                    <h2 class="result-title" id="result-title">Carregando resultado...</h2>
+                    <div class="result-score" id="result-score">Sua pontuação: <span id="score-value">0</span> pontos</div>
+                </div>
+                
+                <div class="result-description" id="result-description">
+                    Carregando descrição...
+                </div>
+                
+                <div class="result-message" id="result-message">
+                    🌱 Continue regando sua semente com gentileza e paciência.
+                </div>
+                
+                <button class="btn btn-restart" onclick="restartQuiz()">
+                    🔄 Refazer Questionário
+                </button>
+            </div>
+        </div>
+
+        <div class="footer">
+            <p>Protocolo Semente • Tom Acolhedor, Esperançoso e Gentil</p>
+            <p>🌿 Lembre-se: toda grande árvore começou como uma pequena semente</p>
+        </div>
+    </div>
+
+    <script>
+        // Variáveis globais
+        let protocoloData = null;
+        let currentQuestionIndex = 0;
+        let answers = {};
+        let totalScore = 0;
+
+        // Carregar dados do JSON
+        async function loadProtocoloData() {
+            try {
+                // Alterar este caminho conforme necessário
+                const response = await fetch('data/pesoleads.json');
+                if (!response.ok) {
+                    throw new Error(`Erro ao carregar: ${response.status}`);
+                }
+                
+                protocoloData = await response.json();
+                
+                // Atualizar interface
+                document.getElementById('subtitle').textContent = protocoloData.tom_de_voz;
+                document.getElementById('total-questions').textContent = protocoloData.perguntas.length;
+                document.getElementById('total-questions-display').textContent = protocoloData.perguntas.length;
+                
+                // Esconder loading e mostrar conteúdo
+                document.getElementById('loading').style.display = 'none';
+                document.getElementById('quiz-content').style.display = 'block';
+                
+                // Inicializar quiz
+                showQuestion(currentQuestionIndex);
+                updateProgress();
+                
+            } catch (error) {
+                console.error('Erro ao carregar dados:', error);
+                document.getElementById('loading').innerHTML = `
+                    <div style="color: #d32f2f; padding: 20px;">
+                        <p>Erro ao carregar o questionário:</p>
+                        <p>${error.message}</p>
+                        <button onclick="location.reload()" style="margin-top: 20px; padding: 10px 20px; background: #4aa96c; color: white; border: none; border-radius: 5px; cursor: pointer;">
+                            Tentar Novamente
+                        </button>
+                    </div>
+                `;
+            }
+        }
+
+        // Mostrar pergunta atual
+        function showQuestion(index) {
+            const question = protocoloData.perguntas[index];
+            
+            // Atualizar elementos da pergunta
+            document.getElementById('theme-tag').textContent = question.tema;
+            document.getElementById('question-text').textContent = question.pergunta;
+            document.getElementById('question-number').textContent = index + 1;
+            document.getElementById('current-question').textContent = index + 1;
+            
+            // Gerar opções
+            const optionsContainer = document.getElementById('options-container');
+            optionsContainer.innerHTML = '';
+            
+            question.opcoes.forEach((option, optionIndex) => {
+                const optionElement = document.createElement('div');
+                optionElement.className = 'option';
+                if (answers[index] === optionIndex) {
+                    optionElement.classList.add('selected');
+                }
+                
+                optionElement.innerHTML = `
+                    <div class="option-text">${option.texto}</div>
+                `;
+                
+                optionElement.onclick = () => selectOption(index, optionIndex);
+                optionsContainer.appendChild(optionElement);
+            });
+            
+            // Atualizar botões de navegação
+            updateNavigationButtons();
+        }
+
+        // Selecionar uma opção
+        function selectOption(questionIndex, optionIndex) {
+            // Remover seleção anterior
+            const options = document.querySelectorAll('.option');
+            options.forEach(opt => opt.classList.remove('selected'));
+            
+            // Adicionar seleção atual
+            options[optionIndex].classList.add('selected');
+            
+            // Salvar resposta
+            answers[questionIndex] = optionIndex;
+            
+            // Habilitar botão próximo
+            document.getElementById('next-btn').disabled = false;
+            
+            // Se for a última pergunta, mudar botão para "Finalizar"
+            if (questionIndex === protocoloData.perguntas.length - 1) {
+                const nextBtn = document.getElementById('next-btn');
+                nextBtn.innerHTML = 'Finalizar →';
+                nextBtn.className = 'btn btn-finish';
+                nextBtn.onclick = finishQuiz;
+            }
+        }
+
+        // Atualizar botões de navegação
+        function updateNavigationButtons() {
+            const prevBtn = document.getElementById('prev-btn');
+            const nextBtn = document.getElementById('next-btn');
+            
+            // Botão anterior
+            prevBtn.disabled = currentQuestionIndex === 0;
+            
+            // Botão próximo (só habilitado se resposta selecionada)
+            const hasAnswer = answers[currentQuestionIndex] !== undefined;
+            nextBtn.disabled = !hasAnswer;
+            
+            // Texto do botão próximo
+            if (currentQuestionIndex === protocoloData.perguntas.length - 1) {
+                nextBtn.innerHTML = 'Finalizar →';
+                nextBtn.className = 'btn btn-finish';
+                nextBtn.onclick = finishQuiz;
+            } else {
+                nextBtn.innerHTML = 'Próxima →';
+                nextBtn.className = 'btn btn-next';
+                nextBtn.onclick = nextQuestion;
+            }
+        }
+
+        // Próxima pergunta
+        function nextQuestion() {
+            if (currentQuestionIndex < protocoloData.perguntas.length - 1) {
+                currentQuestionIndex++;
+                showQuestion(currentQuestionIndex);
+                updateProgress();
+            }
+        }
+
+        // Pergunta anterior
+        function prevQuestion() {
+            if (currentQuestionIndex > 0) {
+                currentQuestionIndex--;
+                showQuestion(currentQuestionIndex);
+                updateProgress();
+            }
+        }
+
+        // Atualizar barra de progresso
+        function updateProgress() {
+            const progress = ((currentQuestionIndex + 1) / protocoloData.perguntas.length) * 100;
+            document.getElementById('progress-fill').style.width = `${progress}%`;
+        }
+
+        // Finalizar quiz e mostrar resultado
+        function finishQuiz() {
+            // Calcular pontuação total
+            totalScore = 0;
+            protocoloData.perguntas.forEach((question, index) => {
+                const answerIndex = answers[index];
+                if (answerIndex !== undefined) {
+                    totalScore += question.opcoes[answerIndex].peso;
+                }
+            });
+            
+            // Encontrar classificação correspondente
+            let userClassification = null;
+            for (const classification of protocoloData.classificacoes) {
+                if (totalScore >= classification.faixa_min && totalScore <= classification.faixa_max) {
+                    userClassification = classification;
+                    break;
+                }
+            }
+            
+            // Se não encontrar classificação, usar a última
+            if (!userClassification) {
+                userClassification = protocoloData.classificacoes[protocoloData.classificacoes.length - 1];
+            }
+            
+            // Mostrar resultado
+            document.getElementById('question-container').style.display = 'none';
+            document.getElementById('result-container').style.display = 'block';
+            
+            document.getElementById('result-title').textContent = userClassification.nome;
+            document.getElementById('score-value').textContent = totalScore;
+            document.getElementById('result-description').textContent = userClassification.descricao;
+            
+            // Mensagem personalizada baseada na pontuação
+            let message = '';
+            if (totalScore <= 20) {
+                message = '🌱 Sua semente está na terra, pronta para germinar. Cada pequeno cuidado conta!';
+            } else if (totalScore <= 30) {
+                message = '🌿 Seu broto está emergindo! Continue regando com gentileza e paciência.';
+            } else if (totalScore <= 40) {
+                message = '🌳 Sua muda está se fortalecendo! Você está construindo bases sólidas para seu crescimento.';
+            } else {
+                message = '🌸 Sua árvore está florescendo! Continue nutrindo essa beleza que vem de dentro.';
+            }
+            document.getElementById('result-message').textContent = message;
+        }
+
+        // Reiniciar quiz
+        function restartQuiz() {
+            currentQuestionIndex = 0;
+            answers = {};
+            totalScore = 0;
+            
+            // Resetar interface
+            document.getElementById('result-container').style.display = 'none';
+            document.getElementById('question-container').style.display = 'block';
+            
+            // Mostrar primeira pergunta
+            showQuestion(currentQuestionIndex);
+            updateProgress();
+        }
+
+        // Inicializar quando a página carregar
+        document.addEventListener('DOMContentLoaded', loadProtocoloData);
+    </script>
+</body>
+</html>

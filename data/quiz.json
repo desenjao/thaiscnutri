@@ -1,0 +1,318 @@
+{
+  "titulo": "Onde está seu centro agora?",
+  "subtitulo": "Um olhar gentil sobre seu momento atual",
+  "instrucoes": "Escolha a opção que mais ressoa com você hoje. Não há respostas certas ou erradas.",
+  
+  "estados": {
+    "sobrevivencia_silenciosa": {
+      "nome": "Sobrevivência Silenciosa",
+      "cor": "#8C7A6B",
+      "descricao": "Um espaço de preservação. Você está segurando o essencial, economizando energia para o que realmente importa.",
+      "caracteristicas": ["Economia de energia", "Proteção do essencial", "Pausa estratégica"],
+      "mensagem_positiva": "Você está cultivando a força da reserva. Essa contenção não é fraqueza, é sabedoria prática."
+    },
+    "ajuste_interno": {
+      "nome": "Ajuste Interno",
+      "cor": "#8DA399",
+      "descricao": "Tempo de reorganização íntima. Você está realinhando valores, prioridades e formas de se relacionar consigo mesma.",
+      "caracteristicas": ["Reorganização silenciosa", "Questionamento saudável", "Busca de alinhamento"],
+      "mensagem_positiva": "Você está criando novos mapas internos. Cada ajuste é um ato de autofidelidade."
+    },
+    "reconstrucao_consciente": {
+      "nome": "Reconstrução Consciente",
+      "cor": "#C5A059",
+      "descricao": "Fase de escolhas intencionais. Você está reconstruindo com mais consciência do que realmente serve à sua vida.",
+      "caracteristicas": ["Escolhas intencionais", "Limites claros", "Prática consistente"],
+      "mensagem_positiva": "Você está arquitetando sua vida com novos materiais. Cada escolha consciente é um alicerce."
+    },
+    "presenca_inteira": {
+      "nome": "Presença Inteira",
+      "cor": "#9A8FB5",
+      "descricao": "Momento de habitar plenamente. Você está presente na sua vida com mais inteireza e aceitação.",
+      "caracteristicas": ["Presença no agora", "Aceitação ativa", "Conexão genuína"],
+      "mensagem_positiva": "Você está aprendendo a habitar sua própria vida. Essa presença é sua maior contribuição."
+    }
+  },
+  
+  "perguntas": [
+    {
+      "id": 1,
+      "texto": "Ao acordar, seu primeiro pensamento costuma ser:",
+      "alternativas": [
+        {
+          "texto": "Vamos ver como vai dar hoje",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Tenho coisas pra organizar",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "O que realmente importa hoje?",
+          "estado": "reconstrucao_consciente",
+          "peso": 2
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "texto": "Quando algo sai do controle, você tende a:",
+      "alternativas": [
+        {
+          "texto": "Segurar tudo sozinha",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Reorganizar mentalmente",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "Parar e observar antes de agir",
+          "estado": "presenca_inteira",
+          "peso": 2
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "texto": "Sua relação com descanso hoje é:",
+      "alternativas": [
+        {
+          "texto": "Descanso só quando dá",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Tento, mas me culpo",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "Entendo como necessidade",
+          "estado": "reconstrucao_consciente",
+          "peso": 2
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "texto": "Você se sente mais cansada de:",
+      "alternativas": [
+        {
+          "texto": "Sustentar expectativas",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Ajustar rotas o tempo todo",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "Explicar escolhas",
+          "estado": "reconstrucao_consciente",
+          "peso": 2
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "texto": "Quando pensa no futuro próximo:",
+      "alternativas": [
+        {
+          "texto": "Evito pensar demais",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Planejo com cautela",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "Escolho com consciência",
+          "estado": "reconstrucao_consciente",
+          "peso": 2
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "texto": "Sua maior dificuldade hoje é:",
+      "alternativas": [
+        {
+          "texto": "Pedir ajuda",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Manter constância",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "Manter limites",
+          "estado": "reconstrucao_consciente",
+          "peso": 2
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "texto": "Você sente que está:",
+      "alternativas": [
+        {
+          "texto": "Aguentando",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Reorganizando",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "Habitando melhor a própria vida",
+          "estado": "presenca_inteira",
+          "peso": 2
+        }
+      ]
+    },
+    {
+      "id": 8,
+      "texto": "Seu corpo ultimamente pede mais:",
+      "alternativas": [
+        {
+          "texto": "Pausa",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Ritmo",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "Presença",
+          "estado": "presenca_inteira",
+          "peso": 2
+        }
+      ]
+    },
+    {
+      "id": 9,
+      "texto": "Quando alguém te pergunta 'como você está?':",
+      "alternativas": [
+        {
+          "texto": "Responde automático",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Responde o necessário",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "Responde com verdade",
+          "estado": "presenca_inteira",
+          "peso": 2
+        }
+      ]
+    },
+    {
+      "id": 10,
+      "texto": "Essa fase da sua vida poderia ser resumida como:",
+      "alternativas": [
+        {
+          "texto": "Resistência",
+          "estado": "sobrevivencia_silenciosa",
+          "peso": 2
+        },
+        {
+          "texto": "Transição",
+          "estado": "ajuste_interno",
+          "peso": 1
+        },
+        {
+          "texto": "Integração",
+          "estado": "presenca_inteira",
+          "peso": 2
+        }
+      ]
+    }
+  ],
+  
+  "logica_resultado": {
+    "calculos": {
+      "peso_completo": 2,
+      "peso_parcial": 1,
+      "limite_principal": 10,
+      "limite_secundario": 7
+    },
+    "interpretacao": {
+      "estado_principal": "Estado com maior pontuação total",
+      "estado_secundario": "Estado com segunda maior pontuação (se relevante)",
+      "considerar_empatia": "Em caso de empate próximo, considerar a pergunta 10 como desempate"
+    }
+  },
+  
+  "resultados_possiveis": [
+    {
+      "tipo": "estado_principal_forte",
+      "condicao": "Quando um estado tem 10+ pontos",
+      "mensagem": "Você está vivendo predominantemente no estado de {estado}. Isso não é permanente, mas revela onde seu centro está ancorado agora.",
+      "recomendacao": "Permita-se habitar esse espaço sem julgamento. Ele tem sabedoria própria."
+    },
+    {
+      "tipo": "estados_mistos",
+      "condicao": "Quando dois estados têm entre 7-9 pontos",
+      "mensagem": "Você está transitando entre {estado1} e {estado2}. Essa fluidez revela movimento interno.",
+      "recomendacao": "Observe como esses estados se conversam dentro de você. A transição é parte do processo."
+    },
+    {
+      "tipo": "distribuicao_equilibrada",
+      "condicao": "Quando todos os estados têm pontuações próximas",
+      "mensagem": "Seus estados estão em equilíbrio dinâmico. Você contém todos eles simultaneamente.",
+      "recomendacao": "Reconheça a complexidade do seu momento. Você não precisa escolher apenas um lugar."
+    }
+  ],
+  
+  "mensagens_finais": {
+    "sobrevivencia_silenciosa": {
+      "titulo": "Você está preservando o essencial",
+      "texto": "Neste momento, você está na sabedoria da reserva. Não é fraqueza, é estratégia de sobrevivência emocional. Você está economizando energia para o que realmente importa, e isso é um ato de autocuidado profundo.",
+      "afirmacao": "Minha contenção atual é temporária e necessária.",
+      "sugestao": "Permita-se pequenas pausas sem culpa. Elas são o combustível dessa fase."
+    },
+    "ajuste_interno": {
+      "titulo": "Você está se realinhando",
+      "texto": "Você está no processo íntimo de ajuste. Reorganizando prioridades, valores e formas de estar no mundo. Esse movimento interno é invisível para os outros, mas profundamente transformador.",
+      "afirmacao": "Meus ajustes internos criam novos alicerces.",
+      "sugestao": "Anote insights em um diário. Eles são bússolas para seu próximo passo."
+    },
+    "reconstrucao_consciente": {
+      "titulo": "Você está reconstruindo com consciência",
+      "texto": "Você escolhe com mais clareza o que entra na sua vida. Cada limite estabelecido, cada 'não' dito, cada rotina mantida são tijolos dessa reconstrução. Você está arquitetando uma vida que te serve.",
+      "afirmacao": "Minhas escolhas conscientes criam minha realidade.",
+      "sugestao": "Celebre pequenas consistências. Elas são a base da sua nova estrutura."
+    },
+    "presenca_inteira": {
+      "titulo": "Você está habitando sua vida",
+      "texto": "Você está aprendendo a estar presente na sua própria experiência. Com menos fuga e mais aceitação. Essa presença não é passiva - é um ato corajoso de habitar plenamente onde você está.",
+      "afirmacao": "Minha presença é suficiente.",
+      "sugestao": "Pratique pausas de 1 minuto só para sentir que está ali. Isso é presença."
+    }
+  },
+  
+  "notas_tecnicas": {
+    "armazenamento_respostas": "Não armazenar respostas individuais, apenas contagens por estado",
+    "privacidade": "Os dados não são rastreáveis até a pessoa",
+    "variabilidade": "Os pesos podem ser ajustados conforme validação estatística",
+    "futuras_iteracoes": "Permite adicionar mais perguntas mantendo a mesma lógica"
+  }
+}
