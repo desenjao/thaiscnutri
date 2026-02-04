@@ -1,0 +1,606 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Recomeçar Mais Leve | Programa de Acompanhamento</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700&family=Playfair+Display:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* --- 1. IDENTIDADE VISUAL (Ramo A) --- */
+        :root {
+            /* Cores inspiradas na natureza e no vídeo de referência */
+            --primary-dark: #2C3E36; /* Verde Musgo Profundo (Autoridade) */
+            --primary-light: #88A096; /* Verde Sálvia (Calma) */
+            --accent: #209161; /* Terracota Suave (Acolhimento) */
+            --accent-hover: #209161;
+            --bg-cream: #F9F7F2; /* Fundo suave, não branco puro */
+            --white: #ffffff;
+            --text-main: #333333;
+            --text-light: #666666;
+            --shadow: 0 4px 20px rgba(44, 62, 54, 0.08);
+        }
+
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+        
+        body {
+            font-family: 'Lato', sans-serif;
+            color: var(--text-main);
+            background-color: var(--bg-cream);
+            line-height: 1.6;
+            padding-bottom: 80px; /* Espaço para o Botão Sticky no Mobile */
+        }
+
+        h1, h2, h3, h4 { font-family: 'Playfair Display', serif; color: var(--primary-dark); }
+        
+        .container { max-width: 1100px; margin: 0 auto; padding: 0 20px; }
+        
+        /* Botões */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 16px 32px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            cursor: pointer;
+            border: none;
+            font-size: 0.9rem;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .btn-primary {
+            background-color: var(--accent);
+            color: var(--white);
+        }
+        .btn-primary:hover { background-color: var(--accent-hover); transform: translateY(-2px); }
+
+        .btn-outline {
+            background: transparent;
+            border: 2px solid var(--white);
+            color: var(--white);
+        }
+        .btn-outline:hover { background: var(--white); color: var(--primary-dark); }
+
+        /* --- 2. HERO SECTION (Com Foto Humana) --- */
+        header.hero {
+            background-color: var(--primary-dark); /* Fundo escuro elegante */
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+            padding: 40px 0 60px 0;
+        }
+
+        /* Layout dividido: Texto Esquerda | Imagem Direita */
+        .hero-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .hero-content h1 {
+            color: var(--white); /* Texto claro no fundo escuro */
+            font-size: 2.8rem;
+            line-height: 1.2;
+            margin-bottom: 20px;
+        }
+
+        .hero-tag {
+            background: rgba(255,255,255,0.1);
+            color: #dcdcdc;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            display: inline-block;
+            margin-bottom: 20px;
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+
+        .hero-img-container {
+            position: relative;
+            z-index: 1;
+        }
+        
+        /* Placeholder da foto da Nutri ou mulher saudável */
+        .hero-img {
+            width: 100%;
+            border-radius: 20px 20px 0 20px; /* Borda orgânica */
+            border: 5px solid rgba(255,255,255,0.1);
+            box-shadow: 0 20px 50px rgba(0,0,0,0.3);
+            object-fit: cover;
+            height: 400px; /* Altura fixa para consistência */
+        }
+/* --- 3. MOBILE FIRST (Ramo B) - ATUALIZADO --- */
+        @media (max-width: 768px) {
+            header.hero {
+                padding-top: 0; /* Remove espaço superior para a imagem encostar no topo se necessário */
+            }
+            .hero-grid {
+                grid-template-columns: 1fr; 
+                text-align: center;
+                gap: 0; /* Remove o espaço entre imagem e texto para ganhar tela */
+            }
+            .hero-content { 
+                order: 2; 
+                padding: 30px 20px; /* Dá respiro ao texto após a imagem gigante */
+            }
+            .hero-img-container { 
+                order: 1; 
+                margin-bottom: 0;
+                width: 100%; /* Garante que o container ocupe tudo */
+            }
+            .hero-img { 
+                height: 60vh; /* Ocupa 60% da altura da tela do celular */
+                width: 100vw; /* Ocupa a largura total da janela (Edge to Edge) */
+                max-width: none;
+                margin: -18px; 
+                border-radius: 0 0 40px 40px; /* Arredonda só a parte de baixo para um visual moderno */
+                border: none; /* Remove bordas para parecer mais imersivo */
+                display: block;
+                object-position: center; /* Centraliza o foco da foto */
+            }
+            .hero-content h1 { 
+                font-size: 2.2rem; 
+                margin-top: 10px;
+            }
+        }
+
+        /* --- SEÇÃO DORES (Compacta) --- */
+        .pains { padding: 60px 0; background: var(--white); text-align: center; }
+        .pains h2 { margin-bottom: 40px; font-size: 2rem; }
+        
+        .pains-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 20px;
+        }
+
+        .pain-item {
+            padding: 25px;
+            border-radius: 10px;
+            background: var(--bg-cream);
+            transition: 0.3s;
+        }
+        .pain-item i { color: var(--accent); font-size: 2rem; margin-bottom: 15px; }
+        .pain-item h3 { font-size: 1.1rem; margin-bottom: 10px; }
+        .pain-item p { font-size: 0.95rem; color: var(--text-light); }
+
+        /* --- BIO DA NUTRI (Ramo C - Autoridade) --- */
+        .bio-section {
+            background: var(--bg-cream);
+            padding: 60px 0;
+            border-top: 1px solid #eee;
+        }
+        .bio-container {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+            max-width: 900px;
+            margin: 0 auto;
+        }
+        .bio-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent);
+            flex-shrink: 0;
+        }
+        @media (max-width: 768px) {
+            .bio-container { flex-direction: column; text-align: center; }
+        }
+
+        /* --- MÉTODO COM ACORDEÃO (Usabilidade Mobile) --- */
+        .method { padding: 80px 0; background: var(--white); }
+        .method-header { text-align: center; margin-bottom: 40px; }
+        
+        .accordion {
+            max-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #eee;
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .accordion-item {
+            border-bottom: 1px solid #eee;
+        }
+        .accordion-item:last-child { border-bottom: none; }
+
+        .accordion-header {
+            width: 100%;
+            padding: 20px 25px;
+            background: var(--white);
+            border: none;
+            outline: none;
+            text-align: left;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: 0.3s;
+        }
+
+        .accordion-header:hover { background: #fcfcfc; }
+        
+        .accordion-title {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+        }
+        
+        .badge-week {
+            background: var(--primary-light);
+            color: var(--white);
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: bold;
+        }
+        
+        .accordion-header h3 { font-size: 1.1rem; margin: 0; color: var(--text-main); }
+        .accordion-icon { transition: 0.3s; color: var(--accent); }
+
+        .accordion-content {
+            max-height: 0;
+            overflow: hidden;
+            transition: max-height 0.3s ease-out;
+            background: var(--bg-cream);
+            padding: 0 25px;
+        }
+        
+        /* Classe ativa para abrir */
+        .accordion-item.active .accordion-content {
+            padding: 20px 25px;
+            max-height: 500px; /* Altura suficiente para o conteúdo */
+        }
+        .accordion-item.active .accordion-icon { transform: rotate(180deg); }
+        
+        .check-list { list-style: none; margin-top: 15px; }
+        .check-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: flex-start;
+            font-size: 0.95rem;
+        }
+        .check-list i { color: var(--primary-dark); margin-right: 10px; margin-top: 4px; }
+
+        /* --- PROVA SOCIAL / WHATSAPP --- */
+        .social-proof { padding: 60px 0; background: var(--primary-dark); color: var(--white); text-align: center; }
+        .testimonials-grid { 
+            display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; margin-top: 40px; 
+        }
+        .testimonial-card {
+            background: rgba(255,255,255,0.1);
+            padding: 20px;
+            border-radius: 10px;
+            text-align: left;
+            border-left: 3px solid var(--accent);
+        }
+        .testimonial-card p { font-style: italic; font-size: 0.9rem; margin-bottom: 10px; opacity: 0.9; }
+        .testimonial-author { font-weight: bold; font-family: 'Playfair Display', serif; }
+
+        /* --- MOCKUP WHATSAPP SIMPLIFICADO --- */
+        .wa-section { padding: 60px 0; background: var(--bg-cream); text-align: center; }
+        .wa-preview {
+            background: #fff;
+            max-width: 350px;
+            margin: 30px auto;
+            border-radius: 20px;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            overflow: hidden;
+            border: 1px solid #ddd;
+        }
+        .wa-header {
+            background: #075E54; color: white; padding: 15px; text-align: left; display: flex; align-items: center; gap: 10px;
+        }
+        .wa-body { padding: 20px; background: #E5DDD5; text-align: left; }
+        .wa-bubble { background: #fff; padding: 10px 15px; border-radius: 10px; border-top-left-radius: 0; margin-bottom: 10px; font-size: 0.9rem; box-shadow: 0 1px 1px rgba(0,0,0,0.1); }
+        .wa-time { font-size: 0.7rem; color: #999; text-align: right; display: block; margin-top: 4px; }
+
+        /* --- STICKY CTA (Mobile Only - Ramo B) --- */
+        .sticky-cta {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            background: var(--white);
+            padding: 15px 20px;
+            box-shadow: 0 -5px 20px rgba(0,0,0,0.1);
+            z-index: 9999;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .sticky-text { font-size: 0.9rem; color: var(--text-main); font-weight: bold; }
+        .sticky-text span { display: block; font-size: 0.7rem; color: var(--primary-dark); font-weight: normal; }
+        
+        .sticky-btn {
+            background: #25D366; /* Verde WhatsApp oficial */
+            color: white;
+            padding: 12px 25px;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 0.9rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        @media (min-width: 769px) {
+            .sticky-cta { display: none; } /* Esconde no desktop */
+        }
+
+        /* --- FORMATAÇÃO DOS DEPOIMENTOS COM IMAGEM --- */
+
+.testimonials-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 25px;
+    margin-top: 40px;
+}
+
+.testimonial-card {
+    background: rgba(255, 255, 255, 0.05); /* Fundo sutil para destacar a imagem */
+    padding: 15px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: transform 0.3s ease;
+    text-align: center;
+}
+
+.testimonial-card:hover {
+    transform: scale(1.03); /* Efeito de zoom leve ao passar o mouse */
+}
+
+.testimonial-card img {
+    width: 100%;           /* Ocupa a largura total do card */
+    height: auto;          /* Mantém a proporção da imagem */
+    max-height: 450px;     /* Limita a altura para prints de WhatsApp não ficarem gigantes */
+    object-fit: cover;     /* Garante que a imagem preencha o espaço sem distorcer */
+    border-radius: 10px;   /* Bordas arredondadas na imagem */
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.3); /* Sombra para dar destaque */
+    margin-bottom: 15px;
+    display: block;
+}
+
+.testimonial-author {
+    color: var(--accent); /* Usa o tom terracota definido anteriormente */
+    font-weight: bold;
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    margin-top: 10px;
+}
+
+/* Ajuste para Mobile */
+@media (max-width: 480px) {
+    .testimonial-card {
+        padding: 10px;
+    }
+}
+
+    </style>
+</head>
+<body>
+
+    <header class="hero">
+        <div class="container hero-grid">
+            <div class="hero-content">
+                <span class="hero-tag">Programa de 21 Dias</span>
+                <h1>Hábitos possíveis, constantes e reais.</h1>
+                <p style="margin-bottom: 30px; opacity: 0.9;">Não é transformação radical. É constância sem culpa. "Você não precisa de mais força, precisa de um jeito mais humano."</p>
+                <a href="https://wa.me/SEUNUMERO" class="btn btn-primary">Quero minha vaga</a>
+            </div>
+            
+            <div class="hero-img-container">
+                <img src="img/Design sem nome (5).png" alt="Nutrição Saudável" class="hero-img">
+            </div>
+        </div>
+    </header>
+
+    <section class="bio-section">
+        <div class="container bio-container">
+            <img src="img/thais.png" alt="Foto da Nutricionista" class="bio-img">
+            <div>
+                <h3>Olá, eu sou a Thís Carvalho Nutri</h3>
+                <p style="color: var(--text-light); margin-bottom: 10px;"><strong>Nutricionista (CBO - 223710)</strong></p>
+                <p>Criei o "Recomeçar Mais Leve" porque cansei de ver mulheres incríveis desistindo de si mesmas por tentarem seguir regras impossíveis. Aqui, vamos focar no que é real e sustentável.</p>
+            </div>
+        </div>
+    </section>
+
+    <section class="pains">
+        <div class="container">
+            <h2>Isso te soa familiar?</h2>
+            <div class="pains-grid">
+                <div class="pain-item">
+                    <i class="fas fa-battery-quarter"></i>
+                    <h3>Cansaço Constante</h3>
+                    <p>Vive cansada, mas se sente culpada por descansar. Cuida de todos e esquece de si.</p>
+                </div>
+                <div class="pain-item">
+                    <i class="fas fa-route"></i>
+                    <h3>Abandono</h3>
+                    <p>Começa a dieta na segunda e para na quinta quando a rotina aperta.</p>
+                </div>
+                <div class="pain-item">
+                    <i class="fas fa-users-slash"></i>
+                    <h3>Solidão</h3>
+                    <p>Sente que falha consigo mesma porque tenta fazer tudo sozinha.</p>
+                </div>
+            </div>
+            <p style="margin-top: 30px; font-weight: bold; color: var(--accent);">
+                Importante: Não é falta de disciplina. É falta de estrutura leve.
+            </p>
+        </div>
+    </section>
+
+    <section class="method">
+        <div class="container">
+            <div class="method-header">
+                <h2>O Método em 3 Semanas</h2>
+                <p>Clique nas semanas para ver os detalhes da jornada.</p>
+            </div>
+
+            <div class="accordion">
+                <div class="accordion-item active"> <button class="accordion-header">
+                        <div class="accordion-title">
+                            <span class="badge-week">SEM 01</span>
+                            <h3>Acalmar para Recomeçar</h3>
+                        </div>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="margin-top: 15px; font-style: italic; color: var(--accent);">"Antes de fazer mais, é preciso se ouvir."</p>
+                        <ul class="check-list">
+                            <li><i class="fas fa-check-circle"></i> Sair do automático e voltar para si</li>
+                            <li><i class="fas fa-check-circle"></i> Alimentação consciente sem regras rígidas</li>
+                            <li><i class="fas fa-check-circle"></i> Hidratação simples integrada à rotina</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <div class="accordion-title">
+                            <span class="badge-week">SEM 02</span>
+                            <h3>Organizar para Continuar</h3>
+                        </div>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="margin-top: 15px; font-style: italic; color: var(--accent);">"Constância nasce do que cabe."</p>
+                        <ul class="check-list">
+                            <li><i class="fas fa-check-circle"></i> Transformar cuidado em repetição possível</li>
+                            <li><i class="fas fa-check-circle"></i> Refeições básicas organizadas</li>
+                            <li><i class="fas fa-check-circle"></i> Movimento possível (10 a 20 min)</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="accordion-item">
+                    <button class="accordion-header">
+                        <div class="accordion-title">
+                            <span class="badge-week">SEM 03</span>
+                            <h3>Sustentar com Leveza</h3>
+                        </div>
+                        <i class="fas fa-chevron-down accordion-icon"></i>
+                    </button>
+                    <div class="accordion-content">
+                        <p style="margin-top: 15px; font-style: italic; color: var(--accent);">"Você pode continuar, mesmo sem fazer tudo."</p>
+                        <ul class="check-list">
+                            <li><i class="fas fa-check-circle"></i> Integrar hábitos à identidade</li>
+                            <li><i class="fas fa-check-circle"></i> Retomar sem dramatizar</li>
+                            <li><i class="fas fa-check-circle"></i> Manter o essencial em dias difíceis</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="wa-section">
+        <div class="container">
+            <h2>Onde tudo acontece</h2>
+            <p>Nada de plataformas complicadas. O acompanhamento é na palma da sua mão.</p>
+            
+            <div class="wa-preview">
+                <div class="wa-header">
+                    <div style="width: 35px; height: 35px; background: #fff; border-radius: 50%;"></div>
+                    <div>
+                        <div style="font-weight: bold; font-size: 0.9rem;">Recomeçar Mais Leve - Grupo VIP </div>
+                        <div style="font-size: 0.7rem; opacity: 0.8;">Você, Nutri, + Mulheres Incríveis</div>
+                    </div>
+                </div>
+                <div class="wa-body">
+                    <div class="wa-bubble">
+                        <strong>🌞</strong> Bom dia! A meta de hoje é simples: 1 copo de água antes do café. Quem vem?
+                        <span class="wa-time">07:30</span>
+                    </div>
+                    <div class="wa-bubble" style="background: #dcf8c6; margin-left: auto;">
+                        <strong>✅</strong> Feito! Me sentindo mais leve só de começar assim 
+                        <span class="wa-time">08:15</span>
+                    </div>
+                </div>
+            </div>
+
+            <ul class="check-list" style="display: inline-block; text-align: left;">
+                <li><i class="fas fa-heart" style="color: var(--accent)"></i> Lembretes humanos e gentis</li>
+                <li><i class="fas fa-heart" style="color: var(--accent)"></i> Zero julgamento ou competição</li>
+                <li><i class="fas fa-heart" style="color: var(--accent)"></i> Espaço seguro para seus dias difíceis</li>
+            </ul>
+        </div>
+    </section>
+
+    <section class="social-proof">
+        <div class="container">
+            <h2 style="color: white;">Quem viveu o recomeço</h2>
+            <div class="testimonials-grid">
+                 <div class="testimonial-card">
+                   <img src="img/2.jpg" alt="">
+                </div>
+                <div class="testimonial-card">
+                    <img src="img/3.jpg" alt="">
+                </div>
+                <div class="testimonial-card">
+                    <img src="img/4.jpg" alt="">
+                </div>
+               
+            </div>
+            
+            <a href="https://wa.me/558981287260" class="btn btn-primary" style="margin-top: 40px; background: white; color: var(--primary-dark);">
+                Quero fazer parte
+            </a>
+        </div>
+    </section>
+
+    <footer style="text-align: center; padding: 40px 20px; font-size: 0.8rem; color: #999;">
+        <p>&copy; 2026 Programa Recomeçar Mais Leve. Todos os direitos reservados.</p>
+    </footer>
+
+    <div class="sticky-cta">
+        <div class="sticky-text">
+            Recomeçar Mais Leve
+            <span>Vagas Abertas</span>
+        </div>
+        <a href="https://wa.me/SEUNUMERO" class="sticky-btn">
+            <i class="fab fa-whatsapp"></i> Quero Minha Vaga
+        </a>
+    </div>
+
+    <script>
+        // Lógica do Acordeão
+        const accordions = document.querySelectorAll('.accordion-header');
+
+        accordions.forEach(acc => {
+            acc.addEventListener('click', function() {
+                const item = this.parentElement;
+                
+                // Fecha outros itens se quiser comportamento exclusivo (opcional)
+                /* document.querySelectorAll('.accordion-item').forEach(i => {
+                    if(i !== item) i.classList.remove('active');
+                }); 
+                */
+
+                // Alterna o atual
+                item.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
