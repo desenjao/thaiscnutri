@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>21 Dias de Leveza | Certificado</title>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Inter:wght@400;500;600&family=Dancing+Script:wght@600&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --sage: #8DA399;
+            --sand: #F9F7F3;
+            --gold: #C5A059;
+            --white: #FFFFFF;
+            --text: #2C3E2D;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            background: var(--sand);
+            color: var(--text);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 20px;
+        }
+        
+        .container {
+            width: 100%;
+            max-width: 500px;
+        }
+        
+        header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding-top: 20px;
+        }
+        
+        h1 {
+            font-family: 'Playfair Display', serif;
+            color: var(--sage);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        
+        .subtitle {
+            color: #666;
+            font-size: 0.95rem;
+        }
+        
+        /* FORMULÁRIO SIMPLES */
+        .form-card {
+            background: var(--white);
+            padding: 30px;
+            border-radius: 20px;
+            margin-bottom: 30px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.05);
+        }
+        
+        .input-group {
+            margin-bottom: 20px;
+        }
+        
+        label {
+            display: block;
+            font-weight: 600;
+            color: var(--sage);
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+        
+        input, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1.5px solid #E8E6E1;
+            border-radius: 12px;
+            font-family: 'Inter', sans-serif;
+            font-size: 1rem;
+            transition: border 0.3s;
+            background: #FDFDFD;
+        }
+        
+        input:focus, textarea:focus {
+            outline: none;
+            border-color: var(--sage);
+        }
+        
+        textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+        
+        .btn-primary {
+            width: 100%;
+            padding: 16px;
+            background: var(--sage);
+            color: white;
+            border: none;
+            border-radius: 12px;
+            font-weight: 600;
+            font-size: 1rem;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        
+        .btn-primary:hover {
+            background: #7A9087;
+        }
+        
+        /* CERTIFICADO PERFEITO PARA INSTAGRAM */
+        #certificate-container {
+            display: none;
+            text-align: center;
+        }
+        
+        #certificate {
+            width: 1080px;  /* Tamanho ideal para Instagram */
+            height: 1080px;
+            max-width: 100%;
+            background: white;
+            position: relative;
+            overflow: hidden;
+            margin: 0 auto 30px;
+            border-radius: 0;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.1);
+        }
+        
+        .cert-bg {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 80%, rgba(141, 163, 153, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(197, 160, 89, 0.05) 0%, transparent 50%);
+        }
+        
+        .cert-content {
+            position: relative;
+            z-index: 2;
+            padding: 120px 80px;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .cert-badge {
+            font-size: 4rem;
+            color: var(--gold);
+            margin-bottom: 30px;
+            opacity: 0.9;
+        }
+        
+        .cert-title {
+            font-family: 'Playfair Display', serif;
+            font-size: 2.8rem;
+            color: var(--sage);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+        
+        .cert-name {
+            font-family: 'Dancing Script', cursive;
+            font-size: 5.5rem;
+            color: var(--text);
+            margin: 40px 0;
+            line-height: 1.1;
+        }
+        
+        .cert-quote {
+            font-size: 1.8rem;
+            line-height: 1.5;
+            color: #555;
+            font-style: italic;
+            max-width: 800px;
+            margin: 0 auto 50px;
+            padding: 0 20px;
+        }
+        
+        .cert-hashtag {
+            font-size: 1.6rem;
+            color: var(--gold);
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-top: 40px;
+        }
+        
+        .cert-footer {
+            position: absolute;
+            bottom: 60px;
+            left: 0;
+            right: 0;
+            font-size: 1.2rem;
+            color: #999;
+            letter-spacing: 1px;
+        }
+        
+        /* CONTROLES DE COMPARTILHAMENTO */
+        .share-controls {
+            display: flex;
+            gap: 12px;
+            justify-content: center;
+            margin-top: 30px;
+            flex-wrap: wrap;
+        }
+        
+        .share-btn {
+            padding: 14px 28px;
+            border: none;
+            border-radius: 10px;
+            font-weight: 600;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 0.95rem;
+            transition: transform 0.2s;
+        }
+        
+        .share-btn:hover {
+            transform: translateY(-2px);
+        }
+        
+        .btn-download {
+            background: var(--sage);
+            color: white;
+        }
+        
+        .btn-instagram {
+            background: linear-gradient(45deg, #405DE6, #833AB4, #C13584, #E1306C, #FD1D1D);
+            color: white;
+        }
+        
+        .btn-share {
+            background: var(--gold);
+            color: white;
+        }
+        
+        /* MENSAGEM DE AJUDA */
+        .help-text {
+            text-align: center;
+            margin-top: 25px;
+            font-size: 0.9rem;
+            color: #777;
+            max-width: 500px;
+            line-height: 1.5;
+        }
+        
+        .tip {
+            background: #FFF9E6;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 20px;
+            border-left: 4px solid var(--gold);
+            font-size: 0.9rem;
+        }
+        
+        /* RESPONSIVO PARA VISUALIZAÇÃO */
+        @media (max-width: 1200px) {
+            #certificate {
+                width: 800px;
+                height: 800px;
+            }
+            
+            .cert-name {
+                font-size: 4.5rem;
+            }
+            
+            .cert-quote {
+                font-size: 1.5rem;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            #certificate {
+                width: 600px;
+                height: 600px;
+            }
+            
+            .cert-content {
+                padding: 80px 40px;
+            }
+            
+            .cert-name {
+                font-size: 3.5rem;
+            }
+            
+            .cert-quote {
+                font-size: 1.2rem;
+            }
+            
+            .cert-title {
+                font-size: 2.2rem;
+            }
+        }
+        
+        @media (max-width: 700px) {
+            #certificate {
+                width: 100%;
+                height: auto;
+                aspect-ratio: 1/1;
+            }
+            
+            .cert-content {
+                padding: 15%;
+            }
+            
+            .cert-name {
+                font-size: 2.8rem;
+                margin: 20px 0;
+            }
+            
+            .cert-quote {
+                font-size: 1rem;
+                margin-bottom: 30px;
+            }
+            
+            .cert-title {
+                font-size: 1.8rem;
+            }
+            
+            .cert-hashtag {
+                font-size: 1.2rem;
+            }
+            
+            .share-controls {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .share-btn {
+                width: 100%;
+                max-width: 300px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>21 Dias de Leveza</h1>
+            <p class="subtitle">Gere seu certificado para compartilhar no Instagram</p>
+        </header>
+        
+        <div id="form-view">
+            <div class="form-card">
+                <div class="input-group">
+                    <label>Seu nome (como deve aparecer no certificado)</label>
+                    <input type="text" id="user-name" placeholder="Ex: Maria, João, ou seu apelido" autofocus>
+                </div>
+                
+                <div class="input-group">
+                    <label>Sua principal lição nesses 21 dias (opcional)</label>
+                    <textarea id="user-lesson" placeholder="O que você aprendeu sobre autocompaixão?"></textarea>
+                </div>
+                
+                <button class="btn-primary" onclick="generateCertificate()">
+                    Gerar Meu Certificado
+                </button>
+            </div>
+            
+            <div class="tip">
+                💡 Dica: O certificado será gerado no formato quadrado perfeito para Instagram Stories e Feed.
+            </div>
+        </div>
+        
+        <div id="certificate-container">
+            <!-- CERTIFICADO OTIMIZADO PARA INSTAGRAM -->
+            <div id="certificate">
+                <div class="cert-bg"></div>
+                <div class="cert-content">
+                    <div class="cert-badge">🌿</div>
+                    <div class="cert-title">CERTIFICADO DE LEVEZA</div>
+                    <div class="cert-name" id="cert-name">Nome da Pessoa</div>
+                    <div class="cert-quote" id="cert-quote">
+                        "Por honrar seu próprio ritmo e escolher a gentileza <br>
+                        como prática diária de recomeço."
+                    </div>
+                    <div class="cert-hashtag">#21DiasDeLeveza</div>
+                    <div class="cert-footer">recomeçarmaiseleve.com</div>
+                </div>
+            </div>
+            
+            <div class="share-controls">
+                <button class="share-btn btn-download" onclick="downloadCertificate()">
+                    📥 Baixar Imagem
+                </button>
+                
+                <button class="share-btn btn-instagram" onclick="prepareForInstagram()">
+                    📲 Preparar para Instagram
+                </button>
+                
+                <button class="share-btn btn-share" onclick="shareCertificate()">
+                    ↗ Compartilhar Direto
+                </button>
+            </div>
+            
+            <div class="help-text">
+                <p><strong>Como postar no Instagram:</strong></p>
+                <p>1. Baixe a imagem acima<br>
+                   2. Abra o Instagram → Criar novo post<br>
+                   3. Selecione a imagem baixada<br>
+                   4. Use a hashtag <strong>#21DiasDeLeveza</strong></p>
+            </div>
+            
+            <button class="btn-primary" style="margin-top: 30px; background: #777;" onclick="newCertificate()">
+                ↻ Criar Outro Certificado
+            </button>
+        </div>
+    </div>
+
+    <script>
+        let certificateImageUrl = null;
+        
+        function generateCertificate() {
+            const userName = document.getElementById('user-name').value.trim();
+            const userLesson = document.getElementById('user-lesson').value.trim();
+            
+            if (!userName) {
+                alert("Por favor, digite seu nome para o certificado!");
+                document.getElementById('user-name').focus();
+                return;
+            }
+            
+            // Atualizar certificado
+            document.getElementById('cert-name').textContent = userName;
+            
+            // Se tiver uma lição personalizada, usar ela (limitada para caber no design)
+            if (userLesson && userLesson.length > 0) {
+                const shortLesson = userLesson.length > 100 ? userLesson.substring(0, 100) + "..." : userLesson;
+                document.getElementById('cert-quote').innerHTML = `"${shortLesson}"`;
+            }
+            
+            // Transição suave
+            document.getElementById('form-view').style.opacity = '0';
+            document.getElementById('form-view').style.transform = 'translateY(-20px)';
+            
+            setTimeout(() => {
+                document.getElementById('form-view').style.display = 'none';
+                document.getElementById('certificate-container').style.display = 'block';
+                document.getElementById('certificate-container').style.opacity = '0';
+                
+                // Forçar renderização do certificado
+                setTimeout(() => {
+                    document.getElementById('certificate-container').style.opacity = '1';
+                    document.getElementById('certificate-container').style.transform = 'translateY(0)';
+                    
+                    // Pré-gerar imagem para compartilhamento rápido
+                    generateImageForSharing();
+                }, 50);
+            }, 300);
+        }
+        
+        function generateImageForSharing() {
+            // Gerar imagem em segundo plano para agilizar compartilhamento
+            setTimeout(() => {
+                const cert = document.getElementById('certificate');
+                
+                html2canvas(cert, {
+                    scale: 2, // Alta qualidade
+                    backgroundColor: '#FFFFFF',
+                    useCORS: true,
+                    logging: false,
+                    onclone: function(clonedDoc) {
+                        // Garantir que no clone esteja visível
+                        clonedDoc.getElementById('certificate').style.display = 'block';
+                    }
+                }).then(canvas => {
+                    certificateImageUrl = canvas.toDataURL('image/png');
+                    
+                    // Pré-criar link de download
+                    const downloadLink = document.createElement('a');
+                    downloadLink.id = 'hidden-download-link';
+                    downloadLink.style.display = 'none';
+                    downloadLink.download = `certificado_21dias_${document.getElementById('user-name').value.replace(/\s+/g, '_')}.png`;
+                    downloadLink.href = certificateImageUrl;
+                    document.body.appendChild(downloadLink);
+                });
+            }, 500);
+        }
+        
+        function downloadCertificate() {
+            const userName = document.getElementById('user-name').value.trim();
+            
+            const cert = document.getElementById('certificate');
+            
+            html2canvas(cert, {
+                scale: 3, // Resolução máxima para Instagram
+                backgroundColor: '#FFFFFF',
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `21dias_leveza_${userName.replace(/\s+/g, '_').toLowerCase()}.png`;
+                link.href = canvas.toDataURL('image/png');
+                
+                // Feedback visual
+                const btn = event.target.closest('button');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '✅ Imagem Baixada!';
+                btn.style.background = '#7A9087';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                    btn.style.background = '';
+                }, 2000);
+                
+                link.click();
+            });
+        }
+        
+        function prepareForInstagram() {
+            // Instruções específicas para Instagram
+            const userName = document.getElementById('user-name').value.trim();
+            
+            // Primeiro baixa a imagem
+            const cert = document.getElementById('certificate');
+            
+            html2canvas(cert, {
+                scale: 3,
+                backgroundColor: '#FFFFFF',
+                useCORS: true,
+                logging: false
+            }).then(canvas => {
+                const link = document.createElement('a');
+                link.download = `instagram_21dias_${userName.replace(/\s+/g, '_')}.png`;
+                link.href = canvas.toDataURL('image/png');
+                link.click();
+                
+                // Mostra instruções
+                alert(`✅ Imagem baixada no formato perfeito para Instagram!\n\n📱 Como postar:\n1. Abra o Instagram\n2. Toque em "+" para criar novo post\n3. Selecione a imagem que acabou de baixar\n4. Na legenda, use:\n   • #21DiasDeLeveza\n   • @seuperfil (opcional)\n   • Sua experiência em poucas palavras\n\n✨ Aproveite para inspirar outras pessoas!`);
+                
+                // Feedback no botão
+                const btn = event.target.closest('button');
+                const originalText = btn.innerHTML;
+                btn.innerHTML = '📸 Pronto para Postar!';
+                
+                setTimeout(() => {
+                    btn.innerHTML = originalText;
+                }, 3000);
+            });
+        }
+        
+        function shareCertificate() {
+            // Web Share API para compartilhamento nativo
+            if (navigator.share) {
+                // Se temos a imagem pré-gerada, compartilhar arquivo
+                if (certificateImageUrl) {
+                    fetch(certificateImageUrl)
+                        .then(res => res.blob())
+                        .then(blob => {
+                            const file = new File([blob], "certificado_21dias.png", { type: "image/png" });
+                            
+                            if (navigator.canShare && navigator.canShare({ files: [file] })) {
+                                navigator.share({
+                                    files: [file],
+                                    title: 'Meu Certificado - 21 Dias de Leveza',
+                                    text: `Acabei de completar os 21 Dias de Leveza! 🌿 #21DiasDeLeveza`
+                                });
+                            } else {
+                                fallbackShare();
+                            }
+                        })
+                        .catch(fallbackShare);
+                } else {
+                    fallbackShare();
+                }
+            } else {
+                fallbackShare();
+            }
+            
+            function fallbackShare() {
+                // Fallback: copiar texto para compartilhamento manual
+                const userName = document.getElementById('user-name').value.trim();
+                const text = `Acabei de completar os 21 Dias de Leveza! 🌿\n\nMinha jornada de autocompaixão e recomeços foi transformadora.\n\nBaixe seu certificado também em: ${window.location.href}\n\n#21DiasDeLeveza`;
+                
+                navigator.clipboard.writeText(text)
+                    .then(() => {
+                        alert("📋 Texto copiado! Cole no Instagram, WhatsApp ou onde quiser compartilhar.\n\nDica: Combine com a imagem do certificado que você baixou!");
+                    });
+            }
+        }
+        
+        function newCertificate() {
+            document.getElementById('certificate-container').style.opacity = '0';
+            document.getElementById('certificate-container').style.transform = 'translateY(20px)';
+            
+            setTimeout(() => {
+                document.getElementById('certificate-container').style.display = 'none';
+                document.getElementById('form-view').style.display = 'block';
+                
+                setTimeout(() => {
+                    document.getElementById('form-view').style.opacity = '1';
+                    document.getElementById('form-view').style.transform = 'translateY(0)';
+                    
+                    // Limpar campos
+                    document.getElementById('user-name').value = '';
+                    document.getElementById('user-lesson').value = '';
+                    document.getElementById('user-name').focus();
+                    
+                    // Resetar certificado
+                    document.getElementById('cert-quote').innerHTML = 
+                        `"Por honrar seu próprio ritmo e escolher a gentileza <br>
+                        como prática diária de recomeço."`;
+                }, 50);
+            }, 300);
+        }
+        
+        // Focar no campo de nome ao carregar
+        document.addEventListener('DOMContentLoaded', () => {
+            document.getElementById('user-name').focus();
+        });
+    </script>
+</body>
+</html>
